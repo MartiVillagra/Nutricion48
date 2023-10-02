@@ -5,6 +5,11 @@
  */
 package nutricion48;
 
+import Data.Conexion;
+import Data.PacienteData;
+import Entidades.Paciente;
+import java.sql.Connection;
+
 /**
  *
  * @author Nova
@@ -15,7 +20,14 @@ public class Nutricion48 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Connection con = Conexion.conectar();
+        System.out.println("Hola mundo");
+        
+        Paciente paciente = new Paciente( "Irasoqui", 33099033, "Falsa 123", 265479 );
+    PacienteData pacData = new PacienteData();
+    
+    pacData.modificarPaciente(paciente);
     }
+    
     
 }
