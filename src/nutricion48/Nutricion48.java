@@ -7,10 +7,14 @@ package nutricion48;
 
 import Data.ComidaData;
 import Data.Conexion;
+import Data.DietaData;
 import Data.PacienteData;
 import Entidades.Comida;
+import Entidades.Dieta;
 import Entidades.Paciente;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Month;
 
 /**
  *
@@ -25,20 +29,20 @@ public class Nutricion48 {
         Connection con = Conexion.conectar();
     
     //--------------------- cargar paciente-------------------------------
-    
+//    
 //        Paciente pacienteC = new Paciente( "Gomez , Juan", 22000333, "Falsa 123", 265479, true );
 //        PacienteData pacData= new PacienteData();
 //        pacData.altaPaciente(pacienteC);
     //--------------------------modificar paciente----------------------    
    
-//        Paciente pacienteM = new Paciente( 2, "Garcia Cristian", 29777123, "Falsa 123", 45554387, true );
+//        Paciente pacienteM = new Paciente( 1, "Garcia Cristian", 29777123, "Falsa 123", 45554387, true );
 //        PacienteData pacData = new PacienteData();
 //        pacData.modificarPaciente(pacienteM);
     
     //----------------------eliminar paciente-----------------------
-
+//
 //        PacienteData pacData = new PacienteData();
-//        pacData.bajaPaciente(33099033);
+//        pacData.bajaPaciente(29777123);
 
 //---------------Listar Pacientes que  no llegaron a tal peso---------------------
 //
@@ -56,19 +60,36 @@ public class Nutricion48 {
 //        }
     //--------------------- cargar comida-------------------------------
     
-//        Comida comi = new Comida("pomelo", "grande ", 90);
+//        Comida comi = new Comida("lechuga", "grande ", 55, true);
 //        ComidaData comData= new ComidaData();
 //        comData.altaComida(comi);
     //--------------------------modificar comida----------------------    
-//   
-//        Comida comi = new Comida("pomelo", "grande ", 90);
+   
+//        Comida comi = new Comida(3,"pomelo", "chico,. rosado", 80, tru7e);
 //        ComidaData comData= new ComidaData();
 //        comData.modificarComida(comi);
 //    
-//    //----------------------eliminar paciente-----------------------
+//    //----------------------eliminar comida-----------------------
 //
-//        ComidaData comData= new ComidaData();
- //       comData.eliminarComida(0);
+//        ComidaData comData = new ComidaData();
+//        comData.eliminarComida(3);
+//    
+   //--------------------- CARGAR DIETA------------------------------
+       // Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+//        Dieta die= new Dieta( "mediterranea", 1, LocalDate.of(2023, Month.MAY, 23) , 100,70, LocalDate.of(2023, Month.NOVEMBER, 13));
+//        DietaData dietaData=new  DietaData();
+//        dietaData.altaDieta(die);
+
+    //--------------------------modificar dieta----------------------    
+//   
+//            Dieta die= new Dieta(1, "proteica", 1, LocalDate.of(2023, Month.MAY, 23) , 100,70, LocalDate.of(2023, Month.NOVEMBER, 13));
+//            DietaData dietaData=new  DietaData();
+//            dietaData.modificarDieta(die);
+//    
+//    //----------------------eliminar comida-----------------------
+//
+//            DietaData dietaData=new  DietaData();
+//            dietaData.eliminarDieta(1);
 //    
      }
 }

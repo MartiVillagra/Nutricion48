@@ -15,18 +15,29 @@ public class Comida {
     private String nombre;
     private String detalle;
     private int cantCalorias;
+    private  boolean estado;
 
-    public Comida(int idComida, String nombre, String detalle, int cantCalorias) {
+    public Comida(int idComida, String nombre, String detalle, int cantCalorias, boolean estado) {
         this.idComida = idComida;
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantCalorias = cantCalorias;
+        this.estado = estado;
     }
 
-    public Comida(String nombre, String detalle, int cantCalorias) {
+    public Comida(String nombre, String detalle, int cantCalorias, boolean estado) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantCalorias = cantCalorias;
+        this.estado = estado;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public Comida() {
@@ -66,8 +77,10 @@ public class Comida {
 
     @Override
     public String toString() {
-        return "Comida{" + "idComida=" + idComida + ", nombre=" + nombre + ", detalle=" + detalle + ", cantCalorias=" + cantCalorias + '}';
+        return "Comida{" + "idComida=" + idComida + ", nombre=" + nombre + ", detalle=" + detalle + ", cantCalorias=" + cantCalorias + ", estado=" + estado + '}';
     }
+
+  
     
     
     

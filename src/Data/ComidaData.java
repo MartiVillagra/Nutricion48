@@ -41,12 +41,13 @@ public class ComidaData {
                 ps.setString(1,comida.getNombre());
                 ps.setString(2, comida.getDetalle());
                 ps.setInt(3, comida.getCantCalorias());
+                ps.setBoolean(4, true);
                 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             
             if (rs.next()){
-                comida.setIdComida(rs.getInt("idComida"));
+                comida.setIdComida(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, " se ingreso correctamente el menu");
             }
             ps.close();        
@@ -58,7 +59,7 @@ public class ComidaData {
     // --------------------Modificar una comida --------------
     
     public void modificarComida(Comida comida){
-            String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=? WHERE idComida=?";
+            String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=? WHERE idComida=? and estado =1 ";
             
         try {
             PreparedStatement ps = con.prepareStatement(sql); 
@@ -66,6 +67,7 @@ public class ComidaData {
             ps.setString(2,comida.getDetalle());
             ps.setInt(3, comida.getCantCalorias());
             ps.setInt(4,comida.getIdComida());
+        
             
             int espera=ps.executeUpdate();
             if (espera==1){
@@ -83,12 +85,12 @@ public class ComidaData {
     
     
     public void eliminarComida (int id){
-        String sql= "UPDATE comida SET idComida=? ";
+        String sql= "UPDATE comida SET estado = 0  where idComida =? and estado =1";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             
-            ps.setInt(1, id);
+            ps.setInt(1,id);
             int espera=ps.executeUpdate();
             
             if ( espera ==1){

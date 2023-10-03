@@ -56,7 +56,7 @@ public class PacienteData {
     // BORRAR UN PACIENTE.
     public void bajaPaciente(int dni){
         
-        String sql = "UPDATE paciente SET estado = 0 WHERE dni = ?";
+        String sql = "UPDATE paciente SET estado = 0 WHERE dni = ? and estado =1";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -77,7 +77,7 @@ public class PacienteData {
     //MODIFICAR PACIENTE:
     
     public void modificarPaciente(Paciente paciente){
-    String sql = "UPDATE paciente SET nombre = ?, dni = ?, domicilio = ?, telefono = ? WHERE idPaciente = ? ";
+    String sql = "UPDATE paciente SET nombre = ?, dni = ?, domicilio = ?, telefono = ? WHERE idPaciente = ? and estado =1 ";
     
         try {
             PreparedStatement ps = con.prepareStatement(sql);
