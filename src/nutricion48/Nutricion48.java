@@ -31,13 +31,22 @@ public class Nutricion48 {
    
         Paciente pacienteM = new Paciente( 2, "Garcia Cristian", 29777123, "Falsa 123", 45554387, true );
         //PacienteData pacData = new PacienteData();
-        pacData.modificarPaciente(pacienteM);
+//        pacData.modificarPaciente(pacienteM);
     
     //----------------------eliminar paciente-----------------------
 
         // PacienteData pacData = new PacienteData();
 //        pacData.bajaPaciente(33099033);
-        
+        //Listar Pacientes que  no llegaron a tal peso
+        for (Paciente paciente : pacData.listarPacientesQueNoLegaron(90)) {
+            System.out.println("idPaciente: "+paciente.getIdPaciente());
+            System.out.println("Nombre: "+paciente.getNombre());
+            System.out.println("Dni: "+paciente.getDni());
+            System.out.println("Domicilio: "+paciente.getDomicilio());
+            System.out.println("Telefono: "+paciente.getTelefono());
+            System.out.println("Estado: "+paciente.isEstado());
+            System.out.println("-------------------------------");
+        }
     }
     
     
