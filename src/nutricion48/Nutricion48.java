@@ -21,23 +21,22 @@ public class Nutricion48 {
      */
     public static void main(String[] args) {
         Connection con = Conexion.conectar();
-        System.out.println("Hola mundo");
     
     //--------------------- cargar paciente-------------------------------
     
-        Paciente pacienteC = new Paciente( "Irasoqui", 33099033, "Falsa 123", 265479 );
+        Paciente pacienteC = new Paciente( "Irasoqui", 33099033, "Falsa 123", 265479, true );
         PacienteData pacData= new PacienteData();
-        pacData.altaPaciente(pacienteC);
+//        pacData.altaPaciente(pacienteC);
     //--------------------------modificar paciente----------------------    
    
-        Paciente pacienteM = new Paciente( "Garcia Cristian", 29777123, "Falsa 123", 45554387 );
+        Paciente pacienteM = new Paciente( 2, "Garcia Cristian", 29777123, "Falsa 123", 45554387, true );
         //PacienteData pacData = new PacienteData();
         pacData.modificarPaciente(pacienteM);
     
     //----------------------eliminar paciente-----------------------
 
         // PacienteData pacData = new PacienteData();
-        pacData.bajaPaciente(0);
+//        pacData.bajaPaciente(33099033);
         
     }
     

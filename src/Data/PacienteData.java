@@ -25,7 +25,7 @@ public class PacienteData {
     }
     //DAR ALTA A UN PACIENTE.
     public void altaPaciente(Paciente paciente){
-    String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono) VALUES (?,?,?,?)";
+    String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono, estado) VALUES (?,?,?,?,?)";
     
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -33,6 +33,7 @@ public class PacienteData {
             ps.setInt(2, paciente.getDni());
             ps.setString(3, paciente.getNombre());
             ps.setInt(4, paciente.getTelefono());
+            ps.setBoolean(5,paciente.isEstado());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -42,8 +43,8 @@ public class PacienteData {
                 JOptionPane.showMessageDialog(null, "Paciente guardado");
             }
             ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la Table Paciente" +ex);
+        } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salió mal" +ex);
         }
     
     
@@ -52,7 +53,7 @@ public class PacienteData {
     // BORRAR UN PACIENTE.
     public void bajaPaciente(int dni){
         
-        String sql = "DELETE FROM paciente WHERE dni = ?";
+        String sql = "UPDATE paciente SET estado = 0 WHERE dni = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -64,9 +65,8 @@ public class PacienteData {
             } else {
             JOptionPane.showMessageDialog(null, "Paciente no encontrado");
             }
-            } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "No se ha podido eliminar al paciente"+ ex);
+            } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal"+ ex);
         }
     
         
@@ -79,7 +79,7 @@ public class PacienteData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, paciente.getNombre());
-            ps.setInt(2, paciente.getDni());
+            ps.setInt(2, "martina");
             ps.setString(3, paciente.getDomicilio());
             ps.setInt(4, paciente.getTelefono());
             ps.setInt(5, paciente.getIdPaciente());
@@ -91,7 +91,7 @@ public class PacienteData {
             JOptionPane.showMessageDialog(null, "Paciente no encontrado");
             }
             
-        } catch (SQLException ex) {
+        } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "No se ha podido modificar el paciente"+ ex);
         }
     
