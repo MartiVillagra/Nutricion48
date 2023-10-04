@@ -34,7 +34,7 @@ public class PacienteData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, paciente.getNombre()); 
             ps.setInt(2, paciente.getDni());
-            ps.setString(3, paciente.getNombre());
+            ps.setString(3, paciente.getDomicilio());
             ps.setInt(4, paciente.getTelefono());
             ps.setBoolean(5,paciente.isEstado());
             
