@@ -7,10 +7,12 @@ package nutricion48;
 
 import Data.ComidaData;
 import Data.Conexion;
+import Data.DietaComidaData;
 import Data.DietaData;
 import Data.PacienteData;
 import Entidades.Comida;
 import Entidades.Dieta;
+import Entidades.DietaComida;
 import Entidades.Paciente;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -29,10 +31,11 @@ public class Nutricion48 {
         Connection con = Conexion.conectar();
     
     //--------------------- cargar paciente-------------------------------
-//    
+    
 //        Paciente pacienteC = new Paciente( "Gomez , Juan", 22000333, "Falsa 123", 265479, true );
 //        PacienteData pacData= new PacienteData();
 //        pacData.altaPaciente(pacienteC);
+        
     //--------------------------modificar paciente----------------------    
    
 //        Paciente pacienteM = new Paciente( 1, "Garcia Cristian", 29777123, "Falsa 123", 45554387, true );
@@ -74,6 +77,14 @@ public class Nutricion48 {
 //        ComidaData comData = new ComidaData();
 //        comData.eliminarComida(3);
 //    
+//-------------------listar comidas por calorias-------------------
+//
+//    Comida com1 =new Comida();
+//    ComidaData comidata =new ComidaData();
+//      
+//        for (Comida comi : comidata.listaDeComidas(300)) {
+//            System.out.println(comi);
+//        }
    //--------------------- CARGAR DIETA------------------------------
        // Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
 //        Dieta die= new Dieta( "mediterranea", 1, LocalDate.of(2023, Month.MAY, 23) , 100,70, LocalDate.of(2023, Month.NOVEMBER, 13));
@@ -86,10 +97,23 @@ public class Nutricion48 {
 //            DietaData dietaData=new  DietaData();
 //            dietaData.modificarDieta(die);
 //    
-//    //----------------------eliminar comida-----------------------
+//    //----------------------eliminar dieta-----------------------
 //
 //            DietaData dietaData=new  DietaData();
 //            dietaData.eliminarDieta(1);
 //    
+//-----------------------Dar de alta una dietaComida---------------
+//   Comida comi =new Comida(1,"ARROZ","con papas",500,true);
+//   Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
+//   DietaComida num1 =new DietaComida(comi,diet);
+//DietaComidaData dicomida = new DietaComidaData();
+//    
+//    dicomida.altaDieta(num1);
+    //---------------------------eliminar Dieta comida--------------------
+    DietaComida comi = new DietaComida();
+    DietaComidaData dietacomi =new DietaComidaData();
+    dietacomi.bajaDietaComida(2);
+            
+        }
      }
-}
+
