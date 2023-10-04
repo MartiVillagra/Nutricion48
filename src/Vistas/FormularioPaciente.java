@@ -8,12 +8,12 @@ package Vistas;
  *
  * @author Loboplateado77
  */
-public class Paciente extends javax.swing.JInternalFrame {
+public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Paciente
      */
-    public Paciente() {
+    public FormularioPaciente() {
         initComponents();
     }
 
