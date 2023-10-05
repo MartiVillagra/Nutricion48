@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import Data.PacienteData;
+import Entidades.Paciente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Loboplateado77
@@ -34,12 +38,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jTdni = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTnomYApe = new javax.swing.JTextField();
+        jTNomYApe = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTdomicilio = new javax.swing.JTextField();
         jTtelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jbRegistrar = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -91,7 +96,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTnomYApe))
+                        .addComponent(jTNomYApe))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(31, 31, 31)
@@ -114,7 +119,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTnomYApe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTNomYApe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,6 +128,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        jbRegistrar.setText("Registrar");
+        jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,7 +146,11 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbRegistrar)
+                        .addGap(8, 8, 8)))
                 .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,7 +160,9 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addComponent(jbRegistrar)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,6 +179,41 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
+        try {
+            PacienteData pacData = new PacienteData();
+            String domicilio = jTdomicilio.getText();
+            String nombre = jTNomYApe.getText();
+            int dni = Integer.parseInt(jTdni.getText());
+            int telefono = Integer.parseInt(jTtelefono.getText());
+            
+            //Verifica que los campos no enten vacios
+            if (jTdni.getText().isEmpty() || jTNomYApe.getText().isEmpty() || jTdomicilio.getText().isEmpty()
+                    || jTtelefono.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Hay campos vacios");
+            }else
+
+            //verifica que no cargue un numero en el nombre    
+            if (contiene(jTNomYApe.getText()) == true) {
+                JOptionPane.showMessageDialog(null, "Verifique su nombre");
+            //Verifica que no exista ese dni
+            }else if (pacData.buscarPacientexDNI(dni) != null) {
+                JOptionPane.showMessageDialog(null, "Ya existe ese dni");
+            } else {
+                Paciente pac = new Paciente(nombre, dni, domicilio, telefono, true);
+                pacData.altaPaciente(pac);
+            }
+
+        } catch (NumberFormatException nf) {
+            if (jTdni.getText().isEmpty() || jTtelefono.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Hay campos vacios");
+            }else{
+             JOptionPane.showMessageDialog(null, "Verifique su DNI/Telefono");   
+            }
+            
+        }
+    }//GEN-LAST:event_jbRegistrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -171,11 +224,22 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTNomYApe;
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTdomicilio;
-    private javax.swing.JTextField jTnomYApe;
     private javax.swing.JTextField jTnroPaciente;
     private javax.swing.JTextField jTtelefono;
+    private javax.swing.JButton jbRegistrar;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
+
+public static boolean contiene(String cadena) {
+    for (char c : cadena.toCharArray()) {
+        if (!Character.isLetter(c)) {
+            return true; // La cadena contiene caracteres no alfabéticos
+        }
+    }
+    return false; // La cadena solo contiene letras
+}
+    
 }

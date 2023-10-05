@@ -82,7 +82,7 @@ public class Nutricion48 {
 //    Comida com1 =new Comida();
 //    ComidaData comidata =new ComidaData();
 //      
-//        for (Comida comi : comidata.listaDeComidas(300)) {
+//        for (Comida comi : comidata.listaDeComidasxCalorias(200)) {
 //            System.out.println(comi);
 //        }
    //--------------------- CARGAR DIETA------------------------------
@@ -122,18 +122,19 @@ public class Nutricion48 {
  //------------------------------------Nuevo codigo TOSTRING B) --------------------------------------------------------------
 //        Comida comi =new Comida(5,"ARROZ","con papas",500,true);
 //        System.out.println(comi.toString());
-       
-        DietaComidaData dieCoData=new DietaComidaData();
-        for (DietaComida dietaCo : dieCoData.listarDietasxNombre("proteica")) {
-            System.out.println("idDietaComida: "+dietaCo.getIdDietaComida());
-            System.out.println("Dieta: "+dietaCo.getDieta().getNombre());
-            System.out.println("Alimento: "+dietaCo.getComida().getNombre());
-            System.out.println("Calorias: "+dietaCo.getComida().getCantCalorias()+" Cal");
-            System.out.println("-----------------------------------------");
-        }
+//       -------------listar Dietas segun el nombre------------
+//        DietaComidaData dieCoData=new DietaComidaData();
+//        for (DietaComida dietaCo : dieCoData.listarDietasxNombre("proteica")) {
+//            System.out.println("idDietaComida: "+dietaCo.getIdDietaComida());
+//            System.out.println("Dieta: "+dietaCo.getDieta().getNombre());
+//            System.out.println("Alimento: "+dietaCo.getComida().getNombre());
+//            System.out.println("Calorias: "+dietaCo.getComida().getCantCalorias()+" Cal");
+//            System.out.println("-----------------------------------------");
+//        }
+//---------------------Dieta por ID---------
 //    DietaData dietaData = new DietaData();
 //        System.out.println(dietaData.buscarDietaxId(1).toString());
-//        
+//    --------------Comida Por ID---------------    
 //    ComidaData comidaData = new ComidaData();
 //        System.out.println(comidaData.buscarComidaxId(1).toString());
     }

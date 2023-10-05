@@ -15,6 +15,7 @@ public class TipoDieta extends javax.swing.JInternalFrame {
      */
     public TipoDieta() {
         initComponents();
+        cargarCombo();
     }
 
     /**
@@ -235,4 +236,13 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
+public void cargarCombo(){
+
+            jCBtipoDieta.addItem("");
+            TiposDeDietas[] dietaList = TiposDeDietas.values();
+            for( TiposDeDietas dieta: dietaList){
+            jCBtipoDieta.addItem(String.valueOf(dieta));
+        }
+    }
+
 }

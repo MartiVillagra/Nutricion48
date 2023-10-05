@@ -116,7 +116,7 @@ public class ComidaData {
             while (rs.next()){
                
                 Comida comida= new Comida();
-                  comida.setIdComida(rs.getInt("idComida"));
+                comida.setIdComida(rs.getInt("idComida"));
                 comida.setNombre(rs.getString("nombre"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setCantCalorias(rs.getInt("cantCalorias"));

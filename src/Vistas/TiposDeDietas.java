@@ -16,5 +16,7 @@ public enum TiposDeDietas {
     Dieta_modificada_en_proteína,
     Dieta_libre_de_gluten,
     Dieta_DASH
-    
+ 
+   
 }
+

@@ -123,4 +123,54 @@ public class PacienteData {
         }
         return pacientes;
     }
+    public Paciente buscarPacientexId(int id){
+        String sql =" SELECT * from paciente WHERE estado=1 and idPaciente=?" ;
+        Paciente paciente = null;
+  
+        try {
+        PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+            paciente = new Paciente();
+            paciente.setIdPaciente(id);
+            paciente.setNombre(rs.getString("nombre"));
+            paciente.setDomicilio(rs.getString("domicilio"));
+            paciente.setTelefono(rs.getInt("telefono"));
+            paciente.setDni(rs.getInt("dni"));
+            paciente.setEstado(rs.getBoolean("estado"));
+            } else {
+            JOptionPane.showMessageDialog(null, "Paciente no encontrado.");
+            }
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de pacientes");
+        }
+        return paciente;
+    }
+    public Paciente buscarPacientexDNI(int dni){
+        String sql =" SELECT * from paciente WHERE estado=1 and dni=?" ;
+        Paciente paciente = null;
+  
+        try {
+        PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+            paciente = new Paciente();
+            paciente.setIdPaciente(rs.getInt("idPaciente"));
+            paciente.setNombre(rs.getString("nombre"));
+            paciente.setDomicilio(rs.getString("domicilio"));
+            paciente.setTelefono(rs.getInt("telefono"));
+            paciente.setDni(rs.getInt(dni));
+            paciente.setEstado(rs.getBoolean("estado"));
+            } 
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de pacientes");
+        }
+        return paciente;
+    }
 }
