@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -103,7 +104,37 @@ public class DietaData {
             ps.close();
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al eliminar la dieta");
-        }  
+        } 
+        
+        
+        
+    
+    }
+    public  ArrayList <Dieta> listarDieta(String nombre){
+        String sql="SELECT * FROM dieta JOIN paciente ON dieta.idPaciente = paciente.idPaciente WHERE estado= 1";
+        ArrayList dietas =new ArrayList();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+      
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Dieta diet =new Dieta();
+                
+                diet.setIdDieta(rs.getInt("idDieta"));
+                diet.setNombre(nombre);
+                diet.setIdPaciente(rs.getInt("idPaciente"));
+                
+                
+                
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        
+        return dietas ;
     }
 
 }

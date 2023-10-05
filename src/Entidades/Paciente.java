@@ -88,12 +88,12 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return " idPaciente:" + idPaciente 
-                + " Nombre:" + nombre + 
-                " Dni:" + dni + 
-                " Domicilio:" + domicilio + 
-                " Telefono:" + telefono + 
-                " Estado:" + estado;
+        return "IdPaciente: " + idPaciente +
+                " \nNombre: " + nombre + 
+                " \nDni: " + dni + 
+                " \nDomicilio: " + domicilio + 
+                " \nTelefono: " + telefono + 
+                " \nEstado: " + estado;
     }
 
     

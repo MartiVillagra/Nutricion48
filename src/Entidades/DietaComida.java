@@ -55,7 +55,9 @@ public class DietaComida {
 
     @Override
     public String toString() {
-        return "DietaComida{" + "idDietaComida=" + idDietaComida + ", comida=" + comida + ", dieta=" + dieta + '}';
+        return "IdDietaComida: " + idDietaComida + 
+                " \nComida: " + comida +
+                " \nDieta: " + dieta ;
     }
     
     

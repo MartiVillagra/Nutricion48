@@ -53,7 +53,7 @@ public class DietaComidaData {
 //    //------------- BORRAR DIETACOMIDA-------------------------------------
     public void bajaDietaComida(int id ){
         
-        String sql = "DELETE FROM dietacomida WHERE id=?";
+        String sql = "DELETE FROM dietacomida WHERE idDietaComida=?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class DietaComidaData {
             int num = ps.executeUpdate();
             
             if (num ==1){
-            JOptionPane.showMessageDialog(null, "El paciente se eliminó corréctamente");
+            JOptionPane.showMessageDialog(null, "La dieta se eliminó corréctamente");
             } 
             ps.close();
             } catch (SQLException | NumberFormatException ex) {
@@ -69,30 +69,27 @@ public class DietaComidaData {
         }
     
     }   
+
+    //--------------------------MODIFICAR DIETA COMIDA------------------------------------
+    
+    public void ModificarDietaComida(DietaComida dietacomida){
+    String sql = "UPDATE dietacomida SET idComida=?, idDieta=? WHERE idDietaComida=? ";
+    
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+         
+           ps.setInt(1, dietacomida.getComida().getIdComida());
+           ps.setInt(2, dietacomida.getDieta().getIdDieta());
+           ps.setInt(3, dietacomida.getIdDietaComida());
+            int exito = ps.executeUpdate();
+            
+            if(exito == 1){
+            JOptionPane.showMessageDialog(null, "dieta modificado con éxito");
+            } 
+            ps.close();
+        } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "No se ha podido modificar el paciente"+ ex);
+        }
+    }
+    
 }
-//    //MODIFICAR PACIENTE:
-//    
-//    public void modificarPaciente(Paciente paciente){
-//    String sql = "UPDATE paciente SET nombre = ?, dni = ?, domicilio = ?, telefono = ? WHERE idPaciente = ? and estado =1 ";
-//    
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setString(1, paciente.getNombre());
-//            ps.setInt(2, paciente.getDni());
-//            ps.setString(3, paciente.getDomicilio());
-//            ps.setInt(4, paciente.getTelefono());
-//            ps.setInt(5, paciente.getIdPaciente());
-//            int exito = ps.executeUpdate();
-//            
-//            if(exito == 1){
-//            JOptionPane.showMessageDialog(null, "Paciente modificado con éxito");
-//            } else {
-//            JOptionPane.showMessageDialog(null, "Paciente no encontrado");
-//            }
-//            
-//        } catch (SQLException | NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(null, "No se ha podido modificar el paciente"+ ex);
-//        }
-//    }
-//    
-//}

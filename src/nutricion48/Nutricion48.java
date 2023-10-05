@@ -110,10 +110,20 @@ public class Nutricion48 {
 //    
 //    dicomida.altaDieta(num1);
     //---------------------------eliminar Dieta comida--------------------
-    DietaComida comi = new DietaComida();
-    DietaComidaData dietacomi =new DietaComidaData();
-    dietacomi.bajaDietaComida(2);
-            
-        }
+//    DietaComida comi = new DietaComida();
+//    DietaComidaData dietacomi =new DietaComidaData();
+//    dietacomi.bajaDietaComida(2);
+ //-----------------------------MODIFICAR DIETA COMIDA------------------
+//    DietaComidaData dietacomi =new DietaComidaData();   
+//    Comida comi =new Comida(5,"ARROZ","con papas",500,true);
+//  Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
+//    DietaComida dieta1 =new DietaComida(4,comi,diet);
+//    dietacomi.ModificarDietaComida(dieta1);
+ //------------------------------------Nuevo codigo TOSTRING B) --------------------------------------------------------------
+        Comida comi =new Comida(5,"ARROZ","con papas",500,true);
+        System.out.println(comi.toString());
+       
+        
+    }
      }
 
