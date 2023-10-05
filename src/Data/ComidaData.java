@@ -105,7 +105,7 @@ public class ComidaData {
     }
     //------------------------- Lista de comidas -----------------------
     
-    public ArrayList <Comida> listaDeComidas(int cantCalorias){
+    public ArrayList <Comida> listaDeComidasxCalorias(int cantCalorias){
         String sql =" SELECT  * from comida WHERE  cantCalorias < ? AND  estado=1" ;
         ArrayList <Comida> comidas =new ArrayList();
   
@@ -129,6 +129,32 @@ public class ComidaData {
         }
         return comidas;
     }
+    public Comida buscarComidaxId(int id){
+        String sql =" SELECT * from comida WHERE estado=1 and idComida=?" ;
+        Comida comida = null;
+  
+        try {
+        PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+            comida = new Comida();
+            comida.setIdComida(id);
+            comida.setNombre(rs.getString("nombre"));
+            comida.setDetalle(rs.getString("detalle"));
+            comida.setCantCalorias(rs.getInt("cantCalorias"));
+            comida.setEstado(rs.getBoolean("estado"));
+            } else {
+            JOptionPane.showMessageDialog(null, "Comida no encontrada.");
+            }
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de comidas");
+        }
+        return comida;
+    }
+    
 }
 
 

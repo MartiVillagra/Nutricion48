@@ -5,12 +5,17 @@
  */
 package Data;
 
+import Entidades.Comida;
+import Entidades.Dieta;
 import Entidades.DietaComida;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,9 +24,14 @@ import javax.swing.JOptionPane;
  */
 public class DietaComidaData {
       private Connection con = null; 
-    
+      private DietaData dieData;
+      private ComidaData comData;
+      private DietaComidaData dieCoData;
+      
     public DietaComidaData() {
      con=Conexion.conectar();
+     dieData = new DietaData();
+     comData = new ComidaData();
     }
 
      //dar de alta una dieta comida 
@@ -92,4 +102,32 @@ public class DietaComidaData {
         }
     }
     
+    public ArrayList<DietaComida> listarDietasxNombre(String nombre){
+        String sql="SELECT idDietaComida, diCo.idDieta,diCo.idComida, di.nombre as dieta, co.nombre as alimento, co.cantCalorias FROM dietaComida diCo JOIN dieta di, comida co "
+                + "WHERE di.idDieta=diCo.idDieta AND co.idComida=diCo.idComida AND di.nombre=? AND co.estado=1";
+        ArrayList <DietaComida> dietas =new ArrayList();
+          try {
+              PreparedStatement ps=con.prepareStatement(sql);
+              ps.setString(1, nombre);
+              ResultSet rs=ps.executeQuery();
+              while(rs.next()){ 
+                  DietaComida dietaComida = new DietaComida();
+                  dietaComida.setIdDietaComida(rs.getInt("idDietaComida"));
+                  Dieta dieta = dieData.buscarDietaxId(rs.getInt("idDieta"));
+                  Comida comida = comData.buscarComidaxId(rs.getInt("idComida"));
+                  
+                  dieta.setNombre(rs.getString("dieta"));
+                  comida.setNombre(rs.getString("alimento"));
+                  comida.setCantCalorias(rs.getInt("cantCalorias"));
+                  dietaComida.setComida(comida);
+                  dietaComida.setDieta(dieta);
+                  
+                  dietas.add(dietaComida);
+              }
+              ps.close();
+          } catch (SQLException ex) {
+              JOptionPane.showMessageDialog(null, "ERROR"+ex);
+          }
+          return dietas;
+    }
 }

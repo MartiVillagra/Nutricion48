@@ -7,6 +7,7 @@
 package Data;
 
 import Entidades.Dieta;
+import Entidades.Paciente;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -110,31 +111,58 @@ public class DietaData {
         
     
     }
-    public  ArrayList <Dieta> listarDieta(String nombre){
-        String sql="SELECT * FROM dieta JOIN paciente ON dieta.idPaciente = paciente.idPaciente WHERE estado= 1";
-        ArrayList dietas =new ArrayList();
+    public Dieta buscarDietaxId(int id){
+        String sql =" SELECT * from dieta WHERE idDieta=?" ;
+        Dieta dieta = null;
+  
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-      
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
-                Dieta diet =new Dieta();
-                
-                diet.setIdDieta(rs.getInt("idDieta"));
-                diet.setNombre(nombre);
-                diet.setIdPaciente(rs.getInt("idPaciente"));
-                
-                
-                
+        PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+            dieta = new Dieta();
+            dieta.setIdDieta(id);
+            dieta.setIdPaciente(rs.getInt("idPaciente"));
+            dieta.setNombre(rs.getString("nombre"));
+            dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+            dieta.setPesoInicial(rs.getDouble("pesoInicial"));
+            dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+            dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+            } else {
+            JOptionPane.showMessageDialog(null, "Dieta no encontrada.");
             }
-                    
+            ps.close();    
         } catch (SQLException ex) {
-            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de dieta");
         }
-        
-       
-        
-        return dietas ;
+        return dieta;
     }
+    
+//    public  ArrayList <Dieta> listarDieta(String nombre){
+//        String sql="SELECT di.*, pa.nombre as nom, pa.dni, pa.domicilio, pa.telefono "
+//                + "FROM dieta di JOIN paciente pa ON di.idPaciente = pa.idPaciente WHERE estado= 1 AND di.nombre=?";
+//        ArrayList dietas =new ArrayList();
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, nombre);
+//            ResultSet rs=ps.executeQuery();
+//            while(rs.next()){
+//                Dieta diet =new Dieta();
+//                Paciente paci = new Paciente();
+//                diet.setIdDieta(rs.getInt("idDieta"));
+//                diet.setNombre(rs.getString("nombre"));
+//                diet.setIdPaciente(rs.getInt("idPaciente"));
+//                diet.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+//                diet.setPesoInicial(rs.getDouble("pesoInicial"));
+//                diet.setPesoInicial(rs.getDouble("pesoFinalal"));
+//                diet.setFechaInicial(rs.getDate("fechaFinalal").toLocalDate());
+//            }
+//                    
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return dietas ;
+//    }
 
 }

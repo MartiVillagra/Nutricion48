@@ -120,10 +120,25 @@ public class Nutricion48 {
 //    DietaComida dieta1 =new DietaComida(4,comi,diet);
 //    dietacomi.ModificarDietaComida(dieta1);
  //------------------------------------Nuevo codigo TOSTRING B) --------------------------------------------------------------
-        Comida comi =new Comida(5,"ARROZ","con papas",500,true);
-        System.out.println(comi.toString());
+//        Comida comi =new Comida(5,"ARROZ","con papas",500,true);
+//        System.out.println(comi.toString());
        
-        
+        DietaComidaData dieCoData=new DietaComidaData();
+        for (DietaComida dietaCo : dieCoData.listarDietasxNombre("proteica")) {
+            System.out.println("idDietaComida: "+dietaCo.getIdDietaComida());
+            System.out.println("Dieta: "+dietaCo.getDieta().getNombre());
+            System.out.println("Alimento: "+dietaCo.getComida().getNombre());
+            System.out.println("Calorias: "+dietaCo.getComida().getCantCalorias()+" Cal");
+            System.out.println("-----------------------------------------");
+        }
+//    DietaData dietaData = new DietaData();
+//        System.out.println(dietaData.buscarDietaxId(1).toString());
+//        
+//    ComidaData comidaData = new ComidaData();
+//        System.out.println(comidaData.buscarComidaxId(1).toString());
     }
+    
+    
+    
      }
 
