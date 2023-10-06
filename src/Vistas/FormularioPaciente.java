@@ -202,42 +202,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
-//        try {
-//            PacienteData pacData = new PacienteData();
-//            String domicilio = jTdomicilio.getText();
-//            String nombre = jTNomYApe.getText();
-//            int dni = Integer.parseInt(jTdni.getText());
-//            int telefono = Integer.parseInt(jTtelefono.getText());
-//            
-//            //Verifica que los campos no enten vacios
-//            if (jTdni.getText().isEmpty() || jTNomYApe.getText().isEmpty() || jTdomicilio.getText().isEmpty()
-//                    || jTtelefono.getText().isEmpty()) {
-//                JOptionPane.showMessageDialog(null, "Hay campos vacios");
-//            }else
-//
-//            //verifica que no cargue un numero en el nombre    
-//            if (contiene(jTNomYApe.getText()) == true) {
-//                JOptionPane.showMessageDialog(null, "Verifique su nombre");
-//            //Verifica que no exista ese dni
-//            }else if (pacData.buscarPacientexDNI(dni) != null) {
-//                JOptionPane.showMessageDialog(null, "Ya existe ese dni");
-//            } else {
-//                Paciente pac = new Paciente(nombre, dni, domicilio, telefono, true);
-//                pacData.altaPaciente(pac);
-//            }
-//
-//        } catch (NumberFormatException nf) {
-//            if (jTdni.getText().isEmpty() || jTtelefono.getText().isEmpty()){
-//                JOptionPane.showMessageDialog(null, "Hay campos vacios");
-//            }else{
-//             JOptionPane.showMessageDialog(null, "Verifique su DNI/Telefono");   
-//            }
-//            
-//        }
-//        
-        //*******************************************************
-        
-        
+
         try{
         PacienteData pacData = new PacienteData();
         String domicilio = jTdomicilio.getText();
@@ -250,7 +215,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Verifique su nombre");
                 jTNomYApe.setText("");
             }else if (contiene(jTNomYApe.getText()) != true){
-                JOptionPane.showMessageDialog(null, "nombre correcto");
+               // JOptionPane.showMessageDialog(null, "nombre correcto");
                 
                 if (pacData.buscarPacientexDNI(dni) != null) {
                     JOptionPane.showMessageDialog(null, "Ya existe ese dni");
@@ -300,13 +265,12 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-public static boolean contiene(String cadena) {
-    for (char c : cadena.toCharArray()) {
-        if (!Character.isLetter(c)) {
-            return true; // La cadena contiene caracteres no alfabéticos
+    public static boolean contiene(String cadena) {
+        for (char c : cadena.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                return true; // La cadena contiene caracteres no alfabéticos
+            }
         }
-    }
-    return false; // La cadena solo contiene letras
-}
-    
+        return false; // La cadena solo contiene letras
+    }  
 }
