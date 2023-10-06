@@ -268,6 +268,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 }
             } 
             while (contiene(jTNomYApe.getText()) == true);
+            
                } catch (NumberFormatException nf) {
         if (jTdni.getText().isEmpty() || jTtelefono.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Hay campos vacios aca");
