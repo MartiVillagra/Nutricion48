@@ -124,7 +124,7 @@ public class PacienteData {
         return pacientes;
     }
     public Paciente buscarPacientexId(int id){
-        String sql =" SELECT * from paciente WHERE estado=1 and idPaciente=?" ;
+        String sql =" SELECT nombre, domicilio, telefono, dni FROM paciente WHERE estado=1 and idPaciente=?" ;
         Paciente paciente = null;
   
         try {
@@ -139,10 +139,8 @@ public class PacienteData {
             paciente.setDomicilio(rs.getString("domicilio"));
             paciente.setTelefono(rs.getInt("telefono"));
             paciente.setDni(rs.getInt("dni"));
-            paciente.setEstado(rs.getBoolean("estado"));
-            } else {
-            JOptionPane.showMessageDialog(null, "Paciente no encontrado.");
-            }
+            //paciente.setEstado(rs.getBoolean("estado"));
+            } 
             ps.close();    
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar la lista de pacientes");
@@ -150,7 +148,7 @@ public class PacienteData {
         return paciente;
     }
     public Paciente buscarPacientexDNI(int dni){
-        String sql =" SELECT * from paciente WHERE estado=1 and dni=?" ;
+        String sql =" SELECT idPaciente, nombre, domicilio, telefono FROM paciente WHERE estado=1 and dni=?" ;
         Paciente paciente = null;
   
         try {
@@ -164,9 +162,9 @@ public class PacienteData {
             paciente.setNombre(rs.getString("nombre"));
             paciente.setDomicilio(rs.getString("domicilio"));
             paciente.setTelefono(rs.getInt("telefono"));
-            paciente.setDni(rs.getInt(dni));
-            paciente.setEstado(rs.getBoolean("estado"));
-            } 
+            paciente.setDni(dni);
+            //paciente.setEstado(rs.getBoolean("estado"));
+            } else { JOptionPane.showMessageDialog(null, "Paciente no encontrado");}
             ps.close();    
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar la lista de pacientes");

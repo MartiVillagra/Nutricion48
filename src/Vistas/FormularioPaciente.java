@@ -44,10 +44,10 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jTtelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBBuscar = new javax.swing.JButton();
         jbRegistrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -61,6 +61,12 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
+        jTdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTdniKeyReleased(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
         jLabel2.setText("N° Paciente");
@@ -69,9 +75,27 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
         jLabel3.setText("DNI");
 
+        jTNomYApe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTNomYApeKeyReleased(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 153));
         jLabel4.setText("Nombre y Apellido");
+
+        jTdomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTdomicilioKeyReleased(evt);
+            }
+        });
+
+        jTtelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTtelefonoKeyReleased(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -81,7 +105,12 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(0, 153, 153));
         jLabel6.setText("Tel");
 
-        jButton1.setText("Buscar");
+        jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,7 +143,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jBBuscar)
                         .addGap(27, 27, 27))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -126,7 +155,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jButton1))
+                    .addComponent(jBBuscar))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -147,9 +176,15 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Modificar");
+        jBModificar.setText("Modificar");
+        jBModificar.setEnabled(false);
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Eliminar");
+        jBEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,9 +198,9 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addGap(96, 96, 96)
                 .addComponent(jbRegistrar)
                 .addGap(110, 110, 110)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
@@ -182,8 +217,8 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbRegistrar)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBModificar)
+                    .addComponent(jBEliminar))
                 .addGap(34, 34, 34))
         );
 
@@ -243,11 +278,102 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         } 
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        
+        /*if (jTdni.getText().isEmpty()|| jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
+                || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()){
+        jBModificar.setVisible(false);
+        } else {
+            jBModificar.setVisible(true);
+        
+        int dni = Integer.parseInt(jTdni.getText());
+        int id = Integer.parseInt(jTnroPaciente.getText());
+        String nomyApe = jTNomYApe.getText();
+        String domicilio = jTdomicilio.getText();
+        int telefono = Integer.parseInt(jTtelefono.getText());
+        
+        Paciente pac = new Paciente(id, nomyApe, dni, domicilio, telefono, true);
+        PacienteData pacDat = new PacienteData();
+        
+        pacDat.modificarPaciente(pac);
+        }*/
+                
+    }//GEN-LAST:event_jBModificarActionPerformed
 
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        int dni = Integer.parseInt(jTdni.getText());
+        PacienteData pacData = new PacienteData();
+        
+        Paciente pac = pacData.buscarPacientexDNI(dni);
+        jTnroPaciente.setText(pac.getIdPaciente()+"");
+        jTNomYApe.setText(pac.getNombre());
+        jTdomicilio.setText(pac.getDomicilio());
+        jTtelefono.setText(pac.getTelefono()+"");
+
+
+
+        
+        
+    }//GEN-LAST:event_jBBuscarActionPerformed
+    /*!jTdni.getText().isEmpty()|| !jTnroPaciente.getText().isEmpty() || !jTNomYApe.getText().isEmpty()
+                || !jTdomicilio.getText().isEmpty() || !jTtelefono.getText().isEmpty()*/
+    private void jTdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyReleased
+        PacienteData pacData = new PacienteData();
+        if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()){
+        int id = Integer.parseInt(jTnroPaciente.getText());
+        if (pacData.buscarPacientexId(id) != null){
+        
+        jBModificar.setEnabled(true);
+        } else {jBModificar.setEnabled(false);
+        }
+        }
+    }//GEN-LAST:event_jTdniKeyReleased
+
+    private void jTNomYApeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNomYApeKeyReleased
+        PacienteData pacData = new PacienteData();
+        if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()){
+        int id = Integer.parseInt(jTnroPaciente.getText());
+        if (pacData.buscarPacientexId(id) != null){
+        
+        jBModificar.setEnabled(true);
+        } else {jBModificar.setEnabled(false);
+        }
+        }
+    }//GEN-LAST:event_jTNomYApeKeyReleased
+
+    private void jTdomicilioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdomicilioKeyReleased
+        PacienteData pacData = new PacienteData();
+        if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()){
+        int id = Integer.parseInt(jTnroPaciente.getText());
+        if (pacData.buscarPacientexId(id) != null){
+        
+        jBModificar.setEnabled(true);
+        } else {jBModificar.setEnabled(false);
+        }
+        }
+    }//GEN-LAST:event_jTdomicilioKeyReleased
+
+    private void jTtelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyReleased
+        PacienteData pacData = new PacienteData();
+        if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()){
+        int id = Integer.parseInt(jTnroPaciente.getText());
+        if (pacData.buscarPacientexId(id) != null){
+        
+        jBModificar.setEnabled(true);
+        } else {jBModificar.setEnabled(false);
+        }
+        }
+    }//GEN-LAST:event_jTtelefonoKeyReleased
+
+    //Cosas que quedan: pacData.buscarPacientexId(Integer.parseInt(jTnroPaciente.getText))
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
