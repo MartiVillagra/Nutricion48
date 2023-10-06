@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.*;
 
+
 public class Menu extends javax.swing.JFrame {
 
     /**
@@ -28,98 +29,107 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem5 = new javax.swing.JMenuItem();
-        escritorio = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        //import javax.swing.ImageIcon;
+        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/hospital.png"));
+        Image miImagenjpg = icono.getImage();
+        escritorio = new javax.swing.JDesktopPane(){public void paintComponent(Graphics g){
+            g.drawImage(miImagenjpg,0,0,getWidth(),getHeight(),this);
+        }
+    };
+    jMenuBar1 = new javax.swing.JMenuBar();
+    jMenu1 = new javax.swing.JMenu();
+    jMenuItem3 = new javax.swing.JMenuItem();
+    jMenu2 = new javax.swing.JMenu();
+    jMenuItem4 = new javax.swing.JMenuItem();
+    jMenu3 = new javax.swing.JMenu();
+    jMenuItem2 = new javax.swing.JMenuItem();
+    jMenuItem1 = new javax.swing.JMenuItem();
+    jMenu4 = new javax.swing.JMenu();
 
-        jMenuItem5.setText("jMenuItem5");
+    jMenuItem5.setText("jMenuItem5");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 881, Short.MAX_VALUE)
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 583, Short.MAX_VALUE)
-        );
+    javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+    escritorio.setLayout(escritorioLayout);
+    escritorioLayout.setHorizontalGroup(
+        escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 869, Short.MAX_VALUE)
+    );
+    escritorioLayout.setVerticalGroup(
+        escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 522, Short.MAX_VALUE)
+    );
 
-        jMenu1.setText("Paciente");
+    jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/paciente.png"))); // NOI18N
 
-        jMenuItem3.setText("Formulario Paciente");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
+    jMenuItem3.setText("Formulario Paciente");
+    jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem3ActionPerformed(evt);
+        }
+    });
+    jMenu1.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu1);
+    jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Dieta");
+    jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nutricionista.png"))); // NOI18N
 
-        jMenuItem4.setText("Formulario Dieta");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
+    jMenuItem4.setText("Formulario Dieta");
+    jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem4ActionPerformed(evt);
+        }
+    });
+    jMenu2.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu2);
+    jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Alimentacion");
+    jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comida-sana.png"))); // NOI18N
 
-        jMenuItem2.setText("Tipo de Comida");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem2);
+    jMenuItem2.setText("Tipo de Comida");
+    jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem2ActionPerformed(evt);
+        }
+    });
+    jMenu3.add(jMenuItem2);
 
-        jMenuItem1.setText("Tipo de Dieta");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem1);
+    jMenuItem1.setText("Tipo de Dieta");
+    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem1ActionPerformed(evt);
+        }
+    });
+    jMenu3.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu3);
+    jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Salir");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu4);
+    jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+    jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jMenu4MouseClicked(evt);
+        }
+    });
+    jMenuBar1.add(jMenu4);
 
-        setJMenuBar(jMenuBar1);
+    setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addContainerGap()
             .addComponent(escritorio)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+            .addContainerGap())
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+    );
 
-        pack();
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
