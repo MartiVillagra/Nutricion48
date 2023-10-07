@@ -8,7 +8,7 @@ package Vistas;
  *
  * @author Loboplateado77
  */
-public enum TiposDeDietas {
+public enum EnumDietas {
     Dieta_omnívora,
     Dieta_vegetariana,
     Dieta_mediterránea,

@@ -6,18 +6,21 @@ package Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.EditorKit ;
 /**
  *
  * @author Loboplateado77
  */
 public class TipoComida extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form ComponentesComida
      */
     public TipoComida() {
         initComponents();
+        armarCabecera();
+        cargarComboBox();
     }
 
     /**
@@ -29,6 +32,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         //import javax.swing.ImageIcon;
         ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/fondo.png"));
         Image miImagenjpg = icono.getImage();
@@ -38,18 +42,174 @@ public class TipoComida extends javax.swing.JInternalFrame {
         }
     }
     ;
+    jScrollPane1 = new javax.swing.JScrollPane();
+    jTcomida = new javax.swing.JTable();
+    jLabel1 = new javax.swing.JLabel();
+    jPanel2 = new javax.swing.JPanel();
+    jLabel2 = new javax.swing.JLabel();
+    jLabel3 = new javax.swing.JLabel();
+    jTnombre = new javax.swing.JTextField();
+    jTdetalle = new javax.swing.JTextField();
+    jLabel4 = new javax.swing.JLabel();
+    jTcalorias = new javax.swing.JTextField();
+    jBsalir = new javax.swing.JButton();
+    jButton3 = new javax.swing.JButton();
+    jBmodificar = new javax.swing.JButton();
+    jBeliminar = new javax.swing.JButton();
+    jLabel5 = new javax.swing.JLabel();
+    jCBtipoComida = new javax.swing.JComboBox<>();
+
+    jButton2.setText("jButton2");
 
     setClosable(true);
+
+    jTcomida.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String [] {
+            "Codigo", "Nombre", "Detalle", "Cant. Calorias"
+        }
+    ));
+    jScrollPane1.setViewportView(jTcomida);
+
+    jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel1.setText("COMIDAS");
+
+    jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+    jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jLabel2.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel2.setText("Nombre");
+
+    jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jLabel3.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel3.setText("Detalle");
+
+    jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jLabel4.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel4.setText("Calorias");
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGap(33, 33, 33)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel2)
+                .addComponent(jLabel3))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel4)
+                    .addGap(18, 18, 18)
+                    .addComponent(jTcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTdetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(27, Short.MAX_VALUE))
+    );
+    jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGap(15, 15, 15)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel2)
+                .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4)
+                .addComponent(jTcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel3)
+                .addComponent(jTdetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(18, Short.MAX_VALUE))
+    );
+
+    jBsalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jBsalir.setForeground(new java.awt.Color(0, 153, 153));
+    jBsalir.setText("Salir");
+
+    jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jButton3.setForeground(new java.awt.Color(0, 153, 153));
+    jButton3.setText("Agregar");
+
+    jBmodificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jBmodificar.setForeground(new java.awt.Color(0, 153, 153));
+    jBmodificar.setText("Modificar");
+
+    jBeliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jBeliminar.setForeground(new java.awt.Color(0, 153, 153));
+    jBeliminar.setText("Eliminar");
+
+    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel5.setText("Tipo Comida");
+
+    jCBtipoComida.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jCBtipoComidaMouseClicked(evt);
+        }
+    });
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 783, Short.MAX_VALUE)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGap(0, 78, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(39, 39, 39))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addComponent(jButton3)
+                    .addGap(123, 123, 123)
+                    .addComponent(jBmodificar)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBeliminar)
+                    .addGap(115, 115, 115)
+                    .addComponent(jBsalir)
+                    .addGap(48, 48, 48))))
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(127, 127, 127)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(318, 318, 318)
+                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(241, 241, 241)
+                    .addComponent(jLabel5)
+                    .addGap(46, 46, 46)
+                    .addComponent(jCBtipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 506, Short.MAX_VALUE)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel1)
+            .addGap(18, 18, 18)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel5)
+                .addComponent(jCBtipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(20, 20, 20)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jBsalir)
+                .addComponent(jButton3)
+                .addComponent(jBmodificar)
+                .addComponent(jBeliminar))
+            .addGap(34, 34, 34))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -69,8 +229,73 @@ public class TipoComida extends javax.swing.JInternalFrame {
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCBtipoComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBtipoComidaMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jCBtipoComidaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBeliminar;
+    private javax.swing.JButton jBmodificar;
+    private javax.swing.JButton jBsalir;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jCBtipoComida;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTcalorias;
+    private javax.swing.JTable jTcomida;
+    private javax.swing.JTextField jTdetalle;
+    private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+    // carga comboBox
+    private void cargarComboBox(){
+        jCBtipoComida.addItem("");
+            EnumComida[] comiList= EnumComida.values();
+            for (EnumComida comida : comiList) {
+                jCBtipoComida.addItem(String.valueOf(comida));
+        }
+    }
+    // carga -> cabecera de la tabla
+      private void armarCabecera(){
+    
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Detalle");
+        modelo.addColumn("Cant. Calorias");
+    
+        jTcomida.setModel(modelo);
+    }
+//    //carga-> comida en la tabla
+//    private void cargarComida(){
+//        borrarFila();
+//        Alumno alu = (Alumno)jCBalumno.getSelectedItem();
+//        Materia mate = new Materia();
+//        InscripcionData inData = new InscripcionData();
+//        int id =alu.getIdAlumno();
+//        ArrayList<Inscripcion> ins = inData.obtenerInscripciones();
+//        for (Materia materia : inData.obtenerMateriasCursadas(id) ){
+//            double nota=0.0;
+//            for (Inscripcion in : ins) {
+//                if (in.getAlumno().getIdAlumno()==id && in.getMateria().getIdMateria()==materia.getIdMateria()) {
+//                 nota=in.getNota();
+//                }
+//            }
+//            modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),nota});
+//            }
+//    }
+    // se borra la fila en la tabla
+    private void borrarFila(){
+        int f=jTcomida.getRowCount()-1;
+        for(;f>=0;f--){
+            modelo.removeRow(f);
+        }
+    }
 }

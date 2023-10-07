@@ -276,8 +276,8 @@ public class TipoDieta extends javax.swing.JInternalFrame {
 public void cargarCombo(){
 
             jCBtipoDieta.addItem("");
-            TiposDeDietas[] dietaList = TiposDeDietas.values();
-            for( TiposDeDietas dieta: dietaList){
+            EnumDietas[] dietaList = EnumDietas.values();
+            for( EnumDietas dieta: dietaList){
             jCBtipoDieta.addItem(String.valueOf(dieta));
         }
     }
