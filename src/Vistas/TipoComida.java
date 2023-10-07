@@ -13,7 +13,13 @@ import javax.swing.text.EditorKit ;
  * @author Loboplateado77
  */
 public class TipoComida extends javax.swing.JInternalFrame {
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel(){
+    
+    public boolean isCellEditable(int f,int c){
+    //si pongo false entonces las celdas no son editables
+        return false;  
+    }
+     };  
     /**
      * Creates new form ComponentesComida
      */
@@ -133,6 +139,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jBsalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jBsalir.setForeground(new java.awt.Color(0, 153, 153));
     jBsalir.setText("Salir");
+    jBsalir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jBsalirActionPerformed(evt);
+        }
+    });
 
     jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jButton3.setForeground(new java.awt.Color(0, 153, 153));
@@ -234,6 +245,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jCBtipoComidaMouseClicked
 
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+           // salir
+        setVisible(false);
+    }//GEN-LAST:event_jBsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBeliminar;
@@ -273,24 +289,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
     
         jTcomida.setModel(modelo);
     }
-//    //carga-> comida en la tabla
-//    private void cargarComida(){
-//        borrarFila();
-//        Alumno alu = (Alumno)jCBalumno.getSelectedItem();
-//        Materia mate = new Materia();
-//        InscripcionData inData = new InscripcionData();
-//        int id =alu.getIdAlumno();
-//        ArrayList<Inscripcion> ins = inData.obtenerInscripciones();
-//        for (Materia materia : inData.obtenerMateriasCursadas(id) ){
-//            double nota=0.0;
-//            for (Inscripcion in : ins) {
-//                if (in.getAlumno().getIdAlumno()==id && in.getMateria().getIdMateria()==materia.getIdMateria()) {
-//                 nota=in.getNota();
-//                }
-//            }
-//            modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),nota});
-//            }
-//    }
+
     // se borra la fila en la tabla
     private void borrarFila(){
         int f=jTcomida.getRowCount()-1;
