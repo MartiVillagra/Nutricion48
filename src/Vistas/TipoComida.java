@@ -3,9 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
+import Data.ComidaData;
+import Data.ComidaData;
+import Entidades.Comida;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.EditorKit ;
 /**
@@ -148,6 +152,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jButton3.setForeground(new java.awt.Color(0, 153, 153));
     jButton3.setText("Agregar");
+    jButton3.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton3ActionPerformed(evt);
+        }
+    });
 
     jBmodificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jBmodificar.setForeground(new java.awt.Color(0, 153, 153));
@@ -161,36 +170,22 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jLabel5.setForeground(new java.awt.Color(0, 153, 153));
     jLabel5.setText("Tipo Comida");
 
-    jCBtipoComida.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            jCBtipoComidaMouseClicked(evt);
-        }
-    });
-
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addGap(0, 78, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(39, 39, 39))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addComponent(jButton3)
-                    .addGap(123, 123, 123)
-                    .addComponent(jBmodificar)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBeliminar)
-                    .addGap(115, 115, 115)
-                    .addComponent(jBsalir)
-                    .addGap(48, 48, 48))))
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addComponent(jButton3)
+            .addGap(123, 123, 123)
+            .addComponent(jBmodificar)
+            .addGap(85, 85, 85)
+            .addComponent(jBeliminar)
+            .addGap(115, 115, 115)
+            .addComponent(jBsalir)
+            .addGap(48, 48, 48))
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(127, 127, 127)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(318, 318, 318)
                     .addComponent(jLabel1))
@@ -198,7 +193,13 @@ public class TipoComida extends javax.swing.JInternalFrame {
                     .addGap(241, 241, 241)
                     .addComponent(jLabel5)
                     .addGap(46, 46, 46)
-                    .addComponent(jCBtipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jCBtipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(46, 46, 46)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(122, 122, 122)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel1Layout.setVerticalGroup(
@@ -212,9 +213,9 @@ public class TipoComida extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel5)
                 .addComponent(jCBtipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(20, 20, 20)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+            .addGap(31, 31, 31)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jBsalir)
                 .addComponent(jButton3)
@@ -240,15 +241,41 @@ public class TipoComida extends javax.swing.JInternalFrame {
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCBtipoComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBtipoComidaMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jCBtipoComidaMouseClicked
-
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
            // salir
         setVisible(false);
     }//GEN-LAST:event_jBsalirActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Agregar comida
+        
+    try{    
+        ComidaData comiData= new ComidaData();
+        String nombre= jTnombre.getText();
+        String detalle= jTdetalle.getText();
+        int calorias= Integer.parseInt(jTcalorias.getText());
+        String tipoComi = jCBtipoComida.getSelectedItem().toString();
+ 
+        do 
+            if ((contiene(jTnombre.getText()) == true)&&(contiene(jTdetalle.getText()) == true)){
+                JOptionPane.showMessageDialog(null, "Verifique su nombre");
+                jTnombre.setText("");
+                jTdetalle.setText("");
+            }else if ((contiene(jTnombre.getText()) != true)&&(jTcalorias.getText() != null)){  
+                Comida comida=new Comida("empanada", "mediana de carne", 235, true, "CENA");
+                comiData.altaComida(comida);
+            } 
+            while ((contiene(jTnombre.getText()) == true)&&(contiene(jTdetalle.getText()) == true));
+            
+    } catch (NumberFormatException nf) {
+        if (jTcalorias.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Hay campos vacios aca");
+            }else{
+             JOptionPane.showMessageDialog(null, "Verifique las calorias");   
+            }
+        } 
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -289,7 +316,15 @@ public class TipoComida extends javax.swing.JInternalFrame {
     
         jTcomida.setModel(modelo);
     }
-
+      public static boolean contiene(String cadena) {
+        for (char c : cadena.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                return true; // La cadena contiene caracteres no alfabéticos
+            }
+        }
+        return false; // La cadena solo contiene letras
+    }  
+      
     // se borra la fila en la tabla
     private void borrarFila(){
         int f=jTcomida.getRowCount()-1;

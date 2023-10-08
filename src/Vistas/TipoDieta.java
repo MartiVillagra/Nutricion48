@@ -78,17 +78,17 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     jPanel2Layout.setHorizontalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel2Layout.createSequentialGroup()
-            .addContainerGap(69, Short.MAX_VALUE)
+            .addContainerGap(31, Short.MAX_VALUE)
             .addComponent(jLabel7)
-            .addGap(42, 42, 42)
-            .addComponent(jCBtipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(88, 88, 88))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jCBtipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(22, 22, 22))
     );
     jPanel2Layout.setVerticalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addGap(25, 25, 25)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel7)
                 .addComponent(jCBtipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(27, Short.MAX_VALUE))
@@ -117,13 +117,13 @@ public class TipoDieta extends javax.swing.JInternalFrame {
 
     jTdieta.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null}
         },
         new String [] {
-            "DESAYUNO", "ALMUERZO", "MERIENDA", "CENA"
+            "Comida", "Decripcion", "Tipo"
         }
     ));
     jScrollPane1.setViewportView(jTdieta);
@@ -136,37 +136,34 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     jPanel7.setLayout(jPanel7Layout);
     jPanel7Layout.setHorizontalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(43, 43, 43)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGap(91, 91, 91)
+            .addComponent(jBagregar)
+            .addGap(53, 53, 53)
+            .addComponent(jBmodificar)
+            .addGap(69, 69, 69)
+            .addComponent(jBeliminar)
+            .addGap(64, 64, 64)
+            .addComponent(jBsalir)
+            .addGap(0, 0, Short.MAX_VALUE))
         .addGroup(jPanel7Layout.createSequentialGroup()
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(242, 242, 242)
+                    .addGap(138, 138, 138)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(232, 232, 232)
                     .addComponent(jLabel1))
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(244, 244, 244)
+                    .addGap(218, 218, 218)
                     .addComponent(jLabel2)))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-            .addContainerGap(23, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addComponent(jBagregar)
-                    .addGap(106, 106, 106)
-                    .addComponent(jBmodificar)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                            .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(28, 28, 28))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                            .addComponent(jBeliminar)
-                            .addGap(105, 105, 105)
-                            .addComponent(jBsalir)))))
-            .addGap(94, 94, 94))
     );
     jPanel7Layout.setVerticalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,21 +173,21 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                     .addGap(267, 267, 267)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(17, 17, 17)
+                    .addContainerGap()
                     .addComponent(jLabel1)
-                    .addGap(36, 36, 36)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)
                     .addComponent(jLabel2)
                     .addGap(33, 33, 33)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(18, 41, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 33, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jBagregar)
                 .addComponent(jBmodificar)
                 .addComponent(jBeliminar)
                 .addComponent(jBsalir))
-            .addGap(31, 31, 31))
+            .addGap(32, 32, 32))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,9 +198,7 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
 
     pack();

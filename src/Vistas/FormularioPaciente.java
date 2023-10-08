@@ -4,18 +4,13 @@
  */
 package Vistas;
 
-import Data.PacienteData;
-import Entidades.Paciente;
-import javax.swing.JOptionPane;
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+    import Data.PacienteData;
+    import Entidades.Paciente;
+    import javax.swing.JOptionPane;
+    import java.awt.Graphics;
+    import java.awt.Image;
+    import javax.swing.ImageIcon;
 
-
-/**
- *
- * @author Loboplateado77
- */
 public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     /**
@@ -226,9 +221,9 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jbRegistrar)
-                        .addGap(75, 75, 75)
+                        .addGap(55, 55, 55)
                         .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
+                        .addGap(91, 91, 91)
                         .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
                         .addComponent(jBsalir)))

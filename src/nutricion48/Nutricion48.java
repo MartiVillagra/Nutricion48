@@ -61,14 +61,14 @@ public class Nutricion48 {
 //            System.out.println("Estado: "+paciente.isEstado());
 //            System.out.println("-------------------------------");
 //        }
-    //--------------------- cargar comida-------------------------------
+//----------------------------------- CARGAR COMIDA -----------------
     
-//        Comida comi = new Comida("lechuga", "grande ", 55, true);
-//        ComidaData comData= new ComidaData();
-//        comData.altaComida(comi);
+        Comida comi = new Comida("PIZZA", "cuatro quesos por porcion ", 285, true,"ALMUERZO");
+        ComidaData comData= new ComidaData();
+        comData.altaComida(comi);
     //--------------------------modificar comida----------------------    
    
-//        Comida comi = new Comida(3,"pomelo", "chico,. rosado", 80, tru7e);
+//        Comida comi = new Comida(3,"pomelo", "chico,. rosado", 80, true,"DESAYUNO");
 //        ComidaData comData= new ComidaData();
 //        comData.modificarComida(comi);
 //    
@@ -79,8 +79,8 @@ public class Nutricion48 {
 //    
 //-------------------listar comidas por calorias-------------------
 //
-//    Comida com1 =new Comida();
-//    ComidaData comidata =new ComidaData();
+//        Comida com1 =new Comida();
+//        ComidaData comidata =new ComidaData();
 //      
 //        for (Comida comi : comidata.listaDeComidasxCalorias(200)) {
 //            System.out.println(comi);
@@ -103,26 +103,35 @@ public class Nutricion48 {
 //            dietaData.eliminarDieta(1);
 //    
 //-----------------------Dar de alta una dietaComida---------------
-//   Comida comi =new Comida(1,"ARROZ","con papas",500,true);
-//   Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
-//   DietaComida num1 =new DietaComida(comi,diet);
-//DietaComidaData dicomida = new DietaComidaData();
+
+//          Comida comi =new Comida(1,"ARROZ","con papas",500,true);
+//          Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
+//          DietaComida num1 =new DietaComida(comi,diet);
+//          DietaComidaData dicomida = new DietaComidaData();
 //    
-//    dicomida.altaDieta(num1);
+//          dicomida.altaDieta(num1);
+
     //---------------------------eliminar Dieta comida--------------------
-//    DietaComida comi = new DietaComida();
-//    DietaComidaData dietacomi =new DietaComidaData();
-//    dietacomi.bajaDietaComida(2);
+    
+//          DietaComida comi = new DietaComida();
+//          DietaComidaData dietacomi =new DietaComidaData();
+//          dietacomi.bajaDietaComida(2);
+
  //-----------------------------MODIFICAR DIETA COMIDA------------------
-//    DietaComidaData dietacomi =new DietaComidaData();   
-//    Comida comi =new Comida(5,"ARROZ","con papas",500,true);
-//  Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
-//    DietaComida dieta1 =new DietaComida(4,comi,diet);
-//    dietacomi.ModificarDietaComida(dieta1);
- //------------------------------------Nuevo codigo TOSTRING B) --------------------------------------------------------------
+ 
+//      DietaComidaData dietacomi =new DietaComidaData();   
+//      Comida comi =new Comida(5,"ARROZ","con papas",500,true);
+//      Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
+//      DietaComida dieta1 =new DietaComida(4,comi,diet);
+//      dietacomi.ModificarDietaComida(dieta1);
+
+ //----------------------------Nuevo codigo TOSTRING B) ------------------------
+ 
 //        Comida comi =new Comida(5,"ARROZ","con papas",500,true);
 //        System.out.println(comi.toString());
-//       -------------listar Dietas segun el nombre------------
+
+// -----------------------------listar Dietas segun el nombre-------------------
+
 //        DietaComidaData dieCoData=new DietaComidaData();
 //        for (DietaComida dietaCo : dieCoData.listarDietasxNombre("proteica")) {
 //            System.out.println("idDietaComida: "+dietaCo.getIdDietaComida());
@@ -131,15 +140,17 @@ public class Nutricion48 {
 //            System.out.println("Calorias: "+dietaCo.getComida().getCantCalorias()+" Cal");
 //            System.out.println("-----------------------------------------");
 //        }
-//---------------------Dieta por ID---------
-//    DietaData dietaData = new DietaData();
-//        System.out.println(dietaData.buscarDietaxId(1).toString());
-//    --------------Comida Por ID---------------    
-//    ComidaData comidaData = new ComidaData();
-//        System.out.println(comidaData.buscarComidaxId(1).toString());
+
+//---------------------------Dieta por ID-----------------------------------
+
+//          DietaData dietaData = new DietaData();
+//          System.out.println(dietaData.buscarDietaxId(1).toString());
+
+//  -------------------------Comida Por ID-----------------------------------
+
+//          ComidaData comidaData = new ComidaData();
+//          System.out.println(comidaData.buscarComidaxId(1).toString());
     }
     
-    
-    
-     }
+}
 

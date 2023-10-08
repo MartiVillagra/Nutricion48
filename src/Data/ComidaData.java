@@ -32,7 +32,7 @@ public class ComidaData {
     //----------------------- Dar de alta una comida----------------------------------
     
     public void altaComida(Comida comida){
-    String sql = "INSERT INTO comida (nombre, detalle, cantCalorias) VALUES (?,?,?)";
+    String sql = "INSERT INTO comida (nombre, detalle, cantCalorias,tipoComida) VALUES (?,?,?,?)";
     
     PreparedStatement ps;
         try {
@@ -42,6 +42,7 @@ public class ComidaData {
                 ps.setString(2, comida.getDetalle());
                 ps.setInt(3, comida.getCantCalorias());
                 ps.setBoolean(4, true);
+                ps.setString(5, comida.getTipoComida());
                 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -59,7 +60,8 @@ public class ComidaData {
     // --------------------Modificar una comida --------------
     
     public void modificarComida(Comida comida){
-            String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=? WHERE idComida=? and estado =1 ";
+            String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=?,tipoComida=?"
+                    + " WHERE idComida=? and estado =1 ";
             
         try {
             PreparedStatement ps = con.prepareStatement(sql); 
@@ -67,7 +69,7 @@ public class ComidaData {
             ps.setString(2,comida.getDetalle());
             ps.setInt(3, comida.getCantCalorias());
             ps.setInt(4,comida.getIdComida());
-        
+            ps.setString(5,comida.getTipoComida());
             
             int espera=ps.executeUpdate();
             if (espera==1){
@@ -121,6 +123,7 @@ public class ComidaData {
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setCantCalorias(rs.getInt("cantCalorias"));
                 comida.setEstado(true);
+                comida.setTipoComida(rs.getString("tipoComida"));
             comidas.add(comida);
             }
          ps.close();
@@ -145,6 +148,7 @@ public class ComidaData {
             comida.setDetalle(rs.getString("detalle"));
             comida.setCantCalorias(rs.getInt("cantCalorias"));
             comida.setEstado(rs.getBoolean("estado"));
+            comida.setTipoComida(rs.getString("tipoComida"));
             } else {
             JOptionPane.showMessageDialog(null, "Comida no encontrada.");
             }
