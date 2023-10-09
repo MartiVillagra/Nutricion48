@@ -32,7 +32,7 @@ public class ComidaData {
     //----------------------- Dar de alta una comida----------------------------------
     
     public void altaComida(Comida comida){
-    String sql = "INSERT INTO comida (nombre, detalle, cantCalorias,tipoComida) VALUES (?,?,?,?)";
+    String sql = "INSERT INTO comida (nombre, detalle, cantCalorias,estado,tipoComida) VALUES (?,?,?,?,?)";
     
     PreparedStatement ps;
         try {

@@ -80,7 +80,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
             {null, null, null, null}
         },
         new String [] {
-            "Codigo", "Nombre", "Detalle", "Cant. Calorias"
+            "Nombre", "Detalle", "Cant. Calorias", "Tipo"
         }
     ));
     jScrollPane1.setViewportView(jTcomida);
@@ -255,25 +255,43 @@ public class TipoComida extends javax.swing.JInternalFrame {
         
     try{    
         ComidaData comiData= new ComidaData();
+        
+        //int id= Integer.parseInt(comiData.altaComida(comida.setIdComida( comida.getIdComida()) ));
+        
+        int calorias= Integer.parseInt(jTcalorias.getText());
         String nombre= jTnombre.getText();
         String detalle= jTdetalle.getText();
-        int calorias= Integer.parseInt(jTcalorias.getText());
         String tipoComi = jCBtipoComida.getSelectedItem().toString();
- 
+        if(jTnombre.getText().isEmpty()||jTdetalle.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, " ingrese el nombre/descripcion");
+               
+        }
         do 
-            if ((contiene(jTnombre.getText()) == true)&&(contiene(jTdetalle.getText()) == true)){
+            if ((contiene(jTnombre.getText()) == true)||(contiene(jTdetalle.getText()) == true)){
                 JOptionPane.showMessageDialog(null, "Verifique su nombre");
                 jTnombre.setText("");
-                jTdetalle.setText("");}
-//            }else if ((contiene(jTnombre.getText()) != true)){  //&&(jTcalorias.getText() != null)
-//                Comida comida=new Comida("empanada", "mediana de carne", 235, true, "CENA");
-//                comiData.altaComida(comida);
-//            } 
-            while ((contiene(jTnombre.getText()) == true)&&(contiene(jTdetalle.getText()) == true));
+                jTdetalle.setText("");
+                 JOptionPane.showMessageDialog(null, "mal escrito ");
+           }else if ((contiene(jTnombre.getText()) != true)&&(contiene(jTdetalle.getText()) != true)){  
+               Comida comida=new Comida();
+                JOptionPane.showMessageDialog(null, "bien escrito ");
+               if (comida==null){
+                    JOptionPane.showMessageDialog(null, "comida ");
+                   comida = new Comida(nombre, detalle, calorias, isIcon, tipoComi);
+                    JOptionPane.showMessageDialog(null, "la lee ");
+                   comiData.altaComida(comida);
+               }else{
+                     JOptionPane.showMessageDialog(null, "comida 1");
+                   comida = new Comida(nombre, detalle, calorias, isIcon, tipoComi);
+                    JOptionPane.showMessageDialog(null, "la lee 1");
+                   comiData.altaComida(comida);
+               }
+           } 
+        while ((contiene(jTnombre.getText()) == true)||(contiene(jTdetalle.getText()) == true));
             
-    } catch (NumberFormatException nf) {
+    } catch (NumberFormatException nfe) {
         if (jTcalorias.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Hay campos vacios aca");
+            JOptionPane.showMessageDialog(null, "Hay campos vacios ");
             }else{
              JOptionPane.showMessageDialog(null, "Verifique las calorias");   
             }
@@ -318,11 +336,12 @@ public class TipoComida extends javax.swing.JInternalFrame {
     // carga -> cabecera de la tabla
       private void armarCabecera(){
     
-        modelo.addColumn("Codigo");
+       // modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Detalle");
         modelo.addColumn("Cant. Calorias");
-    
+        modelo.addColumn("Tipo");
+        
         jTcomida.setModel(modelo);
     }
       public static boolean contiene(String cadena) {
