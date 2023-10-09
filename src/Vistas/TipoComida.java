@@ -32,7 +32,6 @@ public class TipoComida extends javax.swing.JInternalFrame {
         armarCabecera();
         cargarComboBox();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,6 +164,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jBeliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jBeliminar.setForeground(new java.awt.Color(0, 153, 153));
     jBeliminar.setText("Eliminar");
+    jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jBeliminarActionPerformed(evt);
+        }
+    });
 
     jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -260,11 +264,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
             if ((contiene(jTnombre.getText()) == true)&&(contiene(jTdetalle.getText()) == true)){
                 JOptionPane.showMessageDialog(null, "Verifique su nombre");
                 jTnombre.setText("");
-                jTdetalle.setText("");
-            }else if ((contiene(jTnombre.getText()) != true)&&(jTcalorias.getText() != null)){  
-                Comida comida=new Comida("empanada", "mediana de carne", 235, true, "CENA");
-                comiData.altaComida(comida);
-            } 
+                jTdetalle.setText("");}
+//            }else if ((contiene(jTnombre.getText()) != true)){  //&&(jTcalorias.getText() != null)
+//                Comida comida=new Comida("empanada", "mediana de carne", 235, true, "CENA");
+//                comiData.altaComida(comida);
+//            } 
             while ((contiene(jTnombre.getText()) == true)&&(contiene(jTdetalle.getText()) == true));
             
     } catch (NumberFormatException nf) {
@@ -276,6 +280,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
         } 
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        // ELIMINAR COMIDA
+        
+    }//GEN-LAST:event_jBeliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
