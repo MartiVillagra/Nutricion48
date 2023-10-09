@@ -27,6 +27,13 @@ public class Comida {
         this.tipoComida = tipoComida;
     }
 
+    public Comida(String nombre, String detalle, int cantCalorias, String tipoComida) {
+        this.nombre = nombre;
+        this.detalle = detalle;
+        this.cantCalorias = cantCalorias;
+        this.tipoComida = tipoComida;
+    }
+
     public Comida(String nombre, String detalle, int cantCalorias, boolean estado,String tipoComida) {
         this.nombre = nombre;
         this.detalle = detalle;

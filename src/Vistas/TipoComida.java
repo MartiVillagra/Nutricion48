@@ -259,13 +259,12 @@ public class TipoComida extends javax.swing.JInternalFrame {
         String nombre= jTnombre.getText();
         String detalle= jTdetalle.getText();
         String tipoComi = jCBtipoComida.getSelectedItem().toString();
-JOptionPane.showMessageDialog(null, "1");
+
         do 
            
             if ((contiene(jTnombre.getText()) == true)||(contiene(jTdetalle.getText()) == true)){
                 JOptionPane.showMessageDialog(null, "Verifique su nombre");
 
-//         //  }else if ((contiene(jTnombre.getText()) != true)&&(contiene(jTdetalle.getText()) != true)&&(jTnombre.getText().isEmpty())&&(jTdetalle.getText().isEmpty() )){  
            }else if ((contiene(jTnombre.getText()) != true)&&(contiene(jTdetalle.getText()) != true)){  
 
                 if (comida==null){ 
@@ -274,14 +273,15 @@ JOptionPane.showMessageDialog(null, "1");
                     if((jTnombre.getText().isEmpty())||(jTdetalle.getText().isEmpty() )){
                         JOptionPane.showMessageDialog(null, "faltan ingresar datos");
                     }else {
-                        comida = new Comida(nombre, detalle, calorias, isIcon, tipoComi);
-//                      comiData.altaComida(comida);
+                        comida = new Comida(nombre, detalle, calorias, tipoComi);
+                        comiData.altaComida(comida);
                         JOptionPane.showMessageDialog(null, "Se cargo correctamente la comida");
+                        
                     }
                 }  
            }
         while ((contiene(jTnombre.getText()) == true)||(contiene(jTdetalle.getText()) == true) );
-            
+          
     } catch (NumberFormatException nfe) {
         if (jTcalorias.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Hay campos vacios ");
@@ -289,6 +289,7 @@ JOptionPane.showMessageDialog(null, "1");
              JOptionPane.showMessageDialog(null, "Verifique las calorias");   
             }
         } 
+    
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -352,5 +353,9 @@ JOptionPane.showMessageDialog(null, "1");
         for(;f>=0;f--){
             modelo.removeRow(f);
         }
+    }
+     private void cargarComidas(Comida comida){
+        
+        modelo.addRow(new Object[]{comida.getNombre(),comida.getDetalle(),comida.getCantCalorias(),comida.getTipoComida()});
     }
 }
