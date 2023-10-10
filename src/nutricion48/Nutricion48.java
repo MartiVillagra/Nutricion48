@@ -62,8 +62,8 @@ public class Nutricion48 {
 //            System.out.println("-------------------------------");
 //        }
 //----------------------------------- CARGAR COMIDA -----------------
-//    
-//        Comida comi = new Comida("PIZZA", "cuatro quesos por porcion ", 285, false,"ALMUERZO");
+////    
+//        Comida comi = new Comida("PIZZA", "cuatro quesos por porcion ", 285, true);
 //        ComidaData comData= new ComidaData();
 //        comData.altaComida(comi);
     //--------------------------modificar comida----------------------    

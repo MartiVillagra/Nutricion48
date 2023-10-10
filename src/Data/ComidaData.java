@@ -32,7 +32,7 @@ public class ComidaData {
     //----------------------- Dar de alta una comida----------------------------------
     
     public void altaComida(Comida comida){
-    String sql = "INSERT INTO comida (nombre, detalle, cantCalorias,estado,tipoComida) VALUES (?,?,?,?,?)";
+    String sql = "INSERT INTO comida (nombre, detalle, cantCalorias,estado) VALUES (?,?,?,?)";
     
     PreparedStatement ps;
         try {
@@ -41,8 +41,8 @@ public class ComidaData {
                 ps.setString(1,comida.getNombre());
                 ps.setString(2, comida.getDetalle());
                 ps.setInt(3, comida.getCantCalorias());
-                ps.setBoolean(4, true);
-                ps.setString(5, comida.getTipoComida());
+                ps.setBoolean(4, comida.isEstado());
+                
                 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -60,7 +60,7 @@ public class ComidaData {
     // --------------------Modificar una comida --------------
     
     public void modificarComida(Comida comida){
-            String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=?,tipoComida=?"
+            String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=?"
                     + " WHERE idComida=? and estado =1 ";
             
         try {
@@ -69,7 +69,7 @@ public class ComidaData {
             ps.setString(2,comida.getDetalle());
             ps.setInt(3, comida.getCantCalorias());
             ps.setInt(4,comida.getIdComida());
-            ps.setString(5,comida.getTipoComida());
+            
             
             int espera=ps.executeUpdate();
             if (espera==1){
@@ -123,7 +123,7 @@ public class ComidaData {
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setCantCalorias(rs.getInt("cantCalorias"));
                 comida.setEstado(true);
-                comida.setTipoComida(rs.getString("tipoComida"));
+                
             comidas.add(comida);
             }
          ps.close();
@@ -148,7 +148,7 @@ public class ComidaData {
             comida.setDetalle(rs.getString("detalle"));
             comida.setCantCalorias(rs.getInt("cantCalorias"));
             comida.setEstado(rs.getBoolean("estado"));
-            comida.setTipoComida(rs.getString("tipoComida"));
+            
             } else {
             JOptionPane.showMessageDialog(null, "Comida no encontrada.");
             }
@@ -158,7 +158,31 @@ public class ComidaData {
         }
         return comida;
     }
-    
+      public ArrayList <Comida> listarTodasComidas(){
+        String sql =" SELECT  * from comida WHERE   estado=1" ;
+        ArrayList <Comida> comidas =new ArrayList();
+  
+        try {
+        PreparedStatement ps = con.prepareStatement(sql); 
+            
+         ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+               
+                Comida comida= new Comida();
+                comida.setIdComida(rs.getInt("idComida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setCantCalorias(rs.getInt("cantCalorias"));
+                comida.setEstado(true);
+                
+            comidas.add(comida);
+            }
+         ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de comidas");
+        }
+        return comidas;
+    }
 }
 
 
