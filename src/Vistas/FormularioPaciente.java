@@ -261,7 +261,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
 
-        try{
+       try{
         PacienteData pacData = new PacienteData();
         String domicilio = jTdomicilio.getText();
         String nombre = jTNomYApe.getText();
@@ -273,7 +273,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Verifique su nombre");
                 jTNomYApe.setText("");
             }else if (contiene(jTNomYApe.getText()) != true){
-               // JOptionPane.showMessageDialog(null, "nombre correcto");
+               
                 
                 if (pacData.buscarPacientexDNI(dni) != null) {
                     JOptionPane.showMessageDialog(null, "Ya existe ese dni");
@@ -302,44 +302,50 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        
-        /*if (jTdni.getText().isEmpty()|| jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
+
+               
+         if (jTdni.getText().isEmpty()|| jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
                 || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()){
-        jBModificar.setVisible(false);
         } else {
-            jBModificar.setVisible(true);
-        
-        int dni = Integer.parseInt(jTdni.getText());
-        int id = Integer.parseInt(jTnroPaciente.getText());
-        String nomyApe = jTNomYApe.getText();
-        String domicilio = jTdomicilio.getText();
-        int telefono = Integer.parseInt(jTtelefono.getText());
+
+            int dni = Integer.parseInt(jTdni.getText());
+            int id = Integer.parseInt(jTnroPaciente.getText());
+            String nomyApe = jTNomYApe.getText();
+            String domicilio = jTdomicilio.getText();
+            int telefono = Integer.parseInt(jTtelefono.getText());
         
         Paciente pac = new Paciente(id, nomyApe, dni, domicilio, telefono, true);
         PacienteData pacDat = new PacienteData();
-        
-        pacDat.modificarPaciente(pac);
-        }*/
+
+            pacDat.modificarPaciente(pac);
+            borraCampos();
+            jBModificar.setEnabled(false);
+        }
                 
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+
+        try{
         int dni = Integer.parseInt(jTdni.getText());
         PacienteData pacData = new PacienteData();
-        
-        Paciente pac = pacData.buscarPacientexDNI(dni);
-        jTnroPaciente.setText(pac.getIdPaciente()+"");
-        jTNomYApe.setText(pac.getNombre());
-        jTdomicilio.setText(pac.getDomicilio());
-        jTtelefono.setText(pac.getTelefono()+"");
-
-
-
-        
-        
+        if (pacData.buscarPacientexDNI(dni)!= null){
+            if ( !jTdni.getText().isEmpty()){
+            
+                Paciente pac = pacData.buscarPacientexDNI(dni);
+                jTnroPaciente.setText(pac.getIdPaciente()+"");
+                jTNomYApe.setText(pac.getNombre());
+                jTdomicilio.setText(pac.getDomicilio());
+                jTtelefono.setText(pac.getTelefono()+"");
+            }else {JOptionPane.showMessageDialog(this, "Ingrese un dni");
+            }
+        }
+        }catch (NumberFormatException nfe){
+        JOptionPane.showMessageDialog(this, " Ingrese un caracter numerico");
+        jTdni.setText("");
+    }        
     }//GEN-LAST:event_jBBuscarActionPerformed
-    /*!jTdni.getText().isEmpty()|| !jTnroPaciente.getText().isEmpty() || !jTNomYApe.getText().isEmpty()
-                || !jTdomicilio.getText().isEmpty() || !jTtelefono.getText().isEmpty()*/
+
     private void jTdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyReleased
         PacienteData pacData = new PacienteData();
         if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
@@ -351,6 +357,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         } else {jBModificar.setEnabled(false);
         }
         }
+      //  modificarEstadoBoton();
     }//GEN-LAST:event_jTdniKeyReleased
 
     private void jTNomYApeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNomYApeKeyReleased
@@ -364,6 +371,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         } else {jBModificar.setEnabled(false);
         }
         }
+           // modificarEstadoBoton();
     }//GEN-LAST:event_jTNomYApeKeyReleased
 
     private void jTdomicilioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdomicilioKeyReleased
@@ -377,6 +385,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         } else {jBModificar.setEnabled(false);
         }
         }
+           // modificarEstadoBoton();
     }//GEN-LAST:event_jTdomicilioKeyReleased
 
     private void jTtelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyReleased
@@ -390,6 +399,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         } else {jBModificar.setEnabled(false);
         }
         }
+      // modificarEstadoBoton();
     }//GEN-LAST:event_jTtelefonoKeyReleased
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
@@ -420,12 +430,33 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-    public static boolean contiene(String cadena) {
+       public static boolean contiene(String cadena) {
         for (char c : cadena.toCharArray()) {
-            if (!Character.isLetter(c)) {
+            if (!Character.isLetter(c)&& !Character.isWhitespace(c)) {
                 return true; // La cadena contiene caracteres no alfabéticos
             }
         }
         return false; // La cadena solo contiene letras
-    }  
+    } 
+     //..............................................................
+  //borrar campos
+    public void borraCampos(){
+        jTnroPaciente.setText("");
+        jTdni.setText("");
+        jTNomYApe.setText("");
+        jTdomicilio.setText("");
+        jTtelefono.setText("");       
+    }
+     //cambio de estado boton modificar
+    public void modificarEstadoBoton(){
+                PacienteData pacData = new PacienteData();
+        if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()){
+            int id = Integer.parseInt(jTnroPaciente.getText());
+            if (pacData.buscarPacientexId(id) != null){
+                jBModificar.setEnabled(true);
+            } else {jBModificar.setEnabled(false);
+                }
+        }
+    }
 }
