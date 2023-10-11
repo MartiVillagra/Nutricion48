@@ -31,7 +31,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
     public TipoComida() {
         initComponents();
         armarCabecera();
-   
+        cargarComidas();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,9 +79,17 @@ public class TipoComida extends javax.swing.JInternalFrame {
             {null, null, null, null}
         },
         new String [] {
-            "Id", "Nombre", "Detalle", "Cant. Calorias"
+            "idComida", "Nombre", "Detalle", "Cant. Calorias"
         }
-    ));
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
     jScrollPane1.setViewportView(jTcomida);
 
     jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -293,6 +301,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
       private void armarCabecera(){
     
        // modelo.addColumn("Codigo");
+         modelo.addColumn("idComida");
         modelo.addColumn("Nombre");
         modelo.addColumn("Detalle");
         modelo.addColumn("Cant. Calorias");
@@ -325,9 +334,9 @@ public class TipoComida extends javax.swing.JInternalFrame {
        ComidaData comidata = new ComidaData();
 //        ArrayList <Comida> comi=comidata.listarTodasComidas();
          for (Comida comida1 : comidata.listarTodasComidas()) {
-            modelo.addRow(new Object[]{comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
+            modelo.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
          }
-      
+      jTcomida.setModel(modelo);
         
     }
 }
