@@ -63,6 +63,8 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jLabel4 = new javax.swing.JLabel();
     jTcalorias = new javax.swing.JTextField();
     jbAgregar = new javax.swing.JButton();
+    jLabel5 = new javax.swing.JLabel();
+    jTid = new javax.swing.JTextField();
     jbSalir = new javax.swing.JButton();
     jbModificar = new javax.swing.JButton();
     jbEliminar = new javax.swing.JButton();
@@ -88,6 +90,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
 
         public boolean isCellEditable(int rowIndex, int columnIndex) {
             return canEdit [columnIndex];
+        }
+    });
+    jTcomida.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jTcomidaMouseClicked(evt);
         }
     });
     jScrollPane1.setViewportView(jTcomida);
@@ -119,6 +126,12 @@ public class TipoComida extends javax.swing.JInternalFrame {
         }
     });
 
+    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel5.setText("ID");
+
+    jTid.setEditable(false);
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
@@ -127,11 +140,13 @@ public class TipoComida extends javax.swing.JInternalFrame {
             .addGap(33, 33, 33)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel2)
-                .addComponent(jLabel3))
+                .addComponent(jLabel3)
+                .addComponent(jLabel5))
             .addGap(18, 18, 18)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jTnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addComponent(jTdetalle))
+                .addComponent(jTdetalle)
+                .addComponent(jTid))
             .addGap(18, 18, 18)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -156,7 +171,10 @@ public class TipoComida extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTdetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAgregar)))
-            .addContainerGap(39, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jTid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
     );
 
     jbSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -171,6 +189,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jbModificar.setForeground(new java.awt.Color(0, 153, 153));
     jbModificar.setText("Modificar");
+    jbModificar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jbModificarActionPerformed(evt);
+        }
+    });
 
     jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     jbEliminar.setForeground(new java.awt.Color(0, 153, 153));
@@ -212,7 +235,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
             .addComponent(jLabel1)
             .addGap(33, 33, 33)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(36, 36, 36)
+            .addGap(27, 27, 27)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -244,11 +267,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-    if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() ){
+    if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() || jTcalorias.getText().isEmpty()){
         
-        JOptionPane.showMessageDialog(this,"comprueve los campos vacios"); 
+        JOptionPane.showMessageDialog(this,"compruebe los campos vacíos"); 
     }else {
-       if((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText())==true)){
+       if((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText())== true)){
         JOptionPane.showMessageDialog(this, "revise Nombre/Detalle");}
        else {
            String nombre = jTnombre.getText();
@@ -276,6 +299,43 @@ public class TipoComida extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jbEliminarActionPerformed
 
+    private void jTcomidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTcomidaMouseClicked
+        int fila = jTcomida.getSelectedRow();
+        if (fila != -1) {
+        int idComida = (int) modelo.getValueAt(fila, 0);
+        ComidaData comiData = new ComidaData();
+        Comida comida = comiData.buscarComidaxId(idComida);
+        jTnombre.setText(comida.getNombre());
+        jTcalorias.setText(comida.getCantCalorias()+"");
+        jTdetalle.setText(comida.getDetalle());
+        jTid.setText(comida.getIdComida()+"");
+        }
+        
+    }//GEN-LAST:event_jTcomidaMouseClicked
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        if (jTnombre.getText().isEmpty() && jTdetalle.getText().isEmpty() && jTcalorias.getText().isEmpty() && jTid.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "No deebn haber campos vacíos");
+        
+        }
+        if((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText())== true)){
+        JOptionPane.showMessageDialog(this, "revise Nombre/Detalle");}
+       else {
+        try {
+        String nombre = jTnombre.getText();
+        String detalle = jTdetalle.getText();    
+        int calorias = Integer.parseInt(jTcalorias.getText());
+        int id = Integer.parseInt(jTid.getText());
+        Comida comida = new Comida(id, nombre, detalle, calorias, true);
+        ComidaData comiData = new ComidaData();
+        
+        comiData.modificarComida(comida);
+        } catch (NumberFormatException nf){
+        JOptionPane.showMessageDialog(this, "Calorías sólo recibe números");
+        }
+        }
+    }//GEN-LAST:event_jbModificarActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -283,12 +343,14 @@ public class TipoComida extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTcalorias;
     private javax.swing.JTable jTcomida;
     private javax.swing.JTextField jTdetalle;
+    private javax.swing.JTextField jTid;
     private javax.swing.JTextField jTnombre;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbEliminar;
