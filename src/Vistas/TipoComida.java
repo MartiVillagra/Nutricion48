@@ -19,8 +19,13 @@ import javax.swing.text.EditorKit ;
  */
 public class TipoComida extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel(){
- 
-    public boolean isCellEditable(int f,int c){
+        public boolean isCellEditable(int f,int c){
+    //si pongo false entonces las celdas no son editables
+        return false;  
+    }
+     };  
+    private DefaultTableModel modelo2 = new DefaultTableModel(){
+        public boolean isCellEditable(int f,int c){
     //si pongo false entonces las celdas no son editables
         return false;  
     }
@@ -31,7 +36,9 @@ public class TipoComida extends javax.swing.JInternalFrame {
     public TipoComida() {
         initComponents();
         armarCabecera();
+       
         cargarComidas();
+        armarCabecera2();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,11 +70,17 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jLabel4 = new javax.swing.JLabel();
     jTcalorias = new javax.swing.JTextField();
     jbAgregar = new javax.swing.JButton();
-    jLabel5 = new javax.swing.JLabel();
-    jTid = new javax.swing.JTextField();
     jbSalir = new javax.swing.JButton();
     jbModificar = new javax.swing.JButton();
     jbEliminar = new javax.swing.JButton();
+    jPanel3 = new javax.swing.JPanel();
+    jScrollPane3 = new javax.swing.JScrollPane();
+    jTextArea1 = new javax.swing.JTextArea();
+    jScrollPane2 = new javax.swing.JScrollPane();
+    jComidas2 = new javax.swing.JTable();
+    jLabel5 = new javax.swing.JLabel();
+    jLabel6 = new javax.swing.JLabel();
+    jTcalorias2 = new javax.swing.JTextField();
 
     jButton2.setText("jButton2");
 
@@ -126,27 +139,19 @@ public class TipoComida extends javax.swing.JInternalFrame {
         }
     });
 
-    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel5.setForeground(new java.awt.Color(0, 153, 153));
-    jLabel5.setText("ID");
-
-    jTid.setEditable(false);
-
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addGap(33, 33, 33)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(jLabel2)
-                .addComponent(jLabel3)
-                .addComponent(jLabel5))
+                .addComponent(jLabel3))
             .addGap(18, 18, 18)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jTnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addComponent(jTdetalle)
-                .addComponent(jTid))
+                .addComponent(jTdetalle))
             .addGap(18, 18, 18)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -165,20 +170,15 @@ public class TipoComida extends javax.swing.JInternalFrame {
                 .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel4)
                 .addComponent(jTcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(29, 29, 29)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGap(32, 32, 32)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jTdetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel3)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTdetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbAgregar)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jTid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jbAgregar))
+            .addContainerGap(60, Short.MAX_VALUE))
     );
 
-    jbSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jbSalir.setForeground(new java.awt.Color(0, 153, 153));
+    jbSalir.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
     jbSalir.setText("Salir");
     jbSalir.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,21 +186,78 @@ public class TipoComida extends javax.swing.JInternalFrame {
         }
     });
 
-    jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jbModificar.setForeground(new java.awt.Color(0, 153, 153));
+    jbModificar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
     jbModificar.setText("Modificar");
+    jbModificar.setEnabled(false);
     jbModificar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jbModificarActionPerformed(evt);
         }
     });
 
-    jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jbEliminar.setForeground(new java.awt.Color(0, 153, 153));
+    jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
     jbEliminar.setText("Eliminar");
+    jbEliminar.setEnabled(false);
     jbEliminar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jbEliminarActionPerformed(evt);
+        }
+    });
+
+    jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+    jTextArea1.setEditable(false);
+    jTextArea1.setColumns(20);
+    jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+    jTextArea1.setForeground(new java.awt.Color(0, 153, 153));
+    jTextArea1.setRows(5);
+    jTextArea1.setText("\n                                       Ingrese las calorias\n                                  para mostrar las comidas\n                                       por debajo de estas");
+    jTextArea1.setBorder(null);
+    jScrollPane3.setViewportView(jTextArea1);
+
+    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+    jPanel3.setLayout(jPanel3Layout);
+    jPanel3Layout.setHorizontalGroup(
+        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jScrollPane3)
+    );
+    jPanel3Layout.setVerticalGroup(
+        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+    );
+
+    jComidas2.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String [] {
+            "idComida", "Nombre", "Detalle", "Cant. Calorias"
+        }
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
+    jScrollPane2.setViewportView(jComidas2);
+
+    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+    jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel5.setText("CALORIAS");
+
+    jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    jLabel6.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel6.setText("Calorias");
+
+    jTcalorias2.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            jTcalorias2KeyReleased(evt);
         }
     });
 
@@ -209,39 +266,64 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(47, 47, 47)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(65, 65, 65)
-                            .addComponent(jbModificar)
-                            .addGap(114, 114, 114)
-                            .addComponent(jbEliminar)
-                            .addGap(148, 148, 148)
-                            .addComponent(jbSalir))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(47, 47, 47)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(255, 255, 255)
-                    .addComponent(jLabel1)))
-            .addContainerGap(84, Short.MAX_VALUE))
+                    .addGap(52, 52, 52)
+                    .addComponent(jbModificar)
+                    .addGap(66, 66, 66)
+                    .addComponent(jbEliminar)
+                    .addGap(97, 97, 97)
+                    .addComponent(jbSalir))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(165, 165, 165)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(307, 307, 307)
+                    .addComponent(jLabel6)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTcalorias2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(39, Short.MAX_VALUE))
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(249, 249, 249)
+            .addComponent(jLabel1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5)
+            .addGap(210, 210, 210))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jLabel1)
-            .addGap(33, 33, 33)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(27, 27, 27)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+            .addGap(61, 61, 61)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jbModificar)
-                .addComponent(jbEliminar)
-                .addComponent(jbSalir)))
+                .addComponent(jLabel1)
+                .addComponent(jLabel5))
+            .addGap(28, 28, 28)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbSalir)
+                        .addComponent(jbEliminar)
+                        .addComponent(jbModificar))
+                    .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jTcalorias2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,9 +334,9 @@ public class TipoComida extends javax.swing.JInternalFrame {
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
 
@@ -267,7 +349,10 @@ public class TipoComida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-    if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() || jTcalorias.getText().isEmpty()){
+       ComidaData comiData1 = new ComidaData();
+        Comida comi1 = comiData1.buscarComidaxNombre(jTnombre.getText());
+        if (comi1 == null) {
+        if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() || jTcalorias.getText().isEmpty()){
         
         JOptionPane.showMessageDialog(this,"compruebe los campos vacíos"); 
     }else {
@@ -284,73 +369,109 @@ public class TipoComida extends javax.swing.JInternalFrame {
        Comida comida =new Comida(nombre,detalle,calorias,true);
           ComidaData comidata =new ComidaData();
        comidata.altaComida(comida);
+       cargarComidas();
       } catch(NumberFormatException nfe){
           JOptionPane.showMessageDialog(null, "ingrese caracter numericos en calorias");
       }
        } }
-     
-       
-       
-  
+        }else{
+            JOptionPane.showMessageDialog(this, "Ya existe la comida "+jTnombre.getText());
+        }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // ELIMINAR COMIDA
-        
+        int fila = jTcomida.getSelectedRow();
+        if (fila != -1) {
+        int idComida = (int) modelo.getValueAt(fila, 0);
+        ComidaData comidaData = new ComidaData();
+        comidaData.eliminarComida(idComida);
+        cargarComidas();
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jTcomidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTcomidaMouseClicked
         int fila = jTcomida.getSelectedRow();
         if (fila != -1) {
+            jbModificar.setEnabled(true);
+            jbEliminar.setEnabled(true);
         int idComida = (int) modelo.getValueAt(fila, 0);
         ComidaData comiData = new ComidaData();
         Comida comida = comiData.buscarComidaxId(idComida);
         jTnombre.setText(comida.getNombre());
         jTcalorias.setText(comida.getCantCalorias()+"");
         jTdetalle.setText(comida.getDetalle());
-        jTid.setText(comida.getIdComida()+"");
         }
         
     }//GEN-LAST:event_jTcomidaMouseClicked
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        if (jTnombre.getText().isEmpty() && jTdetalle.getText().isEmpty() && jTcalorias.getText().isEmpty() && jTid.getText().isEmpty()){
-        JOptionPane.showMessageDialog(this, "No deebn haber campos vacíos");
+        
+        int fila = jTcomida.getSelectedRow();
+        if (fila != -1) {
+            
+        int idComida = (int) modelo.getValueAt(fila, 0);
+        if (jTnombre.getText().isEmpty() && jTdetalle.getText().isEmpty() && jTcalorias.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Hay campos vacios");
         
         }
         if((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText())== true)){
-        JOptionPane.showMessageDialog(this, "revise Nombre/Detalle");}
+        JOptionPane.showMessageDialog(this, "Revise nombre/detalle");}
        else {
         try {
         String nombre = jTnombre.getText();
         String detalle = jTdetalle.getText();    
         int calorias = Integer.parseInt(jTcalorias.getText());
-        int id = Integer.parseInt(jTid.getText());
-        Comida comida = new Comida(id, nombre, detalle, calorias, true);
+        
+        Comida comida = new Comida(idComida, nombre, detalle, calorias, true);
         ComidaData comiData = new ComidaData();
         
         comiData.modificarComida(comida);
+        cargarComidas();
         } catch (NumberFormatException nf){
         JOptionPane.showMessageDialog(this, "Calorías sólo recibe números");
         }
-        }
+        }}
     }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jTcalorias2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcalorias2KeyReleased
+        try{
+        if (!jTcalorias2.getText().isEmpty()) {
+        int calorias = Integer.parseInt(jTcalorias2.getText());
+        borrarFila2();
+        Comida comida =new Comida();
+       ComidaData comidata = new ComidaData();
+         for (Comida comida1 : comidata.listaDeComidasxCalorias(calorias)) {
+            modelo2.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
+         }
+      jComidas2.setModel(modelo2);
+        }}catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
+            jTcalorias2.setText("");
+        }
+    }//GEN-LAST:event_jTcalorias2KeyReleased
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JTable jComidas2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTcalorias;
+    private javax.swing.JTextField jTcalorias2;
     private javax.swing.JTable jTcomida;
     private javax.swing.JTextField jTdetalle;
-    private javax.swing.JTextField jTid;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTnombre;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbEliminar;
@@ -372,6 +493,17 @@ public class TipoComida extends javax.swing.JInternalFrame {
         
         jTcomida.setModel(modelo);
     }
+      private void armarCabecera2(){
+    
+       // modelo.addColumn("Codigo");
+         modelo2.addColumn("idComida");
+        modelo2.addColumn("Nombre");
+        modelo2.addColumn("Detalle");
+        modelo2.addColumn("Cant. Calorias");
+        
+        
+        jComidas2.setModel(modelo2);
+    }
       public static boolean contiene(String cadena) {
         for (char c : cadena.toCharArray()) {
             if (!Character.isLetter(c) &&!Character.isWhitespace(c) ) {
@@ -388,18 +520,24 @@ public class TipoComida extends javax.swing.JInternalFrame {
             modelo.removeRow(f);
         }
     }
+    
+    private void borrarFila2(){
+        int f=jComidas2.getRowCount()-1;
+        for(;f>=0;f--){
+            modelo2.removeRow(f);
+        }
+    }
+    
      private void cargarComidas(){
-     
-//       String nombre = jTnombre.getText();
-//       int calorias=Integer.parseInt(jTcalorias.getText());
-//       String detalle= jTdetalle.getText();
+     borrarFila();
         Comida comida =new Comida();
        ComidaData comidata = new ComidaData();
-//        ArrayList <Comida> comi=comidata.listarTodasComidas();
          for (Comida comida1 : comidata.listarTodasComidas()) {
             modelo.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
          }
       jTcomida.setModel(modelo);
         
     }
+     
+    
 }

@@ -49,7 +49,7 @@ public class ComidaData {
             
             if (rs.next()){
                 comida.setIdComida(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, " se ingreso correctamente el menu");
+                JOptionPane.showMessageDialog(null, "Comida agregada");
             }
             ps.close();        
         } catch (SQLException ex) {
@@ -75,9 +75,7 @@ public class ComidaData {
             if (espera==1){
                 
                 JOptionPane.showMessageDialog(null, " Mosdificacion exitosa");
-            } else {
-                JOptionPane.showMessageDialog(null, "Comida no encontrada");
-            }
+            } 
             ps.close();
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la modificacion");
@@ -97,9 +95,7 @@ public class ComidaData {
             
             if ( espera ==1){
                 JOptionPane.showMessageDialog(null, " Comida eliminada");
-            } else {
-                JOptionPane.showMessageDialog(null, "Comida no encontrada");
-            }
+            } 
             ps.close();
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al eliminar la comida");
@@ -149,15 +145,38 @@ public class ComidaData {
             comida.setCantCalorias(rs.getInt("cantCalorias"));
             comida.setEstado(rs.getBoolean("estado"));
             
-            } else {
-            JOptionPane.showMessageDialog(null, "Comida no encontrada.");
-            }
+            } 
             ps.close();    
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar la lista de comidas");
         }
         return comida;
     }
+    
+    public Comida buscarComidaxNombre(String nombre){
+        String sql =" SELECT * from comida WHERE estado=1 and nombre=?" ;
+        Comida comida = null;
+  
+        try {
+        PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+            comida = new Comida();
+            comida.setIdComida(rs.getInt("idComida"));
+            comida.setNombre(nombre);
+            comida.setDetalle(rs.getString("detalle"));
+            comida.setCantCalorias(rs.getInt("cantCalorias"));
+            comida.setEstado(rs.getBoolean("estado"));
+            } 
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de comidas");
+        }
+        return comida;
+    }
+    
       public ArrayList <Comida> listarTodasComidas(){
         String sql =" SELECT  * from comida WHERE   estado=1" ;
         ArrayList <Comida> comidas =new ArrayList();

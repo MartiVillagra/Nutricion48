@@ -54,11 +54,11 @@ public class Menu extends javax.swing.JFrame {
     escritorio.setLayout(escritorioLayout);
     escritorioLayout.setHorizontalGroup(
         escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 869, Short.MAX_VALUE)
+        .addGap(0, 1326, Short.MAX_VALUE)
     );
     escritorioLayout.setVerticalGroup(
         escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 522, Short.MAX_VALUE)
+        .addGap(0, 697, Short.MAX_VALUE)
     );
 
     jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/paciente.png"))); // NOI18N
