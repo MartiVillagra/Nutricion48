@@ -1,20 +1,34 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Vistas;
 
+import Data.DietaData;
+import Data.PacienteData;
+import Entidades.Dieta;
+import Entidades.Paciente;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author Loboplateado77
+ * @author A Tirador Laser
  */
-public class PesoPaciente extends javax.swing.JFrame {
-
+public class PesoPaciente extends javax.swing.JInternalFrame {
+private DefaultTableModel modelo = new DefaultTableModel(){
+    public boolean isCellEditable(int f,int c){
+    //si pongo false entonces las celdas no son editables
+        return false;  
+    }
+    };
     /**
-     * Creates new form PesoPaciente
+     * Creates new form PesoPaciente1
      */
     public PesoPaciente() {
         initComponents();
+         armarCabecera();
     }
 
     /**
@@ -26,57 +40,137 @@ public class PesoPaciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jTpeso = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTpacientes = new javax.swing.JTable();
+
+        setClosable(true);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 51, 255));
+        jLabel1.setText("Ingese el peso objetivo");
+
+        jTpeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTpesoActionPerformed(evt);
+            }
+        });
+        jTpeso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTpesoKeyReleased(evt);
+            }
+        });
+
+        jTpacientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "DNI", "Peso objetivo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTpacientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(26, 26, 26)
+                        .addComponent(jTpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PesoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PesoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PesoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PesoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jTpesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTpesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTpesoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PesoPaciente().setVisible(true);
-            }
-        });
+    private void jTpesoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTpesoKeyReleased
+    
+    borrarFila();    
+    if (!jTpeso.getText().isEmpty()){
+    
+    try {
+    cargarPacientes();
+    } catch (NumberFormatException nf){
+        JOptionPane.showMessageDialog(this, "agegue sólo caracteres numéricos");
+        jTpeso.setText("");
+        
     }
+    }
+    }//GEN-LAST:event_jTpesoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTpacientes;
+    private javax.swing.JTextField jTpeso;
     // End of variables declaration//GEN-END:variables
+
+
+
+private void armarCabecera (){
+modelo.addColumn("ID");
+modelo.addColumn("Nombre");
+modelo.addColumn("DNI");
+modelo.addColumn("Peso objetivo");
+
+jTpacientes.setModel(modelo);
+
+}
+
+private void borrarFila(){
+        int f=jTpacientes.getRowCount()-1;
+        for(;f>=0;f--){
+            modelo.removeRow(f);
+        }
+    }
+
+private void cargarPacientes(){
+     borrarFila();
+       Paciente paciente = new Paciente();
+       PacienteData pacData = new PacienteData();
+       DietaData dietData = new DietaData ();
+       
+       
+       double peso = Double.parseDouble(jTpeso.getText());
+         for (Paciente pac : pacData.listarPacientesQueNoLegaron(peso)) {
+            Dieta dieta = dietData.buscarDietaPorPaciente(pac.getIdPaciente());
+            modelo.addRow(new Object[]{pac.getIdPaciente(), pac.getNombre(),pac.getDni(), dieta.getPesoFinal()});
+         }
+      jTpacientes.setModel(modelo);
+        
+}
 }

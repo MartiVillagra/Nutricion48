@@ -30,6 +30,14 @@
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Menu_jMenuItem3"/>
               </AuxValues>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMcontrolPeso">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Control de Peso"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMcontrolPesoActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">

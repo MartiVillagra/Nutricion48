@@ -139,6 +139,35 @@ public class DietaData {
         return dieta;
     }
     
+    public Dieta buscarDietaPorPaciente(int id){
+        String sql =" SELECT * from dieta WHERE idPaciente=?" ;
+        Dieta dieta = null;
+  
+        try {
+        PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+            dieta = new Dieta();
+            
+            dieta.setIdPaciente(id);
+            dieta.setIdDieta(rs.getInt("idDieta"));
+            dieta.setNombre(rs.getString("nombre"));
+            dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+            dieta.setPesoInicial(rs.getDouble("pesoInicial"));
+            dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+            dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+            } 
+            
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lista de dieta");
+        }
+        return dieta;
+    }
+    
+    
 //    public  ArrayList <Dieta> listarDieta(String nombre){
 //        String sql="SELECT di.*, pa.nombre as nom, pa.dni, pa.domicilio, pa.telefono "
 //                + "FROM dieta di JOIN paciente pa ON di.idPaciente = pa.idPaciente WHERE estado= 1 AND di.nombre=?";

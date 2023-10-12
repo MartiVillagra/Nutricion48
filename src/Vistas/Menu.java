@@ -39,6 +39,7 @@ public class Menu extends javax.swing.JFrame {
     jMenuBar1 = new javax.swing.JMenuBar();
     jMenu1 = new javax.swing.JMenu();
     jMenuItem3 = new javax.swing.JMenuItem();
+    jMcontrolPeso = new javax.swing.JMenuItem();
     jMenu2 = new javax.swing.JMenu();
     jMenuItem4 = new javax.swing.JMenuItem();
     jMenu3 = new javax.swing.JMenu();
@@ -70,6 +71,14 @@ public class Menu extends javax.swing.JFrame {
         }
     });
     jMenu1.add(jMenuItem3);
+
+    jMcontrolPeso.setText("Control de Peso");
+    jMcontrolPeso.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMcontrolPesoActionPerformed(evt);
+        }
+    });
+    jMenu1.add(jMcontrolPeso);
 
     jMenuBar1.add(jMenu1);
 
@@ -178,6 +187,17 @@ public class Menu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenu4MouseClicked
 
+    private void jMcontrolPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcontrolPesoActionPerformed
+    //Formulario Peso paciente
+    escritorio.removeAll();
+    escritorio.repaint();
+    PesoPaciente pp = new PesoPaciente();
+    pp.setVisible(true);
+    escritorio.add(pp);
+    escritorio.moveToFront(pp);
+    
+    }//GEN-LAST:event_jMcontrolPesoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,6 +235,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jMcontrolPeso;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
