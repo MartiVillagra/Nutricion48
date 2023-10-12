@@ -61,6 +61,10 @@ public class Nutricion48 {
 //            System.out.println("Estado: "+paciente.isEstado());
 //            System.out.println("-------------------------------");
 //        }
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
 //----------------------------------- CARGAR COMIDA -----------------
 ////    
 //        Comida comi = new Comida("PIZZA", "cuatro quesos por porcion ", 285, true);
@@ -84,7 +88,23 @@ public class Nutricion48 {
 //      
 //        for (Comida comi : comidata.listaDeComidasxCalorias(200)) {
 //            System.out.println(comi);
-//        }
+//    }
+//------------- buscar comida por nombre---------------------------
+//        ComidaData comData= new ComidaData();
+//        Comida comi= comData.buscarComidaxNombre("tomate");
+//        System.out.println(comi.toString());
+//-------------- listar todas las comidas----------------------------
+          
+            ComidaData comidata =new ComidaData();
+      
+            for (Comida com : comidata.listarTodasComidas()) {
+                System.out.println(com);
+                System.out.println("-----------------------------------");
+        }
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
    //--------------------- CARGAR DIETA------------------------------
        // Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
 //        Dieta die= new Dieta( "mediterranea", 1, LocalDate.of(2023, Month.MAY, 23) , 100,70, LocalDate.of(2023, Month.NOVEMBER, 13));
@@ -150,6 +170,8 @@ public class Nutricion48 {
 
 //          ComidaData comidaData = new ComidaData();
 //          System.out.println(comidaData.buscarComidaxId(1).toString());
+
+
     }
     
 }
