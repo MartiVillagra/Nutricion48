@@ -31,8 +31,7 @@ public class DietaData {
      con=Conexion.conectar();
     }
     
-    //----------------------- Dar de alta una Dieta ----------------------------------
-    
+    // AGREGAR UNA DIETA  
     public void altaDieta(Dieta dieta){
     String sql = "INSERT INTO dieta (nombre,idPaciente,fechaInicial,pesoInicial ,pesoFinal,fechaFinal) "
             + "VALUES (?,?,?,?,?,?)";
@@ -58,10 +57,8 @@ public class DietaData {
                 JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla comida");
             }
     }
-    
-    
-   // --------------------Modificar una Dieta --------------
-    
+     
+   // MODIFICAR UNA DIETA  
     public void modificarDieta(Dieta dieta){
             String sql= " UPDATE dieta SET nombre =?, idPaciente =?, fechaInicial=?,pesoInicial=? "
                     + ",pesoFinal=?,fechaFinal=? WHERE idDieta=? ";
@@ -86,9 +83,8 @@ public class DietaData {
                 JOptionPane.showMessageDialog(null, "Error en la modificacion");
             }  
     }
-    //-----------------------Eliminar una comida -------------------------
     
-    
+    // ELIMINAR UNA DIETA    
     public void eliminarDieta (int id){
         
             String sql= "DELETE FROM dieta WHERE  idDieta=?";
@@ -105,12 +101,10 @@ public class DietaData {
             ps.close();
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al eliminar la dieta");
-        } 
-        
-        
-        
-    
+        }   
     }
+    
+    // BUSCAR DIETA POR ID    
     public Dieta buscarDietaxId(int id){
         String sql =" SELECT * from dieta WHERE idDieta=?" ;
         Dieta dieta = null;
@@ -139,6 +133,7 @@ public class DietaData {
         return dieta;
     }
     
+    // BUSCAR DIETA POR PACIENTE
     public Dieta buscarDietaPorPaciente(int id){
         String sql =" SELECT * from dieta WHERE idPaciente=?" ;
         Dieta dieta = null;

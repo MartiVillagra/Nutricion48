@@ -34,7 +34,7 @@ public class DietaComidaData {
      comData = new ComidaData();
     }
 
-     //dar de alta una dieta comida 
+    // CARGAR UNA DIETA-COMIDA
     public void altaDieta(DietaComida dietacomida){
     String sql = "INSERT INTO dietacomida(idComida,idDieta) VALUES (?,?) ";
     
@@ -59,8 +59,7 @@ public class DietaComidaData {
     
     }
 
-    
-//    //------------- BORRAR DIETACOMIDA-------------------------------------
+    // ELIMINAR UNA DIETA-COMIDA
     public void bajaDietaComida(int id ){
         
         String sql = "DELETE FROM dietacomida WHERE idDietaComida=?";
@@ -80,8 +79,7 @@ public class DietaComidaData {
     
     }   
 
-    //--------------------------MODIFICAR DIETA COMIDA------------------------------------
-    
+    // MODIFICAR UNA DIETA-COMIDA 
     public void ModificarDietaComida(DietaComida dietacomida){
     String sql = "UPDATE dietacomida SET idComida=?, idDieta=? WHERE idDietaComida=? ";
     
@@ -102,6 +100,7 @@ public class DietaComidaData {
         }
     }
     
+    // LISTAR DIETA-COMIDA  POR NOMBRE
     public ArrayList<DietaComida> listarDietasxNombre(String nombre){
         String sql="SELECT idDietaComida, diCo.idDieta,diCo.idComida, di.nombre as dieta, co.nombre as alimento, co.cantCalorias FROM dietaComida diCo JOIN dieta di, comida co "
                 + "WHERE di.idDieta=diCo.idDieta AND co.idComida=diCo.idComida AND di.nombre=? AND co.estado=1";

@@ -27,6 +27,7 @@ public class PacienteData {
      con=Conexion.conectar();
     }
     //DAR ALTA A UN PACIENTE.
+    
     public void altaPaciente(Paciente paciente){
     String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono, estado) VALUES (?,?,?,?,?)";
     
@@ -48,12 +49,11 @@ public class PacienteData {
             ps.close();
         } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Algo salió mal" +ex);
-        }
-    
-    
+        }   
     }
     
     // BORRAR UN PACIENTE.
+    
     public void bajaPaciente(int dni){
         
         String sql = "UPDATE paciente SET estado = 0 WHERE dni = ? and estado =1";
@@ -71,9 +71,8 @@ public class PacienteData {
             } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal"+ ex);
         }
-    
-        
     }
+    
     //MODIFICAR PACIENTE:
     
     public void modificarPaciente(Paciente paciente){
@@ -99,6 +98,8 @@ public class PacienteData {
         }
     }
     
+    // LISTA PACIENTES QUE NO LLEGARON AL PESO
+    
     public ArrayList<Paciente> listarPacientesQueNoLegaron(double peso){
         String sql = "SELECT pa.* FROM paciente pa JOIN dieta di "
                 + "WHERE pesoFinal != ? AND pa.idPaciente=di.idPaciente";
@@ -123,6 +124,9 @@ public class PacienteData {
         }
         return pacientes;
     }
+    
+    //BUSCAR PACIENTE X ID
+    
     public Paciente buscarPacientexId(int id){
         String sql =" SELECT nombre, domicilio, telefono, dni FROM paciente WHERE estado=1 and idPaciente=?" ;
         Paciente paciente = null;
@@ -147,6 +151,9 @@ public class PacienteData {
         }
         return paciente;
     }
+    
+    //BUSCAR PACIENTE X DNI
+    
     public Paciente buscarPacientexDNI(int dni){
         String sql =" SELECT idPaciente, nombre, domicilio, telefono FROM paciente WHERE estado=1 and dni=?" ;
         Paciente paciente = null;

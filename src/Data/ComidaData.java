@@ -29,8 +29,7 @@ public class ComidaData {
      con=Conexion.conectar();
     }
     
-    //----------------------- Dar de alta una comida----------------------------------
-    
+    // CARGAR UNA COMIDA
     public void altaComida(Comida comida){
     String sql = "INSERT INTO comida (nombre, detalle, cantCalorias,estado) VALUES (?,?,?,?)";
     
@@ -57,8 +56,7 @@ public class ComidaData {
             }
     }
 
-    // --------------------Modificar una comida --------------
-    
+    // MODIFICAR UNA COMIDA
     public void modificarComida(Comida comida){
             String sql= " UPDATE comida SET nombre =?, detalle =?, cantCalorias=?"
                     + " WHERE idComida=? and estado =1 ";
@@ -81,9 +79,8 @@ public class ComidaData {
                 JOptionPane.showMessageDialog(null, "Error en la modificacion");
             }  
     }
-    //-----------------------Eliminar una comida -------------------------
     
-    
+    // ELIMINAR UNA COMIDA 
     public void eliminarComida (int id){
         String sql= "UPDATE comida SET estado = 0  where idComida =? and estado =1";
         
@@ -101,8 +98,8 @@ public class ComidaData {
                 JOptionPane.showMessageDialog(null, "Error al eliminar la comida");
         }  
     }
-    //------------------------- Lista de comidas -----------------------
     
+    // LISTAR COMIDA
     public ArrayList <Comida> listaDeComidasxCalorias(int cantCalorias){
         String sql =" SELECT  * from comida WHERE  cantCalorias < ? AND  estado=1" ;
         ArrayList <Comida> comidas =new ArrayList();
@@ -128,6 +125,8 @@ public class ComidaData {
         }
         return comidas;
     }
+    
+    // BUSCAR COMIDA POR ID
     public Comida buscarComidaxId(int id){
         String sql =" SELECT * from comida WHERE estado=1 and idComida=?" ;
         Comida comida = null;
@@ -153,6 +152,7 @@ public class ComidaData {
         return comida;
     }
     
+    // BUSCAR COMIDA POR NOMBRE
     public Comida buscarComidaxNombre(String nombre){
         String sql =" SELECT * from comida WHERE estado=1 and nombre=?" ;
         Comida comida = null;
@@ -177,7 +177,8 @@ public class ComidaData {
         return comida;
     }
     
-      public ArrayList <Comida> listarTodasComidas(){
+    // LISTAR TODAS LAS COMIDAS
+    public ArrayList <Comida> listarTodasComidas(){
         String sql =" SELECT  * from comida WHERE   estado=1" ;
         ArrayList <Comida> comidas =new ArrayList();
   
