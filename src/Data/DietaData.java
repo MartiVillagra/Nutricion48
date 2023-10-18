@@ -50,7 +50,7 @@ public class DietaData {
             
             if (rs.next()){
                 dieta.setIdDieta(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, " se ingreso correctamente el menu");
+                JOptionPane.showMessageDialog(null, " La dieta se agrego correctamente ");
             }
             ps.close();        
         } catch (SQLException ex) {
