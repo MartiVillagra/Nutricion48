@@ -33,8 +33,8 @@ public class DietaData {
     
     // AGREGAR UNA DIETA  
     public void altaDieta(Dieta dieta){
-    String sql = "INSERT INTO dieta (nombre,idPaciente,fechaInicial,pesoInicial ,pesoFinal,fechaFinal) "
-            + "VALUES (?,?,?,?,?,?)";
+    String sql = "INSERT INTO dieta (nombre,idPaciente,fechaInicial,pesoInicial ,pesoFinal,fechaFinal,altura, imc) "
+            + "VALUES (?,?,?,?,?,?,?,?)";
     
     PreparedStatement ps;
         try {
@@ -45,6 +45,8 @@ public class DietaData {
             ps.setDouble(4, dieta.getPesoInicial());
             ps.setDouble(5, dieta.getPesoFinal());
             ps.setDate(6, Date.valueOf(dieta.getFechaFinal()));
+            ps.setInt(7, dieta.getAltura());
+            ps.setDouble(8, dieta.getImc());
         ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             
@@ -61,7 +63,7 @@ public class DietaData {
    // MODIFICAR UNA DIETA  
     public void modificarDieta(Dieta dieta){
             String sql= " UPDATE dieta SET nombre =?, idPaciente =?, fechaInicial=?,pesoInicial=? "
-                    + ",pesoFinal=?,fechaFinal=? WHERE idDieta=? ";
+                    + ",pesoFinal=?,fechaFinal=?, altura=?, imc=? WHERE idDieta=? ";
             
         try {
             PreparedStatement ps = con.prepareStatement(sql); 
@@ -71,7 +73,9 @@ public class DietaData {
             ps.setDouble(4, dieta.getPesoInicial());
             ps.setDouble(5, dieta.getPesoFinal());
             ps.setDate(6, Date.valueOf(dieta.getFechaFinal()));
-            ps.setInt(7, dieta.getIdDieta());
+            ps.setInt(7, dieta.getAltura());
+            ps.setDouble(8, dieta.getImc());
+            ps.setInt(9, dieta.getIdDieta());
             
             int espera=ps.executeUpdate();
             if (espera==1){
@@ -123,6 +127,9 @@ public class DietaData {
             dieta.setPesoInicial(rs.getDouble("pesoInicial"));
             dieta.setPesoFinal(rs.getDouble("pesoFinal"));
             dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+            dieta.setAltura(rs.getInt("altura"));
+//            dieta.setSexo(rs.getString("sexo"));
+            dieta.setImc(rs.getDouble("imc"));
             } else {
             JOptionPane.showMessageDialog(null, "Dieta no encontrada.");
             }
@@ -153,6 +160,9 @@ public class DietaData {
             dieta.setPesoInicial(rs.getDouble("pesoInicial"));
             dieta.setPesoFinal(rs.getDouble("pesoFinal"));
             dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+            dieta.setAltura(rs.getInt("altura"));
+//            dieta.setSexo(rs.getString("sexo"));
+            dieta.setImc(rs.getDouble("imc"));
             } 
             
             ps.close();    

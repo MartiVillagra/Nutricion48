@@ -19,8 +19,10 @@ public class Dieta {
     private double pesoInicial;
     private double pesoFinal;
     private LocalDate fechaFinal;
+    private int altura;
+    private double imc;
 
-    public Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+    public Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, int altura,  double imc) {
         this.idDieta = idDieta;
         this.nombre = nombre;
         this.idPaciente = idPaciente;
@@ -28,15 +30,19 @@ public class Dieta {
         this.pesoInicial = pesoInicial;
         this.pesoFinal = pesoFinal;
         this.fechaFinal = fechaFinal;
+        this.altura = altura;
+        this.imc = imc;
     }
 
-    public Dieta(String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+    public Dieta(String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, int altura, double imc) {
         this.nombre = nombre;
         this.idPaciente = idPaciente;
         this.fechaInicial = fechaInicial;
         this.pesoInicial = pesoInicial;
         this.pesoFinal = pesoFinal;
         this.fechaFinal = fechaFinal;
+        this.altura = altura;
+        this.imc = imc;
     }
 
     public Dieta() {
@@ -96,6 +102,22 @@ public class Dieta {
 
     public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
+    
+    public double getImc() {
+        return imc;
+    }
+
+    public void setImc(double imc) {
+        this.imc = imc;
     }
 
     @Override

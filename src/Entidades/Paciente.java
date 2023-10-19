@@ -15,25 +15,30 @@ public class Paciente {
     private String nombre;
     private int dni;
     private String domicilio;
-    private int telefono;
+    private String telefono;
     private boolean estado;
+    private String sexo;
 
-    public Paciente(int idPaciente, String nombre, int dni, String domicilio, int telefono, boolean estado) {
+    public Paciente(int idPaciente, String nombre, int dni, String domicilio, String telefono, boolean estado, String sexo) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.dni = dni;
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.estado = estado;
+        this.sexo = sexo;
     }
 
-    public Paciente(String nombre, int dni, String domicilio, int telefono, boolean estado) {
+    public Paciente(String nombre, int dni, String domicilio, String telefono, boolean estado, String sexo) {
         this.nombre = nombre;
         this.dni = dni;
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.estado = estado;
+        this.sexo = sexo;
     }
+
+    
 
     public Paciente() {
     }
@@ -70,11 +75,11 @@ public class Paciente {
         this.domicilio = domicilio;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -84,6 +89,14 @@ public class Paciente {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     @Override

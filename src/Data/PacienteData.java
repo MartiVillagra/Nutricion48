@@ -29,15 +29,16 @@ public class PacienteData {
     //DAR ALTA A UN PACIENTE.
     
     public void altaPaciente(Paciente paciente){
-    String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono, estado) VALUES (?,?,?,?,?)";
+    String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono, sexo, estado) VALUES (?,?,?,?,?)";
     
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, paciente.getNombre()); 
             ps.setInt(2, paciente.getDni());
             ps.setString(3, paciente.getDomicilio());
-            ps.setInt(4, paciente.getTelefono());
-            ps.setBoolean(5,paciente.isEstado());
+            ps.setString(4, paciente.getTelefono());
+            ps.setString(5, paciente.getSexo());
+            ps.setBoolean(6,paciente.isEstado());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -76,15 +77,16 @@ public class PacienteData {
     //MODIFICAR PACIENTE:
     
     public void modificarPaciente(Paciente paciente){
-    String sql = "UPDATE paciente SET nombre = ?, dni = ?, domicilio = ?, telefono = ? WHERE idPaciente = ? and estado =1 ";
+    String sql = "UPDATE paciente SET nombre = ?, dni = ?, domicilio = ?, telefono = ?, sexo=? WHERE idPaciente = ? and estado =1 ";
     
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, paciente.getNombre());
             ps.setInt(2, paciente.getDni());
             ps.setString(3, paciente.getDomicilio());
-            ps.setInt(4, paciente.getTelefono());
-            ps.setInt(5, paciente.getIdPaciente());
+            ps.setString(4, paciente.getTelefono());
+            ps.setString(5, paciente.getSexo());
+            ps.setInt(6, paciente.getIdPaciente());
             int exito = ps.executeUpdate();
             
             if(exito == 1){
@@ -114,8 +116,9 @@ public class PacienteData {
             paciente.setNombre(rs.getString("nombre"));
             paciente.setDni(rs.getInt("dni"));
             paciente.setDomicilio(rs.getString("domicilio"));
-            paciente.setTelefono(rs.getInt("telefono"));
+            paciente.setTelefono(rs.getString("telefono"));
             paciente.setEstado(rs.getBoolean("estado"));
+            paciente.setSexo(rs.getString("sexo"));
             pacientes.add(paciente);
             }
             ps.close();
@@ -128,7 +131,7 @@ public class PacienteData {
     //BUSCAR PACIENTE X ID
     
     public Paciente buscarPacientexId(int id){
-        String sql =" SELECT nombre, domicilio, telefono, dni FROM paciente WHERE estado=1 and idPaciente=?" ;
+        String sql =" SELECT nombre, domicilio, telefono, dni, sexo FROM paciente WHERE estado=1 and idPaciente=?" ;
         Paciente paciente = null;
   
         try {
@@ -141,8 +144,9 @@ public class PacienteData {
             paciente.setIdPaciente(id);
             paciente.setNombre(rs.getString("nombre"));
             paciente.setDomicilio(rs.getString("domicilio"));
-            paciente.setTelefono(rs.getInt("telefono"));
+            paciente.setTelefono(rs.getString("telefono"));
             paciente.setDni(rs.getInt("dni"));
+            paciente.setSexo(rs.getString("sexo"));
             //paciente.setEstado(rs.getBoolean("estado"));
             } 
             ps.close();    
@@ -155,7 +159,7 @@ public class PacienteData {
     //BUSCAR PACIENTE X DNI
     
     public Paciente buscarPacientexDNI(int dni){
-        String sql =" SELECT idPaciente, nombre, domicilio, telefono FROM paciente WHERE estado=1 and dni=?" ;
+        String sql =" SELECT idPaciente, nombre, domicilio, telefono, sexo FROM paciente WHERE estado=1 and dni=?" ;
         Paciente paciente = null;
   
         try {
@@ -168,10 +172,11 @@ public class PacienteData {
             paciente.setIdPaciente(rs.getInt("idPaciente"));
             paciente.setNombre(rs.getString("nombre"));
             paciente.setDomicilio(rs.getString("domicilio"));
-            paciente.setTelefono(rs.getInt("telefono"));
+            paciente.setTelefono(rs.getString("telefono"));
+            paciente.setSexo(rs.getString("sexo"));
             paciente.setDni(dni);
             //paciente.setEstado(rs.getBoolean("estado"));
-            } else { JOptionPane.showMessageDialog(null, "Paciente no encontrado");}
+            }
             ps.close();    
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar la lista de pacientes");
