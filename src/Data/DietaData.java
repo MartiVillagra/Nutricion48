@@ -45,7 +45,7 @@ public class DietaData {
             ps.setDouble(4, dieta.getPesoInicial());
             ps.setDouble(5, dieta.getPesoFinal());
             ps.setDate(6, Date.valueOf(dieta.getFechaFinal()));
-            ps.setInt(7, dieta.getAltura());
+            ps.setDouble(7, dieta.getAltura());
             ps.setDouble(8, dieta.getImc());
         ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -73,7 +73,7 @@ public class DietaData {
             ps.setDouble(4, dieta.getPesoInicial());
             ps.setDouble(5, dieta.getPesoFinal());
             ps.setDate(6, Date.valueOf(dieta.getFechaFinal()));
-            ps.setInt(7, dieta.getAltura());
+            ps.setDouble(7, dieta.getAltura());
             ps.setDouble(8, dieta.getImc());
             ps.setInt(9, dieta.getIdDieta());
             
@@ -127,7 +127,7 @@ public class DietaData {
             dieta.setPesoInicial(rs.getDouble("pesoInicial"));
             dieta.setPesoFinal(rs.getDouble("pesoFinal"));
             dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
-            dieta.setAltura(rs.getInt("altura"));
+            dieta.setAltura(rs.getDouble("altura"));
 //            dieta.setSexo(rs.getString("sexo"));
             dieta.setImc(rs.getDouble("imc"));
             } else {
@@ -160,7 +160,7 @@ public class DietaData {
             dieta.setPesoInicial(rs.getDouble("pesoInicial"));
             dieta.setPesoFinal(rs.getDouble("pesoFinal"));
             dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
-            dieta.setAltura(rs.getInt("altura"));
+            dieta.setAltura(rs.getDouble("altura"));
 //            dieta.setSexo(rs.getString("sexo"));
             dieta.setImc(rs.getDouble("imc"));
             } 

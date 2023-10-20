@@ -19,10 +19,10 @@ public class Dieta {
     private double pesoInicial;
     private double pesoFinal;
     private LocalDate fechaFinal;
-    private int altura;
+    private double altura;
     private double imc;
 
-    public Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, int altura,  double imc) {
+    public Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, double altura,  double imc) {
         this.idDieta = idDieta;
         this.nombre = nombre;
         this.idPaciente = idPaciente;
@@ -34,7 +34,7 @@ public class Dieta {
         this.imc = imc;
     }
 
-    public Dieta(String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, int altura, double imc) {
+    public Dieta(String nombre, int idPaciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal, double altura, double imc) {
         this.nombre = nombre;
         this.idPaciente = idPaciente;
         this.fechaInicial = fechaInicial;
@@ -104,11 +104,11 @@ public class Dieta {
         this.fechaFinal = fechaFinal;
     }
 
-    public int getAltura() {
+    public double getAltura() {
         return altura;
     }
 
-    public void setAltura(int altura) {
+    public void setAltura(double altura) {
         this.altura = altura;
     }
     

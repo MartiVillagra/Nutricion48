@@ -4,12 +4,12 @@
  */
 package Vistas;
 
-    import Data.PacienteData;
-    import Entidades.Paciente;
-    import javax.swing.JOptionPane;
-    import java.awt.Graphics;
-    import java.awt.Image;
-    import javax.swing.ImageIcon;
+import Data.PacienteData;
+import Entidades.Paciente;
+import javax.swing.JOptionPane;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class FormularioPaciente extends javax.swing.JInternalFrame {
 
@@ -55,6 +55,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jRMujer = new javax.swing.JRadioButton();
         jRHombre = new javax.swing.JRadioButton();
+        jLErrorTel = new javax.swing.JLabel();
         jbRegistrar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
@@ -126,12 +127,31 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 153, 153));
         jLabel7.setText("Sexo");
 
+        jRMujer.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jRMujer.setForeground(new java.awt.Color(0, 0, 0));
         jRMujer.setText("F");
+        jRMujer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRMujerActionPerformed(evt);
+            }
+        });
 
+        jRHombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jRHombre.setForeground(new java.awt.Color(0, 0, 0));
         jRHombre.setText("M");
+        jRHombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRHombreActionPerformed(evt);
+            }
+        });
+
+        jLErrorTel.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLErrorTel.setForeground(new java.awt.Color(255, 0, 0));
+        jLErrorTel.setText("*");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,26 +161,30 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(34, 34, 34)
-                        .addComponent(jRMujer)
-                        .addGap(40, 40, 40)
-                        .addComponent(jRHombre)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTdomicilio)
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTNomYApe)))
+                                .addComponent(jTNomYApe))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTdomicilio)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jLabel6))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRMujer)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRHombre)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLErrorTel)
+                                    .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(40, 40, 40))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -194,7 +218,9 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLErrorTel)
+                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jRMujer)
@@ -238,6 +264,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
         jBLimpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.setEnabled(false);
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
@@ -257,13 +284,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jbRegistrar)
-                        .addGap(63, 63, 63)
+                        .addGap(18, 18, 18)
                         .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBLimpiar)
-                        .addGap(43, 43, 43)
                         .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBsalir))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
@@ -301,186 +328,213 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
 
-       try{
-        PacienteData pacData = new PacienteData();
-        String domicilio = jTdomicilio.getText();
-        String nombre = jTNomYApe.getText();
-        int dni = Integer.parseInt(jTdni.getText());
-        String telefono = jTtelefono.getText();
-           String sexo = "";
-           if (jRMujer.isSelected() == true) {
-               sexo = "F";
-           }
-           if (jRHombre.isSelected() == true) {
-               sexo = "M";
-           }
-            do 
-
-            if (contiene(jTNomYApe.getText()) == true){
-                JOptionPane.showMessageDialog(null, "Verifique su nombre");
-                jTNomYApe.setText("");
-            }else if (contiene(jTNomYApe.getText()) != true){
-               
-                
-                if (pacData.buscarPacientexDNI(dni) != null) {
-                    JOptionPane.showMessageDialog(null, "Ya existe ese dni");
-                    jTdni.setText("");
-                    jTNomYApe.setText("");
-                    jTdomicilio.setText("");
-                    jTtelefono.setText("");
-                } else {
-                Paciente pac = new Paciente(nombre, dni, domicilio, telefono, true,sexo);
-                pacData.altaPaciente(pac);
-                    jTdni.setText("");
-                    jTNomYApe.setText("");
-                    jTdomicilio.setText("");
-                    jTtelefono.setText("");
-                }
-            } 
-            while (contiene(jTNomYApe.getText()) == true);
-            
-               } catch (NumberFormatException nf) {
-        if (jTdni.getText().isEmpty() || jTtelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Hay campos vacios aca");
-            }else{
-             JOptionPane.showMessageDialog(null, "Verifique su DNI/Telefono");   
+        try {
+            PacienteData pacData = new PacienteData();
+            String domicilio = jTdomicilio.getText();
+            String nombre = jTNomYApe.getText();
+            int dni = Integer.parseInt(jTdni.getText());
+            String telefono = jTtelefono.getText();
+            String sexo = "";
+            if (jRMujer.isSelected() == true) {
+                sexo = "F";
             }
-        } 
+            if (jRHombre.isSelected() == true) {
+                sexo = "M";
+            }
+            do {
+                if (contiene(jTNomYApe.getText()) == true) {
+                    JOptionPane.showMessageDialog(null, "Verifique su nombre");
+                    jTNomYApe.setText("");
+                } else if (contiene(jTNomYApe.getText()) != true) {
+
+                    if (pacData.buscarPacientexDNI(dni) != null) {
+                        JOptionPane.showMessageDialog(null, "Ya existe ese dni");
+                        jTdni.setText("");
+                        jTNomYApe.setText("");
+                        jTdomicilio.setText("");
+                        jTtelefono.setText("");
+                    } else {
+                        Paciente pac = new Paciente(nombre, dni, domicilio, telefono, true, sexo);
+                        pacData.altaPaciente(pac);
+                        jTdni.setText("");
+                        jTNomYApe.setText("");
+                        jTdomicilio.setText("");
+                        jTtelefono.setText("");
+                    }
+                }
+            } while (contiene(jTNomYApe.getText()) == true);
+
+        } catch (NumberFormatException nf) {
+            if (jTdni.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Hay campos vacios aca");
+            } else {
+                JOptionPane.showMessageDialog(null, "Verifique su DNI/Telefono");
+            }
+        }
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
 
-               
-         if (jTdni.getText().isEmpty()|| jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
-                || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()){
+        if (jTdni.getText().isEmpty() || jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
+                || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
         } else {
-             try {
-              int dni = Integer.parseInt(jTdni.getText());
-            int id = Integer.parseInt(jTnroPaciente.getText());
-            String nomyApe = jTNomYApe.getText();
-            String domicilio = jTdomicilio.getText();
-            int cel = Integer.parseInt(jTtelefono.getText());
-            String telefono = cel+"";
-            String sexo="";
-                if (jRMujer.isSelected()==true) {
-                    sexo="F";
-                }
-                if (jRHombre.isSelected()==true) {
-                    sexo="M";
-                }
-        Paciente pac = new Paciente(id, nomyApe, dni, domicilio, telefono, true, sexo);
-        PacienteData pacDat = new PacienteData();
+            try {
+                int dni = Integer.parseInt(jTdni.getText());
+                int id = Integer.parseInt(jTnroPaciente.getText());
+                String nomyApe = jTNomYApe.getText();
+                String domicilio = jTdomicilio.getText();
 
-            pacDat.modificarPaciente(pac);
-            borraCampos();
-            jBModificar.setEnabled(false);      
-             } catch ( NumberFormatException e) {
-                 String cel = jTtelefono.getText();
-                 if (cel.length()>10) {
-                     JOptionPane.showMessageDialog(this, "Telefono muy largo");
-                 }else{
-                  JOptionPane.showMessageDialog(this, "Ingrese solo caracteres numericos");   
-                 }
-             }
-        }     
+//            Integer cel = Integer.parseInt(jTtelefono.getText());
+                String sexo = "";
+                if (jRMujer.isSelected() == true) {
+                    sexo = "F";
+                }
+                if (jRHombre.isSelected() == true) {
+                    sexo = "M";
+                }
+                if (contieneSoloNumeros(jTtelefono.getText()) == true) {
+                    String telefono = jTtelefono.getText();
+
+                    Paciente pac = new Paciente(id, nomyApe, dni, domicilio, telefono, true, sexo);
+                    PacienteData pacDat = new PacienteData();
+                    pacDat.modificarPaciente(pac);
+                    borraCampos();
+                    jBModificar.setEnabled(false);
+                    jBLimpiar.setEnabled(false);
+                    jBEliminar.setEnabled(false);
+                }else{
+                    jLErrorTel.setText("*Incorrecto");
+                }
+
+            } catch (NumberFormatException e) {
+               JOptionPane.showMessageDialog(this, "Ingrese solo caracteres numericos");
+            }
+        }
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        try {
+            int dni = Integer.parseInt(jTdni.getText());
+            PacienteData pacData = new PacienteData();
+            if (pacData.buscarPacientexDNI(dni) != null) {
+                if (!jTdni.getText().isEmpty()) {
 
-        try{
-        int dni = Integer.parseInt(jTdni.getText());
-        PacienteData pacData = new PacienteData();
-        if (pacData.buscarPacientexDNI(dni)!= null){
-            if ( !jTdni.getText().isEmpty()){
-            
-                Paciente pac = pacData.buscarPacientexDNI(dni);
-                jTnroPaciente.setText(pac.getIdPaciente()+"");
-                jTNomYApe.setText(pac.getNombre());
-                jTdomicilio.setText(pac.getDomicilio());
-                jTtelefono.setText(pac.getTelefono()+"");
-            }else {JOptionPane.showMessageDialog(this, "Ingrese un dni");
+                    Paciente pac = pacData.buscarPacientexDNI(dni);
+                    jTnroPaciente.setText(pac.getIdPaciente() + "");
+                    jTNomYApe.setText(pac.getNombre());
+                    jTdomicilio.setText(pac.getDomicilio());
+                    jTtelefono.setText(pac.getTelefono());
+                    if (pac.getSexo().equals("M")) {
+                        jRHombre.setSelected(true);
+                        jRMujer.setSelected(false);
+                    }
+                    if (pac.getSexo().equals("F")) {
+                        jRMujer.setSelected(true);
+                        jRHombre.setSelected(false);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ingrese un dni");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No existe ese paciente");
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "No existe ese paciente");
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, " Ingrese un caracter numerico");
+            jTdni.setText("");
         }
-        }catch (NumberFormatException nfe){
-        JOptionPane.showMessageDialog(this, " Ingrese un caracter numerico");
-        jTdni.setText("");
-    }        
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jTdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyReleased
-
         PacienteData pacData = new PacienteData();
         if (!jTdni.getText().isEmpty()) {
+            jBLimpiar.setEnabled(true);
+        } else {
+            jBLimpiar.setEnabled(false);
+        }
+        if (!jTdni.getText().isEmpty()) {
             int dni = Integer.parseInt(jTdni.getText());
-            if (pacData.buscarPacientexDNI(dni)!=null) {
+            if (pacData.buscarPacientexDNI(dni) != null) {
                 jBEliminar.setEnabled(true);
-            }else{
+            } else {
                 jBEliminar.setEnabled(false);
             }
-        }else{
+        } else {
             jBEliminar.setEnabled(false);
         }
-        
-        if (!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+
+        if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
-            
+
             int dni = Integer.parseInt(jTdni.getText());
-            if (pacData.buscarPacientexDNI(dni)!=null) {
+            if (pacData.buscarPacientexDNI(dni) != null) {
                 jBModificar.setEnabled(true);
-            }else{
+            } else {
                 jBModificar.setEnabled(false);
             }
-        }else{
+        } else {
             jBModificar.setEnabled(false);
         }
     }//GEN-LAST:event_jTdniKeyReleased
 
     private void jTNomYApeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNomYApeKeyReleased
         PacienteData pacData = new PacienteData();
-        if (!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+        if (!jTNomYApe.getText().isEmpty()) {
+            jBLimpiar.setEnabled(true);
+        } else {
+            jBLimpiar.setEnabled(false);
+        }
+        if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
-            
+
             int dni = Integer.parseInt(jTdni.getText());
-            if (pacData.buscarPacientexDNI(dni)!=null) {
+            if (pacData.buscarPacientexDNI(dni) != null) {
                 jBModificar.setEnabled(true);
-            }else{
+            } else {
                 jBModificar.setEnabled(false);
             }
-        }else{
+        } else {
             jBModificar.setEnabled(false);
         }
     }//GEN-LAST:event_jTNomYApeKeyReleased
 
     private void jTdomicilioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdomicilioKeyReleased
         PacienteData pacData = new PacienteData();
-        if (!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+        if (!jTdomicilio.getText().isEmpty()) {
+            jBLimpiar.setEnabled(true);
+        } else {
+            jBLimpiar.setEnabled(false);
+        }
+        if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
-            
+
             int dni = Integer.parseInt(jTdni.getText());
-            if (pacData.buscarPacientexDNI(dni)!=null) {
+            if (pacData.buscarPacientexDNI(dni) != null) {
                 jBModificar.setEnabled(true);
-            }else{
+            } else {
                 jBModificar.setEnabled(false);
             }
-        }else{
+        } else {
             jBModificar.setEnabled(false);
         }
     }//GEN-LAST:event_jTdomicilioKeyReleased
 
     private void jTtelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyReleased
         PacienteData pacData = new PacienteData();
-        if (!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+        if (!jTtelefono.getText().isEmpty()) {
+            jBLimpiar.setEnabled(true);
+        } else {
+            jBLimpiar.setEnabled(false);
+        }
+        if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
-            
+
             int dni = Integer.parseInt(jTdni.getText());
-            if (pacData.buscarPacientexDNI(dni)!=null) {
+            if (pacData.buscarPacientexDNI(dni) != null) {
                 jBModificar.setEnabled(true);
-            }else{
+            } else {
                 jBModificar.setEnabled(false);
             }
-        }else{
+        } else {
             jBModificar.setEnabled(false);
         }
     }//GEN-LAST:event_jTtelefonoKeyReleased
@@ -495,7 +549,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         if (!jTdni.getText().isEmpty()) {
             int dni = Integer.parseInt(jTdni.getText());
             Paciente pac = pacData.buscarPacientexDNI(dni);
-            if (pac!=null) {
+            if (pac != null) {
                 pacData.bajaPaciente(dni);
                 borraCampos();
             }
@@ -504,7 +558,16 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         borraCampos();
+        jBLimpiar.setEnabled(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
+
+    private void jRHombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRHombreActionPerformed
+        jRMujer.setSelected(false);
+    }//GEN-LAST:event_jRHombreActionPerformed
+
+    private void jRMujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMujerActionPerformed
+        jRHombre.setSelected(false);
+    }//GEN-LAST:event_jRMujerActionPerformed
 
     //Cosas que quedan: pacData.buscarPacientexId(Integer.parseInt(jTnroPaciente.getText))
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -513,6 +576,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBsalir;
+    private javax.swing.JLabel jLErrorTel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -533,33 +597,57 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-       public static boolean contiene(String cadena) {
+    public static boolean contiene(String cadena) {
         for (char c : cadena.toCharArray()) {
-            if (!Character.isLetter(c)&& !Character.isWhitespace(c)) {
+            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
                 return true; // La cadena contiene caracteres no alfabéticos
             }
         }
         return false; // La cadena solo contiene letras
-    } 
-     //..............................................................
-  //borrar campos
-    public void borraCampos(){
+    }
+    //..............................................................
+    //borrar campos
+
+    public void borraCampos() {
         jTnroPaciente.setText("");
         jTdni.setText("");
         jTNomYApe.setText("");
         jTdomicilio.setText("");
-        jTtelefono.setText("");       
+        jTtelefono.setText("");
+        jRMujer.setSelected(false);
+        jRHombre.setSelected(false);
     }
-     //cambio de estado boton modificar
-    public void modificarEstadoBoton(){
-                PacienteData pacData = new PacienteData();
-        if(!jTdni.getText().isEmpty()&& !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
-                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()){
+    //cambio de estado boton modificar
+
+    public void modificarEstadoBoton() {
+        PacienteData pacData = new PacienteData();
+        if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
+                && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
             int id = Integer.parseInt(jTnroPaciente.getText());
-            if (pacData.buscarPacientexId(id) != null){
+            if (pacData.buscarPacientexId(id) != null) {
                 jBModificar.setEnabled(true);
-            } else {jBModificar.setEnabled(false);
-                }
+            } else {
+                jBModificar.setEnabled(false);
+            }
         }
     }
+
+    public static boolean contieneSoloNumeros(String cadena) {
+        // Si la cadena está vacía, debemos devolver false
+        if (cadena.length() == 0) {
+            return false;
+        }
+        for (int x = 0; x < cadena.length(); x++) {
+            char c = cadena.charAt(x);
+            // Si no está entre 0 y 9
+            if (!(c >= '0' && c <= '9')) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+//    public static boolean contieneSoloNumerosRegex(String cadena) {
+//        return cadena.matches("[0-9]+");
+//    }
 }
