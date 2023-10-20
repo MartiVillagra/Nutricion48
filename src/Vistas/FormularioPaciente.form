@@ -42,7 +42,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    public void paintComponent(Graphics g){&#xa;        g.drawImage(miImagenjpg,0,0,getWidth(),getHeight(),this);&#xa;    }&#xa;}&#xa;"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//import javax.swing.ImageIcon;&#xa;ImageIcon icono  = new  ImageIcon(getClass().getResource(&quot;/Recursos/flores.png&quot;));&#xa;Image miImagenjpg = icono.getImage();"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//import javax.swing.ImageIcon;&#xa;ImageIcon icono  = new  ImageIcon(getClass().getResource(&quot;/Recursos/vegetales.png&quot;));&#xa;Image miImagenjpg = icono.getImage();"/>
       </AuxValues>
 
       <Layout>
@@ -100,7 +100,7 @@
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="0" type="rgb"/>
+              <Color blue="33" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Datos del Paciente"/>
           </Properties>

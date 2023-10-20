@@ -51,7 +51,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
 
         jButton2 = new javax.swing.JButton();
         //import javax.swing.ImageIcon;
-        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/fondo.png"));
+        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/vegetales.png"));
         Image miImagenjpg = icono.getImage();
         jPanel1 = new javax.swing.JPanel()
         {public void paintComponent(Graphics g){
@@ -113,8 +113,8 @@ public class TipoComida extends javax.swing.JInternalFrame {
     });
     jScrollPane1.setViewportView(jTcomida);
 
-    jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(255, 255, 51));
     jLabel1.setText("COMIDAS");
 
     jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -230,7 +230,9 @@ public class TipoComida extends javax.swing.JInternalFrame {
     );
     jPanel3Layout.setVerticalGroup(
         jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
 
     jComidas2.setModel(new javax.swing.table.DefaultTableModel(
@@ -254,8 +256,8 @@ public class TipoComida extends javax.swing.JInternalFrame {
     });
     jScrollPane2.setViewportView(jComidas2);
 
-    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-    jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+    jLabel5.setForeground(new java.awt.Color(255, 255, 51));
     jLabel5.setText("CALORIAS");
 
     jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -284,13 +286,12 @@ public class TipoComida extends javax.swing.JInternalFrame {
             .addGap(47, 47, 47)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
                     .addComponent(jbModificar)
-                    .addGap(86, 86, 86)
-                    .addComponent(jbEliminar)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbEliminar)
+                    .addGap(43, 43, 43)
                     .addComponent(jbLimpiar)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(31, 31, 31)
                     .addComponent(jbSalir))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -307,40 +308,41 @@ public class TipoComida extends javax.swing.JInternalFrame {
                     .addComponent(jTcalorias2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(39, Short.MAX_VALUE))
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(249, 249, 249)
+            .addGap(219, 219, 219)
             .addComponent(jLabel1)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel5)
-            .addGap(210, 210, 210))
+            .addGap(197, 197, 197))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addGap(61, 61, 61)
+            .addGap(38, 38, 38)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel1)
                 .addComponent(jLabel5))
-            .addGap(28, 28, 28)
+            .addGap(35, 35, 35)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jbSalir)
-                        .addComponent(jbEliminar)
-                        .addComponent(jbModificar)
-                        .addComponent(jbLimpiar)))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(30, 30, 30)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addGap(18, 18, 18)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
                         .addComponent(jTcalorias2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(33, 33, 33)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jbModificar)
+                .addComponent(jbEliminar)
+                .addComponent(jbLimpiar)
+                .addComponent(jbSalir))
+            .addContainerGap(21, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

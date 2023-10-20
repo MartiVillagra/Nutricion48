@@ -31,7 +31,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
         label1 = new java.awt.Label();
         //import javax.swing.ImageIcon;
-        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/flores.png"));
+        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/vegetales.png"));
         Image miImagenjpg = icono.getImage();
         jPanel1 = new javax.swing.JPanel(){
             public void paintComponent(Graphics g){
@@ -67,7 +67,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 51));
         jLabel1.setText("Datos del Paciente");
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));

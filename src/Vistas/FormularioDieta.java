@@ -43,7 +43,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         //import javax.swing.ImageIcon;
-        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/ramillete.png"));
+        ImageIcon icono  = new  ImageIcon(getClass().getResource("/Recursos/vegetales.png"));
         Image miImagenjpg = icono.getImage();
         jPanel1 = new javax.swing.JPanel()   {public void paintComponent(Graphics g){
             g.drawImage(miImagenjpg,0,0,getWidth(),getHeight(),this);
@@ -97,11 +97,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jLabel11.setForeground(new java.awt.Color(0, 153, 153));
     jLabel11.setText("Paciente n°");
 
-    jTid.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            jTidKeyReleased(evt);
-        }
-    });
+    jTid.setEditable(false);
 
     jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(0, 153, 153));
@@ -251,7 +247,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     );
 
     jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+    jLabel1.setForeground(new java.awt.Color(255, 255, 51));
     jLabel1.setText("DIETA - PACIENTE");
 
     jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -469,45 +465,16 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 pesoIdeal();
             }
         
-
     }//GEN-LAST:event_jBimcActionPerformed
     catch(NumberFormatException nfe){
         JOptionPane.showMessageDialog(null,"ingrese solo caracteres numericos");
-    
-        
+          
 }
         
     }
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
         
     }//GEN-LAST:event_jBmodificarActionPerformed
-
-    private void jTidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTidKeyReleased
-        PacienteData pacData = new PacienteData();
-        if (!jTid.getText().isEmpty()) {
-            int id = Integer.parseInt(jTid.getText());
-
-            if (pacData.buscarPacientexId(id) != null) {
-                jTdni.setText(pacData.buscarPacientexId(id).getDni() + "");
-                if (pacData.buscarPacientexId(id).getSexo().equals("M")) {
-                    jRhombre.setSelected(true);
-                    jRmujer.setSelected(false);
-                }
-                if (pacData.buscarPacientexId(id).getSexo().equals("F")) {
-                    jRmujer.setSelected(true);
-                    jRhombre.setSelected(false);
-                }
-            } else {
-                jTdni.setText("");
-                jRmujer.setSelected(false);
-                jRhombre.setSelected(false);
-            }
-        } else {
-            jTdni.setText("");
-            jRmujer.setSelected(false);
-            jRhombre.setSelected(false);
-        }
-    }//GEN-LAST:event_jTidKeyReleased
 
     private void jTdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyReleased
         PacienteData pacData = new PacienteData();

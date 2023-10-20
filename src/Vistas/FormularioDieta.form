@@ -40,7 +40,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel()   {public void paintComponent(Graphics g){&#xa;    g.drawImage(miImagenjpg,0,0,getWidth(),getHeight(),this);&#xa;}&#xa;}&#xa;"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//import javax.swing.ImageIcon;&#xa;ImageIcon icono  = new  ImageIcon(getClass().getResource(&quot;/Recursos/ramillete.png&quot;));&#xa;Image miImagenjpg = icono.getImage();"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//import javax.swing.ImageIcon;&#xa;ImageIcon icono  = new  ImageIcon(getClass().getResource(&quot;/Recursos/vegetales.png&quot;));&#xa;Image miImagenjpg = icono.getImage();"/>
       </AuxValues>
 
       <Layout>
@@ -255,9 +255,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTid">
-              <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTidKeyReleased"/>
-              </Events>
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTaltura">
             </Component>
@@ -395,7 +395,7 @@
               <Font name="Tahoma" size="36" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="0" type="rgb"/>
+              <Color blue="33" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="DIETA - PACIENTE"/>
           </Properties>
