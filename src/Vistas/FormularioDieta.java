@@ -69,6 +69,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jLdni = new javax.swing.JLabel();
     jTdni = new javax.swing.JTextField();
     jBbuscar = new javax.swing.JButton();
+    jLabel5 = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
     jLabel7 = new javax.swing.JLabel();
@@ -110,6 +111,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jRmujer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
     jRmujer.setForeground(new java.awt.Color(0, 0, 0));
     jRmujer.setText("F");
+    jRmujer.setEnabled(false);
     jRmujer.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jRmujerActionPerformed(evt);
@@ -119,6 +121,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jRhombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
     jRhombre.setForeground(new java.awt.Color(0, 0, 0));
     jRhombre.setText("M");
+    jRhombre.setEnabled(false);
     jRhombre.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jRhombreActionPerformed(evt);
@@ -161,6 +164,10 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         }
     });
 
+    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+    jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel5.setText("cm");
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
@@ -187,7 +194,9 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTpeso, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(jTaltura)))
-                    .addGap(72, 72, 72)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel5)
+                    .addGap(25, 25, 25)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addComponent(jLabel10)
@@ -234,7 +243,8 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
                 .addComponent(jTimc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -351,7 +361,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBsalir))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(0, 99, Short.MAX_VALUE))
+            .addGap(0, 113, Short.MAX_VALUE))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,6 +568,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

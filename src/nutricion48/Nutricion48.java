@@ -16,6 +16,7 @@ import Entidades.DietaComida;
 import Entidades.Paciente;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Month;
 
 /**
@@ -176,7 +177,7 @@ public class Nutricion48 {
 //       System.out.println("Calorias: "+dietaCo.getComida().getCantCalorias()+" Cal");
 //       System.out.println("-----------------------------------------");
 //     }
-
+        
     }   
 }
 

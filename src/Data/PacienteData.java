@@ -29,7 +29,7 @@ public class PacienteData {
     //DAR ALTA A UN PACIENTE.
     
     public void altaPaciente(Paciente paciente){
-    String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono, sexo, estado) VALUES (?,?,?,?,?)";
+    String sql = "INSERT INTO paciente (nombre, dni, domicilio, telefono, estado, sexo) VALUES (?,?,?,?,?,?)";
     
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -37,8 +37,8 @@ public class PacienteData {
             ps.setInt(2, paciente.getDni());
             ps.setString(3, paciente.getDomicilio());
             ps.setString(4, paciente.getTelefono());
-            ps.setString(5, paciente.getSexo());
-            ps.setBoolean(6,paciente.isEstado());
+            ps.setBoolean(5,paciente.isEstado());
+            ps.setString(6, paciente.getSexo());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -49,7 +49,7 @@ public class PacienteData {
             }
             ps.close();
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salió mal" +ex);
+            JOptionPane.showMessageDialog(null, "Algo salió mal");
         }   
     }
     
