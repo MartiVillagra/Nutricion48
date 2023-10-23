@@ -109,7 +109,6 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jLabel12.setText("Sexo");
 
     jRmujer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-    jRmujer.setForeground(new java.awt.Color(0, 0, 0));
     jRmujer.setText("F");
     jRmujer.setEnabled(false);
     jRmujer.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +118,6 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     });
 
     jRhombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-    jRhombre.setForeground(new java.awt.Color(0, 0, 0));
     jRhombre.setText("M");
     jRhombre.setEnabled(false);
     jRhombre.addActionListener(new java.awt.event.ActionListener() {
@@ -370,7 +368,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                     .addGap(356, 356, 356))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(210, 210, 210))))
+                    .addGap(212, 212, 212))))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,9 +379,9 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jBimc)
-            .addGap(42, 42, 42)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jBagregar)
                 .addComponent(jBmodificar)
@@ -483,6 +481,32 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         
     }
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
+        
+        if(jTid.getText().isEmpty() || jTaltura.getText().isEmpty() || jTdni.getText().isEmpty() || jTpeso.getText().isEmpty() || jTpesoF.getText().isEmpty()
+                || jTdieta.getText().isEmpty() || jTimc.getText().isEmpty() || jDfechaF.getDate() == null || jDfechaI.getDate() == null){
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos");
+        }
+        try {
+        int idpac = Integer.parseInt(jTid.getText());
+        DietaData dietaData = new DietaData();
+        Dieta dieta = dietaData.buscarDietaxId(idpac);
+        int idDieta = dieta.getIdDieta();
+        String dni = jTdni.getText();
+        double pesoi = Double.parseDouble(jTpeso.getText());
+        double pesoF = Double.parseDouble(jTpesoF.getText());
+        LocalDate fechaI = jDfechaI.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaF = jDfechaF.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String nombrediet = jTdieta.getText();
+        double altura = Double.parseDouble(jTaltura.getText());
+        double imc = Double.parseDouble(jTimc.getText());
+        Dieta dieta1 = new Dieta(idDieta, nombrediet, idpac, fechaI, pesoi, pesoF, fechaF, altura, imc);
+        
+        
+        dietaData.modificarDieta(dieta1);
+        } catch (NumberFormatException nf){
+        JOptionPane.showMessageDialog(null, "Ingrese sólo caracteres numéricos");
+        }
+        
         
     }//GEN-LAST:event_jBmodificarActionPerformed
 
