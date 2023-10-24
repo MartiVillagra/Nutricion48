@@ -139,7 +139,7 @@ public class Nutricion48 {
 //---------------------- DIETA POR ID ------------------------------------------
 
 //          DietaData dietaData = new DietaData();
-//          System.out.println(dietaData.buscarDietaxId(1).toString());
+//          System.out.println(dietaData.buscarDietaxId(12).toString());
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 

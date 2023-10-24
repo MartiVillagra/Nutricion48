@@ -128,7 +128,7 @@ public class DietaData {
             dieta.setPesoFinal(rs.getDouble("pesoFinal"));
             dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
             dieta.setAltura(rs.getDouble("altura"));
-//            dieta.setSexo(rs.getString("sexo"));
+
             dieta.setImc(rs.getDouble("imc"));
             } else {
             JOptionPane.showMessageDialog(null, "Dieta no encontrada.");

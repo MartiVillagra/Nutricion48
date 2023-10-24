@@ -300,6 +300,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
 
     jBeliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
     jBeliminar.setText("Eliminar");
+    jBeliminar.setEnabled(false);
     jBeliminar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jBeliminarActionPerformed(evt);
@@ -308,6 +309,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
 
     jBmodificar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
     jBmodificar.setText("Modificar");
+    jBmodificar.setEnabled(false);
     jBmodificar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jBmodificarActionPerformed(evt);
@@ -412,7 +414,8 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
        
         try {
-            if (!jTpeso.getText().isEmpty() && !jTaltura.getText().isEmpty() && !jTid.getText().isEmpty() && jDfechaF.getDate() != null) {
+            if (!jTpeso.getText().isEmpty() && !jTaltura.getText().isEmpty() && !jTid.getText().isEmpty() && jDfechaF.getDate() != null
+                   ) {
                 int idPaciente = Integer.parseInt(jTid.getText());
                 String nombre = jTdieta.getText();
                 double pesoI = Double.parseDouble(jTpeso.getText());
@@ -428,20 +431,18 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                     sexo="M";
                 }
                 double imc=Double.parseDouble(jTimc.getText());
+                if( fechaF.isBefore(fechaI)){
+                    JOptionPane.showMessageDialog(null, "Revisa la fecha final ");
+                }else {
                 DietaData dietaData = new DietaData();
                 Dieta dieta = new Dieta(nombre, idPaciente, fechaI, pesoI, pesoF, fechaF, altura, imc);
                 dietaData.altaDieta(dieta);
-                jTpeso.setText("");
-                jTaltura.setText("");
-                jTid.setText("");
-                jTdieta.setText("");
-                jTimc.setText("");
-                jTpesoF.setText("");
-                jRmujer.setSelected(false);
-                jRhombre.setSelected(false);
-                jDfechaF.setDate(null);
+                 borrarCampos();
+                 jTdni.setText("");
+                 jTid.setText("");
+                 jBagregar.setEnabled(false);}
             } else {
-                JOptionPane.showMessageDialog(null, "No deben haber espacios vacios O controle la fecha final");
+                JOptionPane.showMessageDialog(null, "No deben haber espacios vacios o controle la fecha ");
             }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "ingrese solo caracteres numericos");
@@ -449,7 +450,16 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBagregarActionPerformed
     
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        // TODO add your handling code here:
+   DietaData dietadata = new DietaData();
+   int idpaciente= Integer.parseInt(jTid.getText());
+   Dieta dieta = dietadata.buscarDietaPorPaciente(idpaciente);
+   if(dieta!=null){
+       int iddieta = dieta.getIdDieta();
+       dietadata.eliminarDieta(iddieta);
+       borrarCampos();
+       jTdni.setText("");
+       jTid.setText("");
+   }
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jRhombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRhombreActionPerformed
@@ -489,9 +499,9 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         try {
         int idpac = Integer.parseInt(jTid.getText());
         DietaData dietaData = new DietaData();
-        Dieta dieta = dietaData.buscarDietaxId(idpac);
+        Dieta dieta = dietaData.buscarDietaPorPaciente(idpac);
         int idDieta = dieta.getIdDieta();
-        String dni = jTdni.getText();
+     
         double pesoi = Double.parseDouble(jTpeso.getText());
         double pesoF = Double.parseDouble(jTpesoF.getText());
         LocalDate fechaI = jDfechaI.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -500,9 +510,16 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         double altura = Double.parseDouble(jTaltura.getText());
         double imc = Double.parseDouble(jTimc.getText());
         Dieta dieta1 = new Dieta(idDieta, nombrediet, idpac, fechaI, pesoi, pesoF, fechaF, altura, imc);
-        
+          if( fechaF.isBefore(fechaI)){
+                    JOptionPane.showMessageDialog(null, "Revisa la fecha final ");
+          }else{
         
         dietaData.modificarDieta(dieta1);
+        borrarCampos();
+        jTdni.setText("");
+        jTid.setText("");
+        
+        jBmodificar.setEnabled(false);}
         } catch (NumberFormatException nf){
         JOptionPane.showMessageDialog(null, "Ingrese sólo caracteres numéricos");
         }
@@ -514,6 +531,8 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         PacienteData pacData = new PacienteData();
         DietaData dieData= new DietaData();
         if (!jTdni.getText().isEmpty()) {
+           
+       
             int dni = Integer.parseInt(jTdni.getText());
 
             if (pacData.buscarPacientexDNI(dni) != null) {
@@ -522,9 +541,15 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 int id= Integer.parseInt(jTid.getText());
                 if ( dieData.buscarDietaPorPaciente(id)==null) {
                       jBagregar.setEnabled(true);
+                      jBbuscar.setEnabled(false); 
+                      jBmodificar.setEnabled(false);
+                       jBeliminar.setEnabled(false);
                     }
                 if ( dieData.buscarDietaPorPaciente(id)!=null) {
                       jBbuscar.setEnabled(true); 
+                      jBmodificar.setEnabled(true);
+                      jBagregar.setEnabled(false);
+                      jBeliminar.setEnabled(true);
                     }
 
                 if (pacData.buscarPacientexDNI(dni).getSexo().equals("M")) {
@@ -541,15 +566,11 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 jRhombre.setSelected(false);
                 jBbuscar.setEnabled(false);
                 jBagregar.setEnabled(false);
+                jBmodificar.setEnabled(false);
+                 jBeliminar.setEnabled(false);
                 borrarCampos();    
             }
-        } else {
-            jTid.setText("");
-            jRmujer.setSelected(false);
-            jRhombre.setSelected(false);
-            jBbuscar.setEnabled(false);
-            borrarCampos();
-        }
+        } 
     }//GEN-LAST:event_jTdniKeyReleased
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
@@ -674,7 +695,8 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         
     }
     public void borrarCampos(){
-        
+//            jTdni.setText("");
+//            jTid.setText("");
            jTpeso.setText("");
            jTpesoF.setText("");
            jTaltura.setText("");
