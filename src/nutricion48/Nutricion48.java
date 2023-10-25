@@ -157,7 +157,7 @@ public class Nutricion48 {
  
 //      DietaComidaData dietacomi =new DietaComidaData();   
 //      Comida comi =new Comida(5,"ARROZ","con papas",500,true);
-//      Dieta diet =new Dieta(2,"CARBON ",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2));
+//      Dieta dieta = new Dieta(10, "cal",1,LocalDate.of(2023, Month.MARCH, 15),50,75,LocalDate.of(2023, Month.AUGUST, 2), 20.4, 150);
 //      DietaComida dieta1 =new DietaComida(4,comi,diet);
 //      dietacomi.ModificarDietaComida(dieta1);
 
@@ -177,7 +177,13 @@ public class Nutricion48 {
 //       System.out.println("Calorias: "+dietaCo.getComida().getCantCalorias()+" Cal");
 //       System.out.println("-----------------------------------------");
 //     }
-        
+//----------------------Eliminar dietaComida por el id de una Dieta
+//       DietaComidaData dietaComidaData = new DietaComidaData();
+//       dietaComidaData.eliminarDietaComidaxDieta(10);
+
+//        DietaComidaData dietaComidaData = new DietaComidaData();
+//        System.out.println(dietaComidaData.listarComidasPorDieta(16));
+       
     }   
 }
 

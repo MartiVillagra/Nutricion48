@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
+import Data.DietaComidaData;
 import Data.DietaData;
 import Data.PacienteData;
 import Entidades.Dieta;
@@ -451,14 +452,19 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
    DietaData dietadata = new DietaData();
+   DietaComidaData dietaComidaData = new DietaComidaData();
    int idpaciente= Integer.parseInt(jTid.getText());
    Dieta dieta = dietadata.buscarDietaPorPaciente(idpaciente);
    if(dieta!=null){
        int iddieta = dieta.getIdDieta();
+       dietaComidaData.eliminarDietaComidaxDieta(iddieta);
        dietadata.eliminarDieta(iddieta);
        borrarCampos();
        jTdni.setText("");
        jTid.setText("");
+       jBeliminar.setEnabled(false);
+       jBmodificar.setEnabled(false);
+       jBbuscar.setEnabled(false);
    }
     }//GEN-LAST:event_jBeliminarActionPerformed
 

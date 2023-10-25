@@ -42,9 +42,10 @@ public class Menu extends javax.swing.JFrame {
     jMcontrolPeso = new javax.swing.JMenuItem();
     jMenu2 = new javax.swing.JMenu();
     jMenuItem4 = new javax.swing.JMenuItem();
-    jMenu3 = new javax.swing.JMenu();
+    jMAlimentacion = new javax.swing.JMenu();
     jMenuItem2 = new javax.swing.JMenuItem();
     jMenuItem1 = new javax.swing.JMenuItem();
+    jMenuItem6 = new javax.swing.JMenuItem();
     jMenu4 = new javax.swing.JMenu();
 
     jMenuItem5.setText("jMenuItem5");
@@ -55,11 +56,11 @@ public class Menu extends javax.swing.JFrame {
     escritorio.setLayout(escritorioLayout);
     escritorioLayout.setHorizontalGroup(
         escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1326, Short.MAX_VALUE)
+        .addGap(0, 1493, Short.MAX_VALUE)
     );
     escritorioLayout.setVerticalGroup(
         escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 697, Short.MAX_VALUE)
+        .addGap(0, 722, Short.MAX_VALUE)
     );
 
     jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/paciente.png"))); // NOI18N
@@ -94,7 +95,12 @@ public class Menu extends javax.swing.JFrame {
 
     jMenuBar1.add(jMenu2);
 
-    jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comida-sana.png"))); // NOI18N
+    jMAlimentacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comida-sana.png"))); // NOI18N
+    jMAlimentacion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMAlimentacionActionPerformed(evt);
+        }
+    });
 
     jMenuItem2.setText("Tipo de Comida");
     jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +108,7 @@ public class Menu extends javax.swing.JFrame {
             jMenuItem2ActionPerformed(evt);
         }
     });
-    jMenu3.add(jMenuItem2);
+    jMAlimentacion.add(jMenuItem2);
 
     jMenuItem1.setText("Tipo de Dieta");
     jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,9 +116,12 @@ public class Menu extends javax.swing.JFrame {
             jMenuItem1ActionPerformed(evt);
         }
     });
-    jMenu3.add(jMenuItem1);
+    jMAlimentacion.add(jMenuItem1);
 
-    jMenuBar1.add(jMenu3);
+    jMenuItem6.setText("Alimentación");
+    jMAlimentacion.add(jMenuItem6);
+
+    jMenuBar1.add(jMAlimentacion);
 
     jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
     jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,7 +144,9 @@ public class Menu extends javax.swing.JFrame {
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
     );
 
     pack();
@@ -198,6 +209,16 @@ public class Menu extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jMcontrolPesoActionPerformed
 
+    private void jMAlimentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlimentacionActionPerformed
+         //Formulario De lista De comidas
+    escritorio.removeAll();
+    escritorio.repaint();
+    ComidaPorDieta cpd = new ComidaPorDieta();
+    cpd.setVisible(true);
+    escritorio.add(cpd);
+    escritorio.moveToFront(cpd);
+    }//GEN-LAST:event_jMAlimentacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,10 +256,10 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMAlimentacion;
     private javax.swing.JMenuItem jMcontrolPeso;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -246,5 +267,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }

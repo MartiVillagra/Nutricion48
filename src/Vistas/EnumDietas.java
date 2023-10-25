@@ -9,14 +9,9 @@ package Vistas;
  * @author Loboplateado77
  */
 public enum EnumDietas {
-    Dieta_omnívora,
-    Dieta_vegetariana,
-    Dieta_mediterránea,
-    Dieta_modificada_en_calorías,
-    Dieta_modificada_en_proteína,
-    Dieta_libre_de_gluten,
-    Dieta_DASH
- 
-   
+    Calorica,
+    Proteica,
+    Mediterránea,
+    Hipocalorica,
 }
 
