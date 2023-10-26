@@ -119,6 +119,11 @@ public class Menu extends javax.swing.JFrame {
     jMAlimentacion.add(jMenuItem1);
 
     jMenuItem6.setText("Alimentación");
+    jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem6ActionPerformed(evt);
+        }
+    });
     jMAlimentacion.add(jMenuItem6);
 
     jMenuBar1.add(jMAlimentacion);
@@ -200,24 +205,29 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMcontrolPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcontrolPesoActionPerformed
     //Formulario Peso paciente
-    escritorio.removeAll();
-    escritorio.repaint();
-    PesoPaciente pp = new PesoPaciente();
-    pp.setVisible(true);
-    escritorio.add(pp);
-    escritorio.moveToFront(pp);
+        escritorio.removeAll();
+        escritorio.repaint();
+        PesoPaciente pp = new PesoPaciente();
+        pp.setVisible(true);
+        escritorio.add(pp);
+        escritorio.moveToFront(pp);
     
     }//GEN-LAST:event_jMcontrolPesoActionPerformed
 
     private void jMAlimentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlimentacionActionPerformed
          //Formulario De lista De comidas
-    escritorio.removeAll();
-    escritorio.repaint();
-    ComidaPorDieta cpd = new ComidaPorDieta();
-    cpd.setVisible(true);
-    escritorio.add(cpd);
-    escritorio.moveToFront(cpd);
+
     }//GEN-LAST:event_jMAlimentacionActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ComidaPorDieta cpd = new ComidaPorDieta();
+        cpd.setVisible(true);
+        escritorio.add(cpd);
+        escritorio.moveToFront(cpd);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
