@@ -45,6 +45,14 @@ public class Dieta {
         this.imc = imc;
     }
 
+    public Dieta(int idPaciente, double pesoInicial, double altura) {
+        this.idPaciente = idPaciente;
+        this.pesoInicial = pesoInicial;
+        this.altura = altura;
+    }
+
+    
+    
     public Dieta() {
     }
 
