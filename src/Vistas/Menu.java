@@ -56,11 +56,11 @@ public class Menu extends javax.swing.JFrame {
     escritorio.setLayout(escritorioLayout);
     escritorioLayout.setHorizontalGroup(
         escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1493, Short.MAX_VALUE)
+        .addGap(0, 1499, Short.MAX_VALUE)
     );
     escritorioLayout.setVerticalGroup(
         escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 722, Short.MAX_VALUE)
+        .addGap(0, 716, Short.MAX_VALUE)
     );
 
     jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/paciente.png"))); // NOI18N
@@ -142,16 +142,15 @@ public class Menu extends javax.swing.JFrame {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addComponent(escritorio)
             .addContainerGap())
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(escritorio)
+            .addContainerGap())
     );
 
     pack();

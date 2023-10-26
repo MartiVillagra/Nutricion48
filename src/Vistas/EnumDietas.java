@@ -12,6 +12,6 @@ public enum EnumDietas {
         Calorica,
         Proteica,
         Mediterránea,
-         Hipocalorica,
+        Hipocalorica,
 }
 
