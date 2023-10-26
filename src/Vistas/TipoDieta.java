@@ -15,17 +15,17 @@ import javax.swing.text.EditorKit ;
 public class TipoDieta extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel(){
     
-    public boolean isCellEditable(int f,int c){
-    //si pongo false entonces las celdas no son editables
+        public boolean isCellEditable(int f,int c){
+        //si pongo false entonces las celdas no son editables
         return false;  
-    }
-     };  
+        }
+    };  
     /**
      * Creates new form Comida
      */
     public TipoDieta() {
         initComponents();
-        cargarCombo();
+       // cargarCombo();
     }
 
     /**
@@ -224,31 +224,31 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTdieta;
     // End of variables declaration//GEN-END:variables
-public void cargarCombo(){
-
-            jCBtipoDieta.addItem("");
-            EnumDietas[] dietaList = EnumDietas.values();
-            for( EnumDietas dieta: dietaList){
-            jCBtipoDieta.addItem(String.valueOf(dieta));
-        }
-}
+//public void cargarCombo(){
+//
+//            jCBtipoDieta.addItem("");
+//            EnumDietas[] dietaList = EnumDietas.values();
+//            for( EnumDietas dieta: dietaList){
+//            jCBtipoDieta.addItem(String.valueOf(dieta));
+//        }
+//}
 
     // carga -> cabecera de la tabla
-      private void armarCabecera(){
-    
-        modelo.addColumn("Comida");
-        modelo.addColumn("Descripcion");
-        modelo.addColumn("Tipo de Comida");
-  
-    jTdieta.setModel(modelo);
-    }
-
-    // se borra la fila en la tabla
-    private void borrarFila(){
-        int f=jTdieta.getRowCount()-1;
-        for(;f>=0;f--){
-            modelo.removeRow(f);
-        }
-    }
+//      private void armarCabecera(){
+//    
+//        modelo.addColumn("Comida");
+//        modelo.addColumn("Descripcion");
+//        modelo.addColumn("Tipo de Comida");
+//  
+//    jTdieta.setModel(modelo);
+//    }
+//
+//    // se borra la fila en la tabla
+//    private void borrarFila(){
+//        int f=jTdieta.getRowCount()-1;
+//        for(;f>=0;f--){
+//            modelo.removeRow(f);
+//        }
+//    }
 
 }

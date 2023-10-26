@@ -238,8 +238,8 @@ public class TipoComida extends javax.swing.JInternalFrame {
     jLabel5.setForeground(new java.awt.Color(255, 255, 51));
     jLabel5.setText("CALORIAS");
 
-    jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel6.setForeground(new java.awt.Color(0, 153, 153));
+    jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+    jLabel6.setForeground(new java.awt.Color(255, 255, 102));
     jLabel6.setText("Calorias");
 
     jTcalorias2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -276,11 +276,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(36, 36, 36)
-                            .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(39, 39, 39)
+                            .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(206, 206, 206)
                             .addComponent(jLabel6)
@@ -292,9 +292,9 @@ public class TipoComida extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(360, 360, 360)
-                            .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(55, 55, 55)
                             .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(219, 219, 219)
@@ -344,7 +344,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(8, Short.MAX_VALUE))
+            .addContainerGap(7, Short.MAX_VALUE))
     );
 
     pack();
@@ -576,6 +576,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
         jTcalorias.setText("");
         jTdetalle.setText("");
         jbEliminar.setEnabled(false);
+        jTcalorias2.setText("");
     }
 
 }
