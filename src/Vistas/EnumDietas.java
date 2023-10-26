@@ -9,9 +9,9 @@ package Vistas;
  * @author Loboplateado77
  */
 public enum EnumDietas {
-    Calorica,
-    Proteica,
-    Mediterránea,
-    Hipocalorica,
+        Calorica,
+        Proteica,
+        Mediterránea,
+         Hipocalorica,
 }
 

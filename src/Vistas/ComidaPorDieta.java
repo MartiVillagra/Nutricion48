@@ -198,7 +198,7 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 // carga -> cabecera de la tabla
-      private void armarCabecera(){
+    private void armarCabecera(){
     
         modelo.addColumn("Comida");
         modelo.addColumn("Descripcion");
@@ -214,7 +214,8 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         }
     }
     
-    private void cargarTabla(){
+    private void cargarTabla() {
+        
         borrarFila();
         int dni = Integer.parseInt(jTDni.getText());
         PacienteData pacData = new PacienteData();
@@ -222,12 +223,14 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         DietaData dietaData = new DietaData();
         DietaComidaData dieComiData = new DietaComidaData();
         int idPac = paciente.getIdPaciente();
-        if (dietaData.buscarDietaPorPaciente(idPac)!=null) {
+        
+        if (dietaData.buscarDietaPorPaciente(idPac) != null) {
             Dieta dieta = dietaData.buscarDietaPorPaciente(idPac);
-            int idDieta= dieta.getIdDieta();
+            int idDieta = dieta.getIdDieta();
+            
             for (Comida comida1 : dieComiData.listarComidasPorDieta(idDieta)) {
-            modelo.addRow(new Object[]{comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
-         }
+                modelo.addRow(new Object[]{comida1.getNombre(), comida1.getDetalle(), comida1.getCantCalorias()});
+            }
         }
     }
 }

@@ -346,28 +346,31 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             int dni = Integer.parseInt(jTdni.getText());
             String telefono = jTtelefono.getText();
             String sexo = "";
+            // definir sexo  si es femenino o masculino
             if (jRMujer.isSelected() == true) {
                 sexo = "F";
-            }
-            if (jRHombre.isSelected() == true) {
+            }else{
+            //if (jRHombre.isSelected() == true) {
                 sexo = "M";
             }
+            //hacer mientras la cadena jTNomYApe tenga ingresado un numero
             do {
-                if (contiene(jTNomYApe.getText()) == true) {
+                if (contiene(jTNomYApe.getText()) == true) {// se valida que no ingresen numeros
                     JOptionPane.showMessageDialog(null, "Verifique su nombre");
                     jTNomYApe.setText("");
                 } else if (contiene(jTNomYApe.getText()) != true) {
-
+                    // si existe DNI
                     if (pacData.buscarPacientexDNI(dni) != null) {
                         JOptionPane.showMessageDialog(null, "Ya existe ese dni");
                         borraCampos();
                     } else {
-                        if (sexo == "") {
+                        // si no existe DNI se cargan datos
+                        if (sexo == "") {//valida que no sea nula seleccion de sexo
                             JOptionPane.showMessageDialog(null, "Seleccione sexo");
-                        } else {
+                        } else {//sexo seleccionado/ valida que tel no tenga letras
                             if (contieneSoloNumeros(telefono) == false) {
                                 JOptionPane.showMessageDialog(null, "verifique el telefono");
-                            } else {
+                            } else {//tel cargado bien//guarda paciente nuevo
                                 Paciente pac = new Paciente(nombre, dni, domicilio, telefono, true, sexo);
                                 pacData.altaPaciente(pac);
                                 borraCampos();
@@ -400,13 +403,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 String sexo = "";
                 if (jRMujer.isSelected() == true) {
                     sexo = "F";
-                }
-                if (jRHombre.isSelected() == true) {
+                }else{
+                //if (jRHombre.isSelected() == true) {
                     sexo = "M";
                 }
+                //si tel no tiene letras y nomyApe no tiene numeros semodifica paciente
                 if (contieneSoloNumeros(jTtelefono.getText()) == true && contiene(nomyApe) == false) {
                     String telefono = jTtelefono.getText();
-
                     Paciente pac = new Paciente(id, nomyApe, dni, domicilio, telefono, true, sexo);
                     PacienteData pacDat = new PacienteData();
                     pacDat.modificarPaciente(pac);
@@ -435,6 +438,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         try {
             int dni = Integer.parseInt(jTdni.getText());
             PacienteData pacData = new PacienteData();
+            // se busca paciente por DNI / si existe se carga los datos
             if (pacData.buscarPacientexDNI(dni) != null) {
                 if (!jTdni.getText().isEmpty()) {
 
@@ -446,8 +450,8 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     if (pac.getSexo().equals("M")) {
                         jRHombre.setSelected(true);
                         jRMujer.setSelected(false);
-                    }
-                    if (pac.getSexo().equals("F")) {
+                    }else{
+                    //if (pac.getSexo().equals("F")) {
                         jRMujer.setSelected(true);
                         jRHombre.setSelected(false);
                     }
@@ -466,11 +470,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private void jTdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyReleased
         PacienteData pacData = new PacienteData();
         try {
+            // Limpiar por Dni
             if (!jTdni.getText().isEmpty()) {
                 jBLimpiar.setEnabled(true);
             } else {
                 jBLimpiar.setEnabled(false);
             }
+            //Eliminar por Dni
             if (!jTdni.getText().isEmpty()) {
                 int dni = Integer.parseInt(jTdni.getText());
                 if (pacData.buscarPacientexDNI(dni) != null) {
@@ -481,7 +487,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             } else {
                 jBEliminar.setEnabled(false);
             }
-
+            //Modificar por Dni
             if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                     && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
 
@@ -657,7 +663,8 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    // Verifica que loingresado sean solo caracteres numericos
+    
     public static boolean contieneSoloNumeros(String cadena) {
         // Si la cadena está vacía, debemos devolver false
         if (cadena.length() == 0) {

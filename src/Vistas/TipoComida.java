@@ -3,40 +3,43 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
-import Data.ComidaData;
-import Data.ComidaData;
-import Entidades.Comida;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.text.EditorKit ;
+
+    import Data.ComidaData;
+    import Data.ComidaData;
+    import Entidades.Comida;
+    import java.awt.Graphics;
+    import java.awt.Image;
+    import java.util.ArrayList;
+    import javax.swing.ImageIcon;
+    import javax.swing.JOptionPane;
+    import javax.swing.table.DefaultTableModel;
+    import javax.swing.text.EditorKit;
+
 /**
  *
  * @author Loboplateado77
  */
 public class TipoComida extends javax.swing.JInternalFrame {
-    private DefaultTableModel modelo = new DefaultTableModel(){
-        public boolean isCellEditable(int f,int c){
-    //si pongo false entonces las celdas no son editables
-        return false;  
-    }
-     };  
-    private DefaultTableModel modelo2 = new DefaultTableModel(){
-        public boolean isCellEditable(int f,int c){
-    //si pongo false entonces las celdas no son editables
-        return false;  
-    }
-     };  
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            //si pongo false entonces las celdas no son editables
+            return false;
+        }
+    };
+    private DefaultTableModel modelo2 = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            //si pongo false entonces las celdas no son editables
+            return false;
+        }
+    };
+
     /**
      * Creates new form ComponentesComida
      */
     public TipoComida() {
         initComponents();
         armarCabecera();
-       
         cargarComidas();
         armarCabecera2();
     }
@@ -348,42 +351,40 @@ public class TipoComida extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-           // salir
+        // salir
         setVisible(false);
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-       ComidaData comiData1 = new ComidaData();
+        ComidaData comiData1 = new ComidaData();
         Comida comi1 = comiData1.buscarComidaxNombre(jTnombre.getText());
         if (comi1 == null) {
-        if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() || jTcalorias.getText().isEmpty()){
-        
-        JOptionPane.showMessageDialog(this,"compruebe los campos vacíos"); 
-    }else {
-       if((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText())== true)){
-        JOptionPane.showMessageDialog(this, "revise Nombre/Detalle");}
-       else {
-           String nombre = jTnombre.getText();
-      String detalle = jTdetalle.getText();
-       
-       
-       try{
-      
-      int calorias =Integer.parseInt(jTcalorias.getText());
-       Comida comida =new Comida(nombre,detalle,calorias,true);
-          ComidaData comidata =new ComidaData();
-       comidata.altaComida(comida);
-       cargarComidas();
-       jTnombre.setText("");
-       jTcalorias.setText("");
-       jTdetalle.setText("");
-       jbAgregar.setEnabled(false);
-      } catch(NumberFormatException nfe){
-          JOptionPane.showMessageDialog(null, "ingrese caracter numericos en calorias");
-      }
-       } }
-        }else{
-            JOptionPane.showMessageDialog(this, "Ya existe la comida "+jTnombre.getText());
+            if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() || jTcalorias.getText().isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "compruebe los campos vacíos");
+            } else {
+                if ((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText()) == true)) {
+                    JOptionPane.showMessageDialog(this, "revise Nombre/Detalle");
+                } else {
+                    String nombre = jTnombre.getText();
+                    String detalle = jTdetalle.getText();
+
+                    try {
+
+                        int calorias = Integer.parseInt(jTcalorias.getText());
+                        Comida comida = new Comida(nombre, detalle, calorias, true);
+                        ComidaData comidata = new ComidaData();
+                        comidata.altaComida(comida);
+                        cargarComidas();
+                        borrarCampos();
+                        jbAgregar.setEnabled(false);
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(null, "ingrese caracter numericos en calorias");
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya existe la comida " + jTnombre.getText());
         }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
@@ -391,14 +392,11 @@ public class TipoComida extends javax.swing.JInternalFrame {
         // ELIMINAR COMIDA
         int fila = jTcomida.getSelectedRow();
         if (fila != -1) {
-        int idComida = (int) modelo.getValueAt(fila, 0);
-        ComidaData comidaData = new ComidaData();
-        comidaData.eliminarComida(idComida);
-        cargarComidas();
-        jTnombre.setText("");
-        jTcalorias.setText("");
-        jTdetalle.setText("");
-        jbEliminar.setEnabled(false);
+            int idComida = (int) modelo.getValueAt(fila, 0);
+            ComidaData comidaData = new ComidaData();
+            comidaData.eliminarComida(idComida);
+            cargarComidas();
+            borrarCampos();    
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
@@ -407,62 +405,62 @@ public class TipoComida extends javax.swing.JInternalFrame {
         if (fila != -1) {
             jbModificar.setEnabled(true);
             jbEliminar.setEnabled(true);
-        int idComida = (int) modelo.getValueAt(fila, 0);
-        ComidaData comiData = new ComidaData();
-        Comida comida = comiData.buscarComidaxId(idComida);
-        jTnombre.setText(comida.getNombre());
-        jTcalorias.setText(comida.getCantCalorias()+"");
-        jTdetalle.setText(comida.getDetalle());
+            int idComida = (int) modelo.getValueAt(fila, 0);
+            ComidaData comiData = new ComidaData();
+            Comida comida = comiData.buscarComidaxId(idComida);
+            jTnombre.setText(comida.getNombre());
+            jTcalorias.setText(comida.getCantCalorias() + "");
+            jTdetalle.setText(comida.getDetalle());
         }
-        
+
     }//GEN-LAST:event_jTcomidaMouseClicked
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        
+
         int fila = jTcomida.getSelectedRow();
         if (fila != -1) {
-            
-        int idComida = (int) modelo.getValueAt(fila, 0);
-        if (jTnombre.getText().isEmpty() && jTdetalle.getText().isEmpty() && jTcalorias.getText().isEmpty()){
-        JOptionPane.showMessageDialog(this, "Hay campos vacios");
-        
+
+            int idComida = (int) modelo.getValueAt(fila, 0);
+            if (jTnombre.getText().isEmpty() && jTdetalle.getText().isEmpty() && jTcalorias.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Hay campos vacios");
+
+            }
+            if ((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText()) == true)) {
+                JOptionPane.showMessageDialog(this, "Revise nombre/detalle");
+            } else {
+                try {
+                    String nombre = jTnombre.getText();
+                    String detalle = jTdetalle.getText();
+                    int calorias = Integer.parseInt(jTcalorias.getText());
+
+                    Comida comida = new Comida(idComida, nombre, detalle, calorias, true);
+                    ComidaData comiData = new ComidaData();
+
+                    comiData.modificarComida(comida);
+                    cargarComidas();
+                    borrarCampos();
+                    jbModificar.setEnabled(false);
+                   
+                } catch (NumberFormatException nf) {
+                    JOptionPane.showMessageDialog(this, "Calorías sólo recibe números");
+                }
+            }
         }
-        if((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText())== true)){
-        JOptionPane.showMessageDialog(this, "Revise nombre/detalle");}
-       else {
-        try {
-        String nombre = jTnombre.getText();
-        String detalle = jTdetalle.getText();    
-        int calorias = Integer.parseInt(jTcalorias.getText());
-        
-        Comida comida = new Comida(idComida, nombre, detalle, calorias, true);
-        ComidaData comiData = new ComidaData();
-        
-        comiData.modificarComida(comida);
-        cargarComidas();
-        jTnombre.setText("");
-        jTcalorias.setText("");
-        jTdetalle.setText("");
-        jbModificar.setEnabled(false);
-        jbEliminar.setEnabled(false);
-        } catch (NumberFormatException nf){
-        JOptionPane.showMessageDialog(this, "Calorías sólo recibe números");
-        }
-        }}
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jTcalorias2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcalorias2KeyReleased
-        try{
-        if (!jTcalorias2.getText().isEmpty()) {
-        int calorias = Integer.parseInt(jTcalorias2.getText());
-        borrarFila2();
-        Comida comida =new Comida();
-       ComidaData comidata = new ComidaData();
-         for (Comida comida1 : comidata.listaDeComidasxCalorias(calorias)) {
-            modelo2.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
-         }
-      jComidas2.setModel(modelo2);
-        }}catch(NumberFormatException nf){
+        try {
+            if (!jTcalorias2.getText().isEmpty()) {
+                int calorias = Integer.parseInt(jTcalorias2.getText());
+                borrarFila2();
+                Comida comida = new Comida();
+                ComidaData comidata = new ComidaData();
+                for (Comida comida1 : comidata.listaDeComidasxCalorias(calorias)) {
+                    modelo2.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(), comida1.getDetalle(), comida1.getCantCalorias()});
+                }
+                jComidas2.setModel(modelo2);
+            }
+        } catch (NumberFormatException nf) {
             JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
             jTcalorias2.setText("");
         }
@@ -470,30 +468,27 @@ public class TipoComida extends javax.swing.JInternalFrame {
 
     private void jTnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyReleased
         if (!jTnombre.getText().isEmpty()) {
-        String nombre=jTnombre.getText();
-        ComidaData comiData = new ComidaData();
-        Comida comida = comiData.buscarComidaxNombre(nombre);
-        if (comida==null) {
-            jbAgregar.setEnabled(true);
-        }else{
-        if (comida!=null) {
-            jbAgregar.setEnabled(false);
-        }    
-        }
-        }else{
+            String nombre = jTnombre.getText();
+            ComidaData comiData = new ComidaData();
+            Comida comida = comiData.buscarComidaxNombre(nombre);
+            if (comida == null) {
+                jbAgregar.setEnabled(true);
+            } else {
+                if (comida != null) {
+                    jbAgregar.setEnabled(false);
+                }
+            }
+        } else {
             jbAgregar.setEnabled(false);
         }
     }//GEN-LAST:event_jTnombreKeyReleased
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         cargarComidas();
-        jTnombre.setText("");
-        jTcalorias.setText("");
-        jTdetalle.setText("");
+        borrarCampos();
         jbModificar.setEnabled(false);
-        jbEliminar.setEnabled(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -522,65 +517,65 @@ public class TipoComida extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalir;
     // End of variables declaration//GEN-END:variables
 
-   
-    
     // carga -> cabecera de la tabla
-      private void armarCabecera(){
-    
-       // modelo.addColumn("Codigo");
-         modelo.addColumn("idComida");
+    private void armarCabecera() {
+
+        modelo.addColumn("idComida");
         modelo.addColumn("Nombre");
         modelo.addColumn("Detalle");
         modelo.addColumn("Cant. Calorias");
-        
-        
         jTcomida.setModel(modelo);
     }
-      private void armarCabecera2(){
-    
-       // modelo.addColumn("Codigo");
-         modelo2.addColumn("idComida");
+
+    private void armarCabecera2() {
+
+        modelo2.addColumn("idComida");
         modelo2.addColumn("Nombre");
         modelo2.addColumn("Detalle");
         modelo2.addColumn("Cant. Calorias");
-        
-        
         jComidas2.setModel(modelo2);
     }
-      public static boolean contiene(String cadena) {
+
+    public static boolean contiene(String cadena) {
         for (char c : cadena.toCharArray()) {
-            if (!Character.isLetter(c) &&!Character.isWhitespace(c) ) {
+            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
                 return true; // La cadena contiene caracteres no alfabéticos
             }
         }
         return false; // La cadena solo contiene letras
-    }  
-      
-    // se borra la fila en la tabla
-    private void borrarFila(){
-        int f=jTcomida.getRowCount()-1;
-        for(;f>=0;f--){
+    }
+
+    // se borra la fila en la tabla 1
+    private void borrarFila() {
+        int f = jTcomida.getRowCount() - 1;
+        for (; f >= 0; f--) {
             modelo.removeRow(f);
         }
     }
-    
-    private void borrarFila2(){
-        int f=jComidas2.getRowCount()-1;
-        for(;f>=0;f--){
+    // se borra la fila en la tabla 2
+    private void borrarFila2() {
+        int f = jComidas2.getRowCount() - 1;
+        for (; f >= 0; f--) {
             modelo2.removeRow(f);
         }
     }
-    
-     private void cargarComidas(){
-     borrarFila();
-        Comida comida =new Comida();
-       ComidaData comidata = new ComidaData();
-         for (Comida comida1 : comidata.listarTodasComidas()) {
-            modelo.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(),comida1.getDetalle(),comida1.getCantCalorias()});
-         }
-      jTcomida.setModel(modelo);
-        
+
+    private void cargarComidas() {
+        borrarFila();
+        Comida comida = new Comida();
+        ComidaData comidata = new ComidaData();
+        for (Comida comida1 : comidata.listarTodasComidas()) {
+            modelo.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(), comida1.getDetalle(), comida1.getCantCalorias()});
+        }
+        jTcomida.setModel(modelo);
+
     }
-     
     
+    public void borrarCampos(){
+        jTnombre.setText("");
+        jTcalorias.setText("");
+        jTdetalle.setText("");
+        jbEliminar.setEnabled(false);
+    }
+
 }

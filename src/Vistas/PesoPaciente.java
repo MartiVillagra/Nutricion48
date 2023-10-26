@@ -14,26 +14,26 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-  
-
 
 /**
  *
  * @author A Tirador Laser
  */
 public class PesoPaciente extends javax.swing.JInternalFrame {
-private DefaultTableModel modelo = new DefaultTableModel(){
-    public boolean isCellEditable(int f,int c){
-    //si pongo false entonces las celdas no son editables
-        return false;  
-    }
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            //si pongo false entonces las celdas no son editables
+            return false;
+        }
     };
+
     /**
      * Creates new form PesoPaciente1
      */
     public PesoPaciente() {
         initComponents();
-         armarCabecera();
+        armarCabecera();
     }
 
     /**
@@ -164,18 +164,18 @@ private DefaultTableModel modelo = new DefaultTableModel(){
     }//GEN-LAST:event_jTpesoActionPerformed
 
     private void jTpesoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTpesoKeyReleased
-    
-    borrarFila();    
-    if (!jTpeso.getText().isEmpty()){
-    
-    try {
-    cargarPacientes();
-    } catch (NumberFormatException nf){
-        JOptionPane.showMessageDialog(this, "agegue sólo caracteres numéricos");
-        jTpeso.setText("");
-        
-    }
-    }
+
+        borrarFila();
+        if (!jTpeso.getText().isEmpty()) {
+
+            try {
+                cargarPacientes();
+            } catch (NumberFormatException nf) {
+                JOptionPane.showMessageDialog(this, "agegue sólo caracteres numéricos");
+                jTpeso.setText("");
+
+            }
+        }
     }//GEN-LAST:event_jTpesoKeyReleased
 
 
@@ -188,38 +188,35 @@ private DefaultTableModel modelo = new DefaultTableModel(){
     private javax.swing.JTextField jTpeso;
     // End of variables declaration//GEN-END:variables
 
+    private void armarCabecera() {
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Peso objetivo");
 
+        jTpacientes.setModel(modelo);
 
-private void armarCabecera (){
-modelo.addColumn("ID");
-modelo.addColumn("Nombre");
-modelo.addColumn("DNI");
-modelo.addColumn("Peso objetivo");
+    }
 
-jTpacientes.setModel(modelo);
-
-}
-
-private void borrarFila(){
-        int f=jTpacientes.getRowCount()-1;
-        for(;f>=0;f--){
+    private void borrarFila() {
+        int f = jTpacientes.getRowCount() - 1;
+        for (; f >= 0; f--) {
             modelo.removeRow(f);
         }
     }
 
-private void cargarPacientes(){
-     borrarFila();
-       Paciente paciente = new Paciente();
-       PacienteData pacData = new PacienteData();
-       DietaData dietData = new DietaData ();
-       
-       
-       double peso = Double.parseDouble(jTpeso.getText());
-         for (Paciente pac : pacData.listarPacientesQueNoLegaron(peso)) {
+    private void cargarPacientes() {
+        borrarFila();
+        Paciente paciente = new Paciente();
+        PacienteData pacData = new PacienteData();
+        DietaData dietData = new DietaData();
+
+        double peso = Double.parseDouble(jTpeso.getText());
+        for (Paciente pac : pacData.listarPacientesQueNoLegaron(peso)) {
             Dieta dieta = dietData.buscarDietaPorPaciente(pac.getIdPaciente());
-            modelo.addRow(new Object[]{pac.getIdPaciente(), pac.getNombre(),pac.getDni(), dieta.getPesoFinal()});
-         }
-      jTpacientes.setModel(modelo);
-        
-}
+            modelo.addRow(new Object[]{pac.getIdPaciente(), pac.getNombre(), pac.getDni(), dieta.getPesoFinal()});
+        }
+        jTpacientes.setModel(modelo);
+
+    }
 }
