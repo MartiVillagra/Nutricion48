@@ -50,7 +50,7 @@ public class DietaComidaData {
             
             if(rs.next()){
                 dietacomida.setIdDietaComida(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "dieta agregada");
+                JOptionPane.showMessageDialog(null, "Comida agregada");
             }
             ps.close();
         } catch (SQLException | NumberFormatException ex) {

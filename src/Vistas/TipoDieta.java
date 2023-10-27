@@ -10,6 +10,7 @@ import Data.DietaData;
 import Data.PacienteData;
 import Entidades.Comida;
 import Entidades.Dieta;
+import Entidades.DietaComida;
 import Entidades.Paciente;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -88,15 +89,18 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     jLabel1.setText("CREAR PLAN NUTRICIONAL");
 
     jBagregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jBagregar.setForeground(new java.awt.Color(0, 0, 0));
     jBagregar.setText("Agregar");
+    jBagregar.setEnabled(false);
+    jBagregar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jBagregarActionPerformed(evt);
+        }
+    });
 
     jBeliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jBeliminar.setForeground(new java.awt.Color(0, 0, 0));
     jBeliminar.setText("Eliminar");
 
     jBsalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jBsalir.setForeground(new java.awt.Color(0, 0, 0));
     jBsalir.setText("Salir");
     jBsalir.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,13 +110,13 @@ public class TipoDieta extends javax.swing.JInternalFrame {
 
     jTdieta.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null}
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
         },
         new String [] {
-            "Comida", "Decripcion", "Tipo"
+            "ID Comida", "Nombre", "Detalle", "Cant. Calorías"
         }
     ));
     jScrollPane1.setViewportView(jTdieta);
@@ -120,13 +124,11 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
     jLIdDieta.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-    jLIdDieta.setForeground(new java.awt.Color(0, 0, 0));
     jLIdDieta.setText("Codigo Dieta");
 
     jTIdDieta.setEditable(false);
 
     jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-    jLabel3.setForeground(new java.awt.Color(0, 0, 0));
     jLabel3.setText("DNI");
 
     jTDni.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -144,11 +146,9 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     });
 
     jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-    jLabel4.setForeground(new java.awt.Color(0, 0, 0));
     jLabel4.setText("Nombre");
 
     jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-    jLabel5.setForeground(new java.awt.Color(0, 0, 0));
     jLabel5.setText("Dieta");
 
     jTNombre.setEditable(false);
@@ -273,6 +273,7 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                 int dni = Integer.parseInt(jTDni.getText());
                 PacienteData pacData = new PacienteData();
                 if (pacData.buscarPacientexDNI(dni) != null) {
+                    jBagregar.setEnabled(true);
                     Paciente paciente = pacData.buscarPacientexDNI(dni);
                     DietaData dietaData = new DietaData();
                     DietaComidaData dieComiData = new DietaComidaData();
@@ -289,12 +290,24 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                         jTIdDieta.setText("");
                         jTNombre.setText("");
                         jTDieta.setText("");
+                        
                         borrarFila();
                     }
+                } else {
+                jBBuscar.setEnabled(false);
+                jTIdDieta.setText("");
+                jTNombre.setText("");
+                jTDieta.setText("");
+                jBagregar.setEnabled(false);
+                borrarFila();
+                
                 }
             } else {
                 jBBuscar.setEnabled(false);
                 jTIdDieta.setText("");
+                jTNombre.setText("");
+                jTDieta.setText("");
+                jBagregar.setEnabled(false);
                 borrarFila();
             }
         } catch (NumberFormatException nf) {
@@ -308,6 +321,32 @@ public class TipoDieta extends javax.swing.JInternalFrame {
             cargarTabla();
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
+     
+     try {   
+         
+     DietaComidaData dieCoData = new DietaComidaData();
+     ComidaData  comiData = new ComidaData();
+     DietaData dietaData = new DietaData();
+     int idDieta =Integer.parseInt(jTIdDieta.getText());
+     Dieta dieta = dietaData.buscarDietaxId(idDieta);
+            
+     int fila = jTdieta.getSelectedRow();
+        if (fila != -1) {
+            
+            int iDcomida = (int) modelo.getValueAt(fila, 0);
+            ComidaData comidaData = new ComidaData();
+            
+            Comida comi = comidaData.buscarComidaxId(iDcomida);
+            DietaComida dietaCo = new DietaComida(comi, dieta);
+            dieCoData.altaDieta(dietaCo);
+        }
+        
+     } catch (NumberFormatException nf ){
+     JOptionPane.showMessageDialog(this, "Debe ingresar sólo caracteres numéricos");
+     }
+    }//GEN-LAST:event_jBagregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
