@@ -355,9 +355,11 @@ public class TipoDieta extends javax.swing.JInternalFrame {
         Dieta dieta = dietaData.buscarDietaxId(idDieta);
         ComidaData comiData = new ComidaData();
         TreeSet<Integer> tabla = new TreeSet();
+        
             for (Comida comidacha :comiData.listarTodasComidas()) {
-                tabla.add(comidacha.getIdComida());
+                tabla.add(comidacha.getIdComida());  
             }
+            
             for (Comida comidacha :dietaComiData.listarComidasPorDieta(idDieta)) {
                 tabla.remove(comidacha.getIdComida());
             }
@@ -365,33 +367,6 @@ public class TipoDieta extends javax.swing.JInternalFrame {
         for (Integer id : tabla) {
             Comida com = comiData.buscarComidaxId(id);
           modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCantCalorias()});
-            
         }
     }
-//public void cargarCombo(){
-//
-//            jCBtipoDieta.addItem("");
-//            EnumDietas[] dietaList = EnumDietas.values();
-//            for( EnumDietas dieta: dietaList){
-//            jCBtipoDieta.addItem(String.valueOf(dieta));
-//        }
-//}
-
-    // carga -> cabecera de la tabla
-//      private void armarCabecera(){
-//    
-//        modelo.addColumn("Comida");
-//        modelo.addColumn("Descripcion");
-//        modelo.addColumn("Tipo de Comida");
-//  
-//    jTdieta.setModel(modelo);
-//    }
-//
-//    // se borra la fila en la tabla
-//    private void borrarFila(){
-//        int f=jTdieta.getRowCount()-1;
-//        for(;f>=0;f--){
-//            modelo.removeRow(f);
-//        }
-//    }
 }

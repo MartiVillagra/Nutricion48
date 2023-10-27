@@ -559,7 +559,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         if(jTid.getText().isEmpty() || jTaltura.getText().isEmpty() || jTdni.getText().isEmpty() || jTpeso.getText().isEmpty() || jTpesoF.getText().isEmpty()
                 || jTdieta.getText().isEmpty() || jTimc.getText().isEmpty() || jDfechaF.getDate() == null || jDfechaI.getDate() == null){
             JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos");
-        }
+        }else{
         try {
             int idpac = Integer.parseInt(jTid.getText());
             DietaData dietaData = new DietaData();
@@ -587,14 +587,15 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
             
         } catch (NumberFormatException nf){
             JOptionPane.showMessageDialog(null, "Ingrese sólo caracteres numéricos");
-        }  
+        }  }
         
     }//GEN-LAST:event_jBmodificarActionPerformed
 
     private void jTdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyReleased
         PacienteData pacData = new PacienteData();
         DietaData dieData= new DietaData();
-        if (!jTdni.getText().isEmpty()) {
+        try {
+         if (!jTdni.getText().isEmpty()) {
             int dni = Integer.parseInt(jTdni.getText());
             if (pacData.buscarPacientexDNI(dni) != null) {
                 jTid.setText(pacData.buscarPacientexDNI(dni).getIdPaciente() + "");
@@ -628,7 +629,12 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 eliBusModF();
                 borrarCampos();    
             }
-        } 
+        }    
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
+            jTdni.setText("");
+        }
+        
     }//GEN-LAST:event_jTdniKeyReleased
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed

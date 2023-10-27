@@ -55,7 +55,6 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jRMujer = new javax.swing.JRadioButton();
         jRHombre = new javax.swing.JRadioButton();
-        jLErrorTel = new javax.swing.JLabel();
         jbRegistrar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
@@ -147,10 +146,6 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLErrorTel.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        jLErrorTel.setForeground(new java.awt.Color(255, 0, 0));
-        jLErrorTel.setText("*");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -191,11 +186,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                                     .addGap(33, 33, 33)
                                     .addComponent(jRHombre)))
                             .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLErrorTel))
-                                .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 46, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -222,18 +213,12 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLErrorTel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jRMujer)
-                            .addComponent(jRHombre))
-                        .addGap(16, 16, 16))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jRMujer)
+                    .addComponent(jRHombre))
+                .addGap(16, 16, 16))
         );
 
         jbRegistrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -363,8 +348,12 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
-
-        try {
+        if (jTdni.getText().isEmpty() ||  jTNomYApe.getText().isEmpty()
+                || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
+            
+          JOptionPane.showMessageDialog(this, "Hay campos vacios");
+        }else{
+           try {
             PacienteData pacData = new PacienteData();
             String domicilio = jTdomicilio.getText();
             String nombre = jTNomYApe.getText();
@@ -374,8 +363,8 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             // definir sexo  si es femenino o masculino
             if (jRMujer.isSelected() == true) {
                 sexo = "F";
-            }else{
-            //if (jRHombre.isSelected() == true) {
+            }
+            if (jRHombre.isSelected() == true) {
                 sexo = "M";
             }
             //hacer mientras la cadena jTNomYApe tenga ingresado un numero
@@ -407,18 +396,17 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             } while (contiene(jTNomYApe.getText()) == true);
 
         } catch (NumberFormatException nf) {
-            if (jTdni.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Hay campos vacios aca");
-            } else {
-                JOptionPane.showMessageDialog(null, "Verifique su DNI");
-            }
+            JOptionPane.showMessageDialog(null, "Verifique su DNI");
+        }   
         }
+        
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
 
         if (jTdni.getText().isEmpty() || jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
                 || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Hay Campos vacios");
         } else {
             try {
                 int dni = Integer.parseInt(jTdni.getText());
@@ -428,12 +416,12 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 String sexo = "";
                 if (jRMujer.isSelected() == true) {
                     sexo = "F";
-                }else{
-                //if (jRHombre.isSelected() == true) {
+                }
+                if (jRHombre.isSelected() == true) {
                     sexo = "M";
                 }
                 //si tel no tiene letras y nomyApe no tiene numeros semodifica paciente
-                if (contieneSoloNumeros(jTtelefono.getText()) == true && contiene(nomyApe) == false) {
+                if (contieneSoloNumeros(jTtelefono.getText()) == true && contiene(nomyApe) == false && !sexo.equals("")) {
                     String telefono = jTtelefono.getText();
                     Paciente pac = new Paciente(id, nomyApe, dni, domicilio, telefono, true, sexo);
                     PacienteData pacDat = new PacienteData();
@@ -444,12 +432,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     jBEliminar.setEnabled(false);
                 } else {
                     if (contieneSoloNumeros(jTtelefono.getText()) == false) {
-                        jLErrorTel.setText("*Incorrecto");
-                    } else {
-                        jLErrorTel.setText("");
-                    }
+                        JOptionPane.showMessageDialog(this, "Revise el telefono");
+                    } 
                     if (contiene(nomyApe) == true) {
                         JOptionPane.showMessageDialog(this, "Revise el nombre");
+                    }
+                    if (sexo.equals("")) {
+                        JOptionPane.showMessageDialog(this, "Revise sexo");
                     }
                 }
 
@@ -475,8 +464,8 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     if (pac.getSexo().equals("M")) {
                         jRHombre.setSelected(true);
                         jRMujer.setSelected(false);
-                    }else{
-                    //if (pac.getSexo().equals("F")) {
+                    }
+                    if (pac.getSexo().equals("F")) {
                         jRMujer.setSelected(true);
                         jRHombre.setSelected(false);
                     }
@@ -496,13 +485,15 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         PacienteData pacData = new PacienteData();
         try {
             // Limpiar por Dni
-            if (!jTdni.getText().isEmpty()) {
-                jBLimpiar.setEnabled(true);
-            } else {
-                jBLimpiar.setEnabled(false);
-            }
+             if (jTdni.getText().isEmpty() && jTnroPaciente.getText().isEmpty() && jTNomYApe.getText().isEmpty()
+                && jTdomicilio.getText().isEmpty() && jTtelefono.getText().isEmpty()) {
+            jBLimpiar.setEnabled(false);
+        }else{
+            jBLimpiar.setEnabled(true);
+        }
             //Eliminar por Dni
             if (!jTdni.getText().isEmpty()) {
+                jBLimpiar.setEnabled(true);
                 int dni = Integer.parseInt(jTdni.getText());
                 if (pacData.buscarPacientexDNI(dni) != null) {
                     jBEliminar.setEnabled(true);
@@ -531,10 +522,11 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     private void jTNomYApeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNomYApeKeyReleased
         PacienteData pacData = new PacienteData();
-        if (!jTNomYApe.getText().isEmpty()) {
-            jBLimpiar.setEnabled(true);
-        } else {
+        if (jTdni.getText().isEmpty() && jTnroPaciente.getText().isEmpty() && jTNomYApe.getText().isEmpty()
+                && jTdomicilio.getText().isEmpty() && jTtelefono.getText().isEmpty()) {
             jBLimpiar.setEnabled(false);
+        }else{
+            jBLimpiar.setEnabled(true);
         }
         if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
@@ -551,11 +543,13 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     private void jTdomicilioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdomicilioKeyReleased
         PacienteData pacData = new PacienteData();
-        if (!jTdomicilio.getText().isEmpty()) {
-            jBLimpiar.setEnabled(true);
-        } else {
+        if (jTdni.getText().isEmpty() && jTnroPaciente.getText().isEmpty() && jTNomYApe.getText().isEmpty()
+                && jTdomicilio.getText().isEmpty() && jTtelefono.getText().isEmpty()) {
             jBLimpiar.setEnabled(false);
+        }else{
+            jBLimpiar.setEnabled(true);
         }
+        
         if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
 
@@ -572,11 +566,14 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
     private void jTtelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyReleased
         PacienteData pacData = new PacienteData();
-        if (!jTtelefono.getText().isEmpty()) {
-            jBLimpiar.setEnabled(true);
-        } else {
+        
+        if (jTdni.getText().isEmpty() && jTnroPaciente.getText().isEmpty() && jTNomYApe.getText().isEmpty()
+                && jTdomicilio.getText().isEmpty() && jTtelefono.getText().isEmpty()) {
             jBLimpiar.setEnabled(false);
+        }else{
+            jBLimpiar.setEnabled(true);
         }
+        
         if (!jTdni.getText().isEmpty() && !jTnroPaciente.getText().isEmpty() && !jTNomYApe.getText().isEmpty()
                 && !jTdomicilio.getText().isEmpty() && !jTtelefono.getText().isEmpty()) {
 
@@ -588,6 +585,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
             }
         } else {
             jBModificar.setEnabled(false);
+            
         }
     }//GEN-LAST:event_jTtelefonoKeyReleased
 
@@ -658,7 +656,6 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JLabel jLErrorTel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -699,7 +696,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         jTtelefono.setText("");
         jRMujer.setSelected(false);
         jRHombre.setSelected(false);
-        jLErrorTel.setText("");
+        
     }
     //cambio de estado boton modificar
 

@@ -74,11 +74,11 @@ public class ComidaData {
             int espera=ps.executeUpdate();
             if (espera==1){
                 
-                JOptionPane.showMessageDialog(null, " Mosdificacion exitosa");
+                JOptionPane.showMessageDialog(null, " Modificación exitosa");
             } 
             ps.close();
         } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la modificacion");
+                JOptionPane.showMessageDialog(null, "Error en la modificación");
             }  
     }
     
