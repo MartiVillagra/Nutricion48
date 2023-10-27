@@ -16,6 +16,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -353,17 +354,18 @@ public class TipoDieta extends javax.swing.JInternalFrame {
         DietaComidaData dietaComiData = new DietaComidaData();
         Dieta dieta = dietaData.buscarDietaxId(idDieta);
         ComidaData comiData = new ComidaData();
-        ArrayList<Comida> tabla = new ArrayList();
-        for (Comida comi :comiData.listarTodasComidas()) {
-            for (Comida comidacha : dietaComiData.listarComidasPorDieta(idDieta)) {
-            if (comi.getIdComida()==comidacha.getIdComida()) {
-                
-            }else{
-                modelo.addRow(new Object[]{comi.getIdComida(), comi.getNombre(), comi.getDetalle(), comi.getCantCalorias()});
-                tabla.add(comi);
-                System.out.println(comi);
-            }    
+        TreeSet<Integer> tabla = new TreeSet();
+            for (Comida comidacha :comiData.listarTodasComidas()) {
+                tabla.add(comidacha.getIdComida());
             }
+            for (Comida comidacha :dietaComiData.listarComidasPorDieta(idDieta)) {
+                tabla.remove(comidacha.getIdComida());
+            }
+            
+        for (Integer id : tabla) {
+            Comida com = comiData.buscarComidaxId(id);
+          modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCantCalorias()});
+            
         }
     }
 //public void cargarCombo(){
