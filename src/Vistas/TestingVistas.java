@@ -74,6 +74,8 @@ public class TestingVistas {
     
     FORMULARIO TIPO COMIDA-----------------------------------------------------------------------------------------
     
+    En este formulario se cargan las nuevas comidas, que no esten repetidas. Al mismop tiempo se las puede ver en la tabla
+    las comidas que se encuentran cargadas.
     En este formulario se selecciona una comida de la tabla y se --> Elimina
                           selecciona una comida de la tabla y en cualquier jTexField se cambia los datos y se --> Modifica 
                           Al ingresar el nombre de una comida que no esta en la tabla se habilita el boton y se -->Agrrega 
@@ -96,6 +98,7 @@ public class TestingVistas {
     
     FORMULARIO PESO PACIENTE----------------------------------------------------------------------------------------
     
+    Se puede observar los datos de los pacientes que no alcanzaron su peso sugerido
     Se ingresa al formulario--> LIMPIAR/ SALIR --> Botones habilitados
     Se ingresa el peso que se tiene como meta y se muestra el listado de pacientes que no llegaron a la meta 
     
@@ -104,18 +107,28 @@ public class TestingVistas {
     
     FORMULARIO TIPO DIETA------------------------------------------------------------------------------------------
     
+    Sen ingresa el DNI y por este se busca los datos de la dieta del paciente.
+    A traves de la tabla se cargan las comidas deseadas para su dieta.
     Se ingresa al formulario--> AGREGAR/ELIMINAR/ SALIR --> Botones habilitados
     Se ingresa el DNI del paciente y si se habilita 
                 BUSCAR -->si el DNI tiene dieta se habilita el boton Buscar
                           si el DNI no tiene dieta entonces no se habilita el boton Buscar
-                AGREGAR-->Se selecciona de la tabla de alimentos y si no se encuentra cargado se carga 
-                          
-                ELIMINAR --> cambia elestado de TipoComida a desactivado/ muestra cartel y limpia los campos de la tabla
+                AGREGAR-->Se selecciona de la tabla de alimentos y si no se encuentra cargado se carga           
+                ELIMINAR --> elimina las comidas cargadas en la dieta/ muestra cartel y limpia los campos de la tabla
                 SALIR --> nos saca de la vista
     
     
-    FORMULARIO COMIDA DIETA
-       
+    FORMULARIO COMIDA DIETA----------------------------------------------------------------------------------------
+    
+    Sen ingresa el DNI y por este se busca los datos de la dieta del paciente.
+    A traves de boton buscar  se ven las comidas cargadas en la dieta.
+    Se ingresa al formulario--> SALIR --> Botone habilitado
+    Se ingresa el DNI del paciente y si este tiene dieta se cargan sus datos automaticamente y se habilita el boton buscar
+                                     Si no tienedieta no se habilita el boton buscar   
+                BUSCAR -->si el DNI tiene dieta carga todas las comidas en la tabla
+                          si el DNI no tiene dieta entonces no sale un carte avisando que no tiene comidas cargadas
+                LIMPIAR --> Borra todos los campos en la tabla y los campos
+                SALIR --> nos saca de la vista
     
     */ 
 }
