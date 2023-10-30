@@ -52,7 +52,7 @@ public class DietaData {
             
             if (rs.next()){
                 dieta.setIdDieta(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, " La dieta se agrego correctamente ");
+                JOptionPane.showMessageDialog(null, "La dieta se agregó correctamente ");
             }
             ps.close();        
         } catch (SQLException ex) {
@@ -80,11 +80,11 @@ public class DietaData {
             int espera=ps.executeUpdate();
             if (espera==1){
                 
-                JOptionPane.showMessageDialog(null, " Modificacion exitosa");
+                JOptionPane.showMessageDialog(null, "Modificación exitosa");
             }
             ps.close();
         } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la modificacion");
+                JOptionPane.showMessageDialog(null, "Error en la modificación");
             }  
     }
     
@@ -100,7 +100,7 @@ public class DietaData {
             int espera=ps.executeUpdate();
             
             if ( espera ==1){
-                JOptionPane.showMessageDialog(null, " Dieta eliminada");
+                JOptionPane.showMessageDialog(null, "Dieta eliminada");
             } 
             ps.close();
         } catch (SQLException ex) {
@@ -131,7 +131,7 @@ public class DietaData {
 
             dieta.setImc(rs.getDouble("imc"));
             } else {
-            JOptionPane.showMessageDialog(null, "Dieta no encontrada.");
+            JOptionPane.showMessageDialog(null, "Dieta no encontrada");
             }
             ps.close();    
         } catch (SQLException ex) {

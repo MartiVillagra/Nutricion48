@@ -386,8 +386,8 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
                 borrarFila();
             }
         } catch (NumberFormatException nf) {
-            JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
-            jTDni.setText("");
+            JOptionPane.showMessageDialog(this, "Ingrese caracteres numéricos");
+            
         }
     }//GEN-LAST:event_jTDniKeyReleased
 

@@ -352,7 +352,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
         if (jTdni.getText().isEmpty() ||  jTNomYApe.getText().isEmpty()
                 || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
             
-          JOptionPane.showMessageDialog(this, "Hay campos vacios");
+          JOptionPane.showMessageDialog(this, "Hay campos vacíos");
         }else{
            try {
             PacienteData pacData = new PacienteData();
@@ -377,14 +377,14 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     // si existe DNI
                     if (pacData.buscarPacientexDNI(dni) != null) {
                         JOptionPane.showMessageDialog(null, "Ya existe ese dni");
-                        borraCampos();
+                        //borraCampos();
                     } else {
                         // si no existe DNI se cargan datos
                         if (sexo == "") {//valida que no sea nula seleccion de sexo
                             JOptionPane.showMessageDialog(null, "Seleccione sexo");
                         } else {//sexo seleccionado/ valida que tel no tenga letras
                             if (contieneSoloNumeros(telefono) == false) {
-                                JOptionPane.showMessageDialog(null, "verifique el telefono");
+                                JOptionPane.showMessageDialog(null, "verifique el teléfono");
                             } else {//tel cargado bien//guarda paciente nuevo
                                 Paciente pac = new Paciente(nombre, dni, domicilio, telefono, true, sexo);
                                 pacData.altaPaciente(pac);
@@ -407,7 +407,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
 
         if (jTdni.getText().isEmpty() || jTnroPaciente.getText().isEmpty() || jTNomYApe.getText().isEmpty()
                 || jTdomicilio.getText().isEmpty() || jTtelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Hay Campos vacios");
+            JOptionPane.showMessageDialog(this, "Hay Campos vacíos");
         } else {
             try {
                 int dni = Integer.parseInt(jTdni.getText());
@@ -433,7 +433,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                     jBEliminar.setEnabled(false);
                 } else {
                     if (contieneSoloNumeros(jTtelefono.getText()) == false) {
-                        JOptionPane.showMessageDialog(this, "Revise el telefono");
+                        JOptionPane.showMessageDialog(this, "Revise el teléfono");
                     } 
                     if (contiene(nomyApe) == true) {
                         JOptionPane.showMessageDialog(this, "Revise el nombre");
@@ -444,7 +444,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 }
 
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Ingrese solo caracteres numericos");
+                JOptionPane.showMessageDialog(this, "Ingrese sólo caracteres numéricos");
             }
         }
     }//GEN-LAST:event_jBModificarActionPerformed
@@ -477,7 +477,7 @@ public class FormularioPaciente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "No existe ese paciente");
             }
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, " Ingrese un caracter numerico");
+            JOptionPane.showMessageDialog(this, " Ingrese un caracter numérico");
             jTdni.setText("");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed

@@ -54,7 +54,7 @@ public class DietaComidaData {
             }
             ps.close();
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salió mal" +ex);
+            JOptionPane.showMessageDialog(null, "No se pudo agregar la dieta");
         }
     
     
@@ -71,11 +71,11 @@ public class DietaComidaData {
             int num = ps.executeUpdate();
             
             if (num ==1){
-            JOptionPane.showMessageDialog(null, "La dieta se eliminó corréctamente");
+            JOptionPane.showMessageDialog(null, "La dieta se eliminó correctamente");
             } 
             ps.close();
             } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal"+ ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido dar de baja a la dieta"+ ex);
         }
     
     }   
@@ -93,11 +93,11 @@ public class DietaComidaData {
             int exito = ps.executeUpdate();
             
             if(exito == 1){
-            JOptionPane.showMessageDialog(null, "dieta modificado con éxito");
+            JOptionPane.showMessageDialog(null, "Dieta modificada con éxito");
             } 
             ps.close();
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "No se ha podido modificar el paciente");
+            JOptionPane.showMessageDialog(null, "No se ha podido modificar la dieta");
         }
     }
     
@@ -126,7 +126,7 @@ public class DietaComidaData {
               }
               ps.close();
           } catch (SQLException ex) {
-              JOptionPane.showMessageDialog(null, "ERROR");
+              JOptionPane.showMessageDialog(null, "Error");
           }
           return dietas;
     }
@@ -140,11 +140,11 @@ public class DietaComidaData {
             int num = ps.executeUpdate();
             
             if (num ==1){
-            JOptionPane.showMessageDialog(null, "La dieta se eliminó corréctamente");
+            JOptionPane.showMessageDialog(null, "La dieta se eliminó correctamente");
             } 
             ps.close();
             } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal");
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar la dieta");
         }
     }
     
@@ -182,7 +182,7 @@ public class DietaComidaData {
             
             ps.close();
             } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal");
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar la comida");
         }
     }
     

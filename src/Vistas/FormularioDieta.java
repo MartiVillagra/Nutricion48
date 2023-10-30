@@ -282,9 +282,9 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                         .addComponent(jLabel12))
                     .addGap(19, 19, 19))
                 .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(27, 27, 27)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel4)
                                 .addComponent(jTpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -294,7 +294,6 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                                 .addComponent(jTaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel10)
                                 .addComponent(jTpesoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -343,9 +342,9 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jDfechaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel8)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel7)))
                 .addComponent(jDfechaI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(8, Short.MAX_VALUE))
     );
@@ -388,7 +387,6 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jPanel4.setBackground(new java.awt.Color(204, 255, 153));
 
     jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(0, 0, 0));
     jLabel1.setText("DIETA DEL PACIENTE");
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -403,7 +401,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
     jPanel4Layout.setVerticalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-            .addContainerGap(7, Short.MAX_VALUE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1)
             .addContainerGap())
     );
@@ -440,7 +438,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(29, 29, 29)
             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(36, 36, 36)
+            .addGap(37, 37, 37)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(52, 52, 52)
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -496,7 +494,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 }
                 double imc=Double.parseDouble(jTimc.getText());
                 if( fechaF.isBefore(fechaI)){
-                    JOptionPane.showMessageDialog(null, "Revisa la fecha final ");
+                    JOptionPane.showMessageDialog(null, "Revise la fecha final");
                 }else {
                     DietaData dietaData = new DietaData();
                     Dieta dieta = new Dieta(nombre, idPaciente, fechaI, pesoI, pesoF, fechaF, altura, imc);
@@ -506,10 +504,10 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                     jBagregar.setEnabled(false);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "No deben haber espacios vacios o controle la fecha ");
+                JOptionPane.showMessageDialog(null, "No deben haber espacios vacíos o controle la fecha");
             }
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "ingrese solo caracteres numericos");
+            JOptionPane.showMessageDialog(null, "ingrese sólo caracteres numéricos");
         }
     }//GEN-LAST:event_jBagregarActionPerformed
     
@@ -541,7 +539,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
         try{
             
         if (jTpeso.getText().isEmpty() || jTaltura.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null,"No deben haber espacios vacios ");}
+            JOptionPane.showMessageDialog(null,"No deben haber espacios vacíos ");}
             if(jRmujer.isSelected()==false && jRhombre.isSelected()==false){
                 JOptionPane.showMessageDialog(this, "Selecione su sexo");
             }else{
@@ -549,7 +547,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
                 pesoIdeal();
             }
         }catch(NumberFormatException nfe){
-        JOptionPane.showMessageDialog(null,"ingrese solo caracteres numericos"); 
+        JOptionPane.showMessageDialog(null,"ingrese sólo caracteres numéricos"); 
         }
     }//GEN-LAST:event_jBimcActionPerformed
 
@@ -575,7 +573,7 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
             
        
             if( fechaF.isBefore(fechaI)){
-                JOptionPane.showMessageDialog(null, "Revisa la fecha final ");
+                JOptionPane.showMessageDialog(null, "Revise la fecha final");
             }else{   
                 dietaData.modificarDieta(dieta1);
                 borrarCampos();
@@ -630,8 +628,8 @@ public class FormularioDieta extends javax.swing.JInternalFrame {
             }
         }    
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
-            jTdni.setText("");
+            JOptionPane.showMessageDialog(this, "Ingrese sólo caracteres numéricos");
+            
         }
         
     }//GEN-LAST:event_jTdniKeyReleased

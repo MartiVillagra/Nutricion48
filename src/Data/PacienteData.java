@@ -49,7 +49,7 @@ public class PacienteData {
             }
             ps.close();
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salió mal");
+            JOptionPane.showMessageDialog(null, "No se pudo guardar el paciente");
         }   
     }
     
@@ -65,12 +65,12 @@ public class PacienteData {
             int num = ps.executeUpdate();
             
             if (num == 1){
-            JOptionPane.showMessageDialog(null, "El paciente se eliminó corréctamente");
+            JOptionPane.showMessageDialog(null, "El paciente se eliminó correctamente");
             } else {
             JOptionPane.showMessageDialog(null, "Paciente no encontrado");
             }
             } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal"+ ex);
+            JOptionPane.showMessageDialog(null, "No se pudo dar de baja al paciente"+ ex);
         }
     }
     
@@ -96,7 +96,7 @@ public class PacienteData {
             }
             
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "No se ha podido modificar el paciente"+ ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido modificar el paciente");
         }
     }
     
@@ -123,7 +123,7 @@ public class PacienteData {
             }
             ps.close();
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "ERROR" + ex);
+           JOptionPane.showMessageDialog(null, "Error" + ex);
         }
         return pacientes;
     }

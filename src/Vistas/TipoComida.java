@@ -403,10 +403,10 @@ public class TipoComida extends javax.swing.JInternalFrame {
         if (comi1 == null) {
             if (jTnombre.getText().isEmpty() || jTdetalle.getText().isEmpty() || jTcalorias.getText().isEmpty()) {
 
-                JOptionPane.showMessageDialog(this, "compruebe los campos vacíos");
+                JOptionPane.showMessageDialog(this, "Compruebe los campos vacíos");
             } else {
                 if ((contiene(jTnombre.getText()) == true) || (contiene(jTdetalle.getText()) == true)) {
-                    JOptionPane.showMessageDialog(this, "revise Nombre/Detalle");
+                    JOptionPane.showMessageDialog(this, "Revise Nombre/Detalle");
                 } else {
                     String nombre = jTnombre.getText();
                     String detalle = jTdetalle.getText();
@@ -421,12 +421,12 @@ public class TipoComida extends javax.swing.JInternalFrame {
                         borrarCampos();
                         jbAgregar.setEnabled(false);
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(null, "ingrese caracter numericos en calorias");
+                        JOptionPane.showMessageDialog(null, "Ingrese caracteres numéricos en calorías");
                     }
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Ya existe la comida " + jTnombre.getText());
+            JOptionPane.showMessageDialog(this, "Ya existe la comida" + jTnombre.getText());
         }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
@@ -484,7 +484,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
                     jbModificar.setEnabled(false);
                    
                 } catch (NumberFormatException nf) {
-                    JOptionPane.showMessageDialog(this, "Calorías sólo recibe números");
+                    JOptionPane.showMessageDialog(this, "Calorías sólo admite números");
                 }
             }
         }
@@ -503,7 +503,7 @@ public class TipoComida extends javax.swing.JInternalFrame {
                 jComidas2.setModel(modelo2);
             }
         } catch (NumberFormatException nf) {
-            JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
+            JOptionPane.showMessageDialog(this, "Ingrese caracteres numéricos");
             jTcalorias2.setText("");
         }
     }//GEN-LAST:event_jTcalorias2KeyReleased

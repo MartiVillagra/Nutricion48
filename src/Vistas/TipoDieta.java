@@ -62,7 +62,6 @@ public class TipoDieta extends javax.swing.JInternalFrame {
         }
     }
     ;
-    jLabel1 = new javax.swing.JLabel();
     jBagregar = new javax.swing.JButton();
     jBsalir = new javax.swing.JButton();
     filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
@@ -78,14 +77,12 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     jLabel5 = new javax.swing.JLabel();
     jTNombre = new javax.swing.JTextField();
     jTDieta = new javax.swing.JTextField();
+    jPanel2 = new javax.swing.JPanel();
+    jLabel1 = new javax.swing.JLabel();
 
     setClosable(true);
 
     jPanel7.setForeground(new java.awt.Color(153, 153, 153));
-
-    jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(255, 255, 51));
-    jLabel1.setText("CREAR PLAN NUTRICIONAL");
 
     jBagregar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
     jBagregar.setText("Agregar");
@@ -199,6 +196,28 @@ public class TipoDieta extends javax.swing.JInternalFrame {
             .addContainerGap(36, Short.MAX_VALUE))
     );
 
+    jPanel2.setBackground(new java.awt.Color(204, 255, 153));
+
+    jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+    jLabel1.setText("CREAR PLAN NUTRICIONAL");
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addContainerGap(254, Short.MAX_VALUE)
+            .addComponent(jLabel1)
+            .addGap(212, 212, 212))
+    );
+    jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addContainerGap(19, Short.MAX_VALUE)
+            .addComponent(jLabel1)
+            .addGap(15, 15, 15))
+    );
+
     javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
     jPanel7.setLayout(jPanel7Layout);
     jPanel7Layout.setHorizontalGroup(
@@ -212,31 +231,31 @@ public class TipoDieta extends javax.swing.JInternalFrame {
             .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
         .addGroup(jPanel7Layout.createSequentialGroup()
-            .addGap(267, 267, 267)
-            .addComponent(jLabel1)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGroup(jPanel7Layout.createSequentialGroup()
             .addGap(45, 45, 45)
             .addComponent(jBagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(40, 40, 40))
+        .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGap(14, 14, 14)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel7Layout.setVerticalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel7Layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(140, 140, 140)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(25, 25, 25)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(18, 18, 18)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGap(35, 35, 35)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+            .addGap(41, 41, 41)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jBagregar)
                 .addComponent(jBsalir))
@@ -295,7 +314,7 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                 borrarFila();
             }
         } catch (NumberFormatException nf) {
-            JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
+            JOptionPane.showMessageDialog(this, "Ingrese caracteres numéricos");
             jTDni.setText("");
         }
     }//GEN-LAST:event_jTDniKeyReleased
@@ -342,6 +361,7 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTDieta;

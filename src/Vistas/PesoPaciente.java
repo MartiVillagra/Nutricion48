@@ -87,8 +87,7 @@ public class PesoPaciente extends javax.swing.JInternalFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("INGRESE PESO OBJETIVO");
+        jLabel1.setText("INGRESE PESO");
 
         jTpeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +108,7 @@ public class PesoPaciente extends javax.swing.JInternalFrame {
                 .addGap(128, 128, 128)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -201,7 +200,7 @@ public class PesoPaciente extends javax.swing.JInternalFrame {
             try {
                 cargarPacientes();
             } catch (NumberFormatException nf) {
-                JOptionPane.showMessageDialog(this, "agegue sólo caracteres numéricos");
+                JOptionPane.showMessageDialog(this, "Ingrese sólo caracteres numéricos");
                 jTpeso.setText("");
 
             }
