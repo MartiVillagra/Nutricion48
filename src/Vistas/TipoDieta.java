@@ -283,7 +283,7 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                     jBagregar.setEnabled(true);
                     Paciente paciente = pacData.buscarPacientexDNI(dni);
                     DietaData dietaData = new DietaData();
-                    DietaComidaData dieComiData = new DietaComidaData();
+                   // DietaComidaData dieComiData = new DietaComidaData();
                     int idPac = paciente.getIdPaciente();
                     if (dietaData.buscarDietaPorPaciente(idPac) != null) {
                         jBBuscar.setEnabled(true);
@@ -293,27 +293,16 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                         jTNombre.setText(paciente.getNombre());
                         jTDieta.setText(dieta.getNombre());
                     } else {
-                        jBBuscar.setEnabled(false);
-                        jTIdDieta.setText("");
-                        jTNombre.setText("");
-                        jTDieta.setText("");
-                        
+                        borrarCampos();
                         borrarFila();
                     }
                 } else {
-                jBBuscar.setEnabled(false);
-                jTIdDieta.setText("");
-                jTNombre.setText("");
-                jTDieta.setText("");
-                jBagregar.setEnabled(false);
-                borrarFila();
-                
+                    borrarCampos();
+                    jBagregar.setEnabled(false);
+                    borrarFila();
                 }
             } else {
-                jBBuscar.setEnabled(false);
-                jTIdDieta.setText("");
-                jTNombre.setText("");
-                jTDieta.setText("");
+                borrarCampos();
                 jBagregar.setEnabled(false);
                 borrarFila();
             }
@@ -331,28 +320,26 @@ public class TipoDieta extends javax.swing.JInternalFrame {
 
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
      
-     try {   
-         
-     DietaComidaData dieCoData = new DietaComidaData();
-     ComidaData  comiData = new ComidaData();
-     DietaData dietaData = new DietaData();
-     int idDieta =Integer.parseInt(jTIdDieta.getText());
-     Dieta dieta = dietaData.buscarDietaxId(idDieta);
+        try {   
+            DietaComidaData dieCoData = new DietaComidaData();
+            ComidaData  comidaData = new ComidaData();
+            DietaData dietaData = new DietaData();
+            int idDieta =Integer.parseInt(jTIdDieta.getText());
+            Dieta dieta = dietaData.buscarDietaxId(idDieta);
             
-     int fila = jTdieta.getSelectedRow();
-        if (fila != -1) {
-            
-            int iDcomida = (int) modelo.getValueAt(fila, 0);
-            ComidaData comidaData = new ComidaData();
-            
-            Comida comi = comidaData.buscarComidaxId(iDcomida);
-            DietaComida dietaCo = new DietaComida(comi, dieta);
-            dieCoData.altaDieta(dietaCo);
+            int fila = jTdieta.getSelectedRow();
+            if (fila != -1) {
+                int iDcomida = (int) modelo.getValueAt(fila, 0);
+                Comida comi = comidaData.buscarComidaxId(iDcomida);
+                DietaComida dietaCo = new DietaComida(comi, dieta);
+                dieCoData.altaDieta(dietaCo);
+            if (!jTDni.getText().isEmpty()) {
+                cargarTabla();
+            }
+            }
+        } catch (NumberFormatException nf ){
+            JOptionPane.showMessageDialog(this, "Debe ingresar sólo caracteres numéricos");
         }
-        
-     } catch (NumberFormatException nf ){
-     JOptionPane.showMessageDialog(this, "Debe ingresar sólo caracteres numéricos");
-     }
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
@@ -364,6 +351,9 @@ public class TipoDieta extends javax.swing.JInternalFrame {
             int idDieta =Integer.parseInt(jTIdDieta.getText());
             Dieta dieta = dietaData.buscarDietaxId(idDieta); 
             dieCoData.eliminarDietaComidaxDieta(idDieta); 
+            if (!jTDni.getText().isEmpty()) {
+                cargarTabla();
+            }
             
                 JOptionPane.showMessageDialog(null, "Se eliminaron todas las comidas de su dieta");
         } catch (NumberFormatException nf ){
@@ -413,9 +403,9 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     private void cargarTabla() {
         borrarFila();
         int idDieta = Integer.parseInt(jTIdDieta.getText());
-        DietaData dietaData = new DietaData();
+       // DietaData dietaData = new DietaData();
         DietaComidaData dietaComiData = new DietaComidaData();
-        Dieta dieta = dietaData.buscarDietaxId(idDieta);
+        //Dieta dieta = dietaData.buscarDietaxId(idDieta);
         ComidaData comiData = new ComidaData();
         TreeSet<Integer> tabla = new TreeSet();
         
@@ -431,5 +421,11 @@ public class TipoDieta extends javax.swing.JInternalFrame {
             Comida com = comiData.buscarComidaxId(id);
           modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCantCalorias()});
         }
+    }
+    private void borrarCampos(){
+        jBBuscar.setEnabled(false);
+        jTIdDieta.setText("");
+        jTNombre.setText("");
+        jTDieta.setText("");
     }
 }
