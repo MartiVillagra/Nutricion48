@@ -170,4 +170,21 @@ public class DietaComidaData {
           }
           return comidas;
     }
+     
+    public void eliminarComidaxIdcomida(int idComida){
+        String sql = "DELETE FROM dietaComida WHERE idComida=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idComida);
+            
+            int num = ps.executeUpdate();
+            
+            
+            ps.close();
+            } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal");
+        }
+    }
+    
+   
 }

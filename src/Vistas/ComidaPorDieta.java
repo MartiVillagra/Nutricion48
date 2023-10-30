@@ -14,6 +14,7 @@ import Entidades.Dieta;
 import Entidades.Paciente;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -75,6 +76,8 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         jBLimpiar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jBElim = new javax.swing.JButton();
+        jBElimTodas = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -242,6 +245,24 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
+        jBElim.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jBElim.setText("Eliminar");
+        jBElim.setEnabled(false);
+        jBElim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBElimActionPerformed(evt);
+            }
+        });
+
+        jBElimTodas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jBElimTodas.setText("Eliminar Todas");
+        jBElimTodas.setEnabled(false);
+        jBElimTodas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBElimTodasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -252,7 +273,11 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBElimTodas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBElim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -281,8 +306,10 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSalir)
-                    .addComponent(jBLimpiar))
-                .addGap(17, 17, 17))
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBElim)
+                    .addComponent(jBElimTodas))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -297,8 +324,8 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -308,41 +335,57 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         if (!jTDni.getText().isEmpty()) {
             cargarTabla();
         }
-
+        if (!jTDni.getText().isEmpty()) {
+            int idDieta = Integer.parseInt(jTIdDieta.getText());
+            DietaComidaData dieCoData = new DietaComidaData();
+            ArrayList<Comida> lista = dieCoData.listarComidasPorDieta(idDieta);
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No tiene comidas cargadas a su dieta");
+            }
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jTDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDniKeyReleased
-        try{
-        if (!jTDni.getText().isEmpty()) {
-            jBLimpiar.setEnabled(true);
-            int dni = Integer.parseInt(jTDni.getText());
-            PacienteData pacData = new PacienteData();
-            if (pacData.buscarPacientexDNI(dni) != null) {
-                Paciente paciente = pacData.buscarPacientexDNI(dni);
-                DietaData dietaData = new DietaData();
-                DietaComidaData dieComiData = new DietaComidaData();
-                int idPac = paciente.getIdPaciente();
-                if (dietaData.buscarDietaPorPaciente(idPac) != null) {
-                    jBBuscar.setEnabled(true);
-                    Dieta dieta = dietaData.buscarDietaPorPaciente(idPac);
-                    int idDieta = dieta.getIdDieta();
-                    jTIdDieta.setText(idDieta + "");
-                    jTNombre.setText(paciente.getNombre());
-                    jTDieta.setText(dieta.getNombre());
-                }else{
-                    jBBuscar.setEnabled(false);
-                    jTIdDieta.setText("");
-                    jTNombre.setText("");
-                    jTDieta.setText("");
-                    borrarFila();
+        try {
+            if (!jTDni.getText().isEmpty()) {
+                jBLimpiar.setEnabled(true);
+                int dni = Integer.parseInt(jTDni.getText());
+                PacienteData pacData = new PacienteData();
+                if (pacData.buscarPacientexDNI(dni) != null) {
+                    Paciente paciente = pacData.buscarPacientexDNI(dni);
+                    DietaData dietaData = new DietaData();
+                    DietaComidaData dieComiData = new DietaComidaData();
+                    int idPac = paciente.getIdPaciente();
+                    if (dietaData.buscarDietaPorPaciente(idPac) != null) {
+                        jBBuscar.setEnabled(true);
+                        Dieta dieta = dietaData.buscarDietaPorPaciente(idPac);
+                        int idDieta = dieta.getIdDieta();
+                        jTIdDieta.setText(idDieta + "");
+                        jTNombre.setText(paciente.getNombre());
+                        jTDieta.setText(dieta.getNombre());
+
+                        ArrayList<Comida> lista = dieComiData.listarComidasPorDieta(idDieta);
+                        if (!lista.isEmpty()) {
+                            jBElim.setEnabled(true);
+                            jBElimTodas.setEnabled(true);
+                        }
+
+                    } else {
+                        jBBuscar.setEnabled(false);
+                        jTIdDieta.setText("");
+                        jTNombre.setText("");
+                        jTDieta.setText("");
+                        borrarFila();
+                    }
+
                 }
+            } else {
+                jBBuscar.setEnabled(false);
+                jTIdDieta.setText("");
+                jBLimpiar.setEnabled(false);
+                borrarFila();
             }
-        } else {
-            jBBuscar.setEnabled(false);
-            jTIdDieta.setText("");
-            jBLimpiar.setEnabled(false);
-            borrarFila();
-        }}catch(NumberFormatException nf){
+        } catch (NumberFormatException nf) {
             JOptionPane.showMessageDialog(this, "Ingrese caracteres numericos");
             jTDni.setText("");
         }
@@ -362,9 +405,54 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         setVisible(false);
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jBElimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBElimActionPerformed
+        int fila = jTComidas.getSelectedRow();
+        if (fila != -1) {
+            int idComida = (int) modelo.getValueAt(fila, 0);
+            try {
+                DietaComidaData dieCoData = new DietaComidaData();
+                dieCoData.eliminarComidaxIdcomida(idComida);
+                ComidaData comiData = new ComidaData();
+                int idDieta = Integer.parseInt(jTIdDieta.getText());
+                if (!jTDni.getText().isEmpty()) {
+                    cargarTabla();
+                    JOptionPane.showMessageDialog(this, "Se eliminó " + comiData.buscarComidaxId(idComida).getNombre() + " de su dieta");
+                }
+                ArrayList<Comida> lista = dieCoData.listarComidasPorDieta(idDieta);
+                if (lista.isEmpty()) {
+                    jBElim.setEnabled(false);
+                    jBElimTodas.setEnabled(false);
+                }
+            } catch (NumberFormatException nf) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar sólo caracteres numéricos");
+            }
+        }
+
+    }//GEN-LAST:event_jBElimActionPerformed
+
+    private void jBElimTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBElimTodasActionPerformed
+        try {
+            DietaComidaData dieCoData = new DietaComidaData();
+            DietaData dietaData = new DietaData();
+            int idDieta = Integer.parseInt(jTIdDieta.getText());
+            Dieta dieta = dietaData.buscarDietaxId(idDieta);
+            dieCoData.eliminarDietaComidaxDieta(idDieta);
+            if (!jTDni.getText().isEmpty()) {
+                cargarTabla();
+            }
+            JOptionPane.showMessageDialog(this, "Se eliminaron todas las comidas de su dieta");
+            jBElimTodas.setEnabled(false);
+            jBElim.setEnabled(false);
+        } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar sólo caracteres numéricos");
+        }
+    }//GEN-LAST:event_jBElimTodasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBElim;
+    private javax.swing.JButton jBElimTodas;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLIdDieta;
@@ -388,6 +476,7 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
 // carga -> cabecera de la tabla
     private void armarCabecera() {
 
+        modelo.addColumn("idComida");
         modelo.addColumn("Comida");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Calorias");
@@ -408,11 +497,10 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         DietaComidaData dieComiData = new DietaComidaData();
         int idDieta = Integer.parseInt(jTIdDieta.getText());
         if (!dieComiData.listarComidasPorDieta(idDieta).isEmpty()) {
-         for (Comida comida1 : dieComiData.listarComidasPorDieta(idDieta)) {
-            modelo.addRow(new Object[]{comida1.getNombre(), comida1.getDetalle(), comida1.getCantCalorias()});}   
-        }else{
-            JOptionPane.showMessageDialog(null, "No tiene comidas cargadas a su dieta");
+            for (Comida comida1 : dieComiData.listarComidasPorDieta(idDieta)) {
+                modelo.addRow(new Object[]{comida1.getIdComida(), comida1.getNombre(), comida1.getDetalle(), comida1.getCantCalorias()});
+            }
         }
-        
+
     }
 }

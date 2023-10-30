@@ -64,7 +64,6 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     ;
     jLabel1 = new javax.swing.JLabel();
     jBagregar = new javax.swing.JButton();
-    jBeliminar = new javax.swing.JButton();
     jBsalir = new javax.swing.JButton();
     filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
     jScrollPane1 = new javax.swing.JScrollPane();
@@ -94,14 +93,6 @@ public class TipoDieta extends javax.swing.JInternalFrame {
     jBagregar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jBagregarActionPerformed(evt);
-        }
-    });
-
-    jBeliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-    jBeliminar.setText("Eliminar");
-    jBeliminar.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jBeliminarActionPerformed(evt);
         }
     });
 
@@ -227,8 +218,6 @@ public class TipoDieta extends javax.swing.JInternalFrame {
         .addGroup(jPanel7Layout.createSequentialGroup()
             .addGap(45, 45, 45)
             .addComponent(jBagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(177, 177, 177)
-            .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(40, 40, 40))
@@ -250,7 +239,6 @@ public class TipoDieta extends javax.swing.JInternalFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jBagregar)
-                .addComponent(jBeliminar)
                 .addComponent(jBsalir))
             .addGap(34, 34, 34))
     );
@@ -342,32 +330,11 @@ public class TipoDieta extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBagregarActionPerformed
 
-    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        // TODO add your handling code here:
-        try {   
-         
-            DietaComidaData dieCoData = new DietaComidaData();
-            DietaData dietaData = new DietaData();
-            int idDieta =Integer.parseInt(jTIdDieta.getText());
-            Dieta dieta = dietaData.buscarDietaxId(idDieta); 
-            dieCoData.eliminarDietaComidaxDieta(idDieta); 
-            if (!jTDni.getText().isEmpty()) {
-                cargarTabla();
-            }
-            
-                JOptionPane.showMessageDialog(null, "Se eliminaron todas las comidas de su dieta");
-        } catch (NumberFormatException nf ){
-            JOptionPane.showMessageDialog(this, "Debe ingresar sólo caracteres numéricos");
-        }
-    
-    }//GEN-LAST:event_jBeliminarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBagregar;
-    private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JLabel jLIdDieta;
     private javax.swing.JLabel jLabel1;
