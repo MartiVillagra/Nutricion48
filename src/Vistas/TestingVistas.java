@@ -109,12 +109,11 @@ public class TestingVistas {
     
     Sen ingresa el DNI y por este se busca los datos de la dieta del paciente.
     A traves de la tabla se cargan las comidas deseadas para su dieta.
-    Se ingresa al formulario--> AGREGAR/ELIMINAR/ SALIR --> Botones habilitados
+    Se ingresa al formulario-->  SALIR --> Botone habilitado
     Se ingresa el DNI del paciente y si se habilita 
                 BUSCAR -->si el DNI tiene dieta se habilita el boton Buscar
                           si el DNI no tiene dieta entonces no se habilita el boton Buscar
-                AGREGAR-->Se selecciona de la tabla de alimentos y si no se encuentra cargado se carga           
-                ELIMINAR --> elimina las comidas cargadas en la dieta/ muestra cartel y limpia los campos de la tabla
+                AGREGAR-->Se selecciona de la tabla de alimentos y si no se encuentra cargado se carga            
                 SALIR --> nos saca de la vista
     
     
@@ -127,8 +126,13 @@ public class TestingVistas {
                                      Si no tienedieta no se habilita el boton buscar   
                 BUSCAR -->si el DNI tiene dieta carga todas las comidas en la tabla
                           si el DNI no tiene dieta entonces no sale un carte avisando que no tiene comidas cargadas
+                ELIMINAR --> elimina la comida seleccionada en la dieta/ muestra cartel .
+                ELIMINAR todas --> Elimina todas las comidas cargadas en la tabla, muestra un cartel
                 LIMPIAR --> Borra todos los campos en la tabla y los campos
                 SALIR --> nos saca de la vista
     
+    
+    EN EL FUTURO SE PLANEA  REALIZAR UN METODO PARA DAR DE ALTA A UN PACIENTE EN ESTADO DESACTIVADO
+
     */ 
 }
