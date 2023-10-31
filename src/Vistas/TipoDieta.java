@@ -287,12 +287,12 @@ public class TipoDieta extends javax.swing.JInternalFrame {
                 int dni = Integer.parseInt(jTDni.getText());
                 PacienteData pacData = new PacienteData();
                 if (pacData.buscarPacientexDNI(dni) != null) {
-                    jBagregar.setEnabled(true);
                     Paciente paciente = pacData.buscarPacientexDNI(dni);
                     DietaData dietaData = new DietaData();
                    // DietaComidaData dieComiData = new DietaComidaData();
                     int idPac = paciente.getIdPaciente();
                     if (dietaData.buscarDietaPorPaciente(idPac) != null) {
+                        jBagregar.setEnabled(true);
                         jBBuscar.setEnabled(true);
                         Dieta dieta = dietaData.buscarDietaPorPaciente(idPac);
                         int idDieta = dieta.getIdDieta();

@@ -399,6 +399,8 @@ public class ComidaPorDieta extends javax.swing.JInternalFrame {
         borrarFila();
         jBBuscar.setEnabled(false);
         jBLimpiar.setEnabled(false);
+        jBElim.setEnabled(false);
+        jBElimTodas.setEnabled(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
